@@ -1,0 +1,5 @@
+.login-img {
+    background: url('../../images/login.jpg');
+    z-index: 10;
+    opacity: 1;
+}

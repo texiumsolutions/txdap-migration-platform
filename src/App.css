@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Bree+Serif&family=Courgette&family=Dancing+Script:wght@600;700&family=Fjalla+One&family=Kdam+Thmor+Pro&family=Lobster&family=Oleo+Script&family=Poppins:wght@100;400;500;700&family=Roboto:wght@100&family=Secular+One&family=Signika&family=Slabo+27px&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
 .App {
   text-align: center;
 }
@@ -32,6 +38,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
