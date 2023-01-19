@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import './Login.css';
 import auth from '../../firebase.init';
 import { FaFacebookF } from 'react-icons/fa';
@@ -9,14 +9,14 @@ import { AiOutlineTwitter, AiOutlineGoogle } from 'react-icons/ai';
 import Loading from '../Loading/Loading';
 import { Link } from 'react-router-dom';
 
-const Login = () => {
+const SignUp = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [
-        signInWithEmailAndPassword,
+        createUserWithEmailAndPassword,
         user,
         loading,
         error,
-    ] = useSignInWithEmailAndPassword(auth);
+    ] = useCreateUserWithEmailAndPassword(auth);
 
     let signInError;
 
@@ -34,7 +34,7 @@ const Login = () => {
 
     const onSubmit = data => {
         console.log(data);
-        signInWithEmailAndPassword(data.email, data.password);
+        createUserWithEmailAndPassword(data.email, data.password);
     };
 
     return (
@@ -50,13 +50,25 @@ const Login = () => {
                 </div>
             </div>
             <div>
-                <div className='pt-32 pl-48'>
+                <div className='pt-16 pl-48'>
                     <form className='' onSubmit={handleSubmit(onSubmit)}>
                         <div className='pb-16'>
                             <h1 className='text-3xl font-bold pb-2'>Txdap</h1>
-                            <h1 className='text-2xl'>Login Into Your Account</h1>
+                            <h1 className='text-2xl'>SignUp Into Your Account</h1>
                         </div>
 
+                        <input type="text"
+                            placeholder='Your Name'
+                            {...register("name", {
+                                required: {
+                                    value: true,
+                                    message: 'Name is Required'
+                                }
+                            })}
+                            className='form-control border pl-4 border-slate-400 h-[50px] w-[400px]' />
+                        <label class="label">
+                            {errors.name?.type === 'required' && <p className='text-red-500'>{errors.name.message}</p>}
+                        </label>
                         <input type="email"
                             placeholder='Your Email'
                             {...register("email", {
@@ -95,13 +107,13 @@ const Login = () => {
                         </label>
                         <br />
                         {signInError}
-                        <input className='form-control border border-slate-400 h-[50px] w-[400px] btn bg-orange-400 text-white' type="submit" value='Login' />
+                        <input className='form-control border border-slate-400 h-[50px] w-[400px] btn bg-orange-400 text-white' type="submit" value='SignUp' />
                     </form>
-                    <p className='pt-4 pr-40'><small>New to Txdap? <Link className='text-secondary' to="/signup">Create New Account</Link></small></p>
+                    <p className='pt-4 pr-40'><small>Already have an account? <Link className='text-secondary' to="/login">Please Login</Link></small></p>
                 </div>
             </div>
         </div>
     );
 };
 
-export default Login;
+export default SignUp;

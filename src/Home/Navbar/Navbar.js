@@ -17,7 +17,7 @@ const Navbar = () => {
                 </div>
             </div>
             <div class="navbar-center">
-                <a class="btn btn-ghost normal-case text-xl">Txdap Migration Platform</a>
+                <h1 className="text-2xl font-bold">Txdap Migration Platform</h1>
             </div>
             <div class="navbar-end">
                 <Link to='/login'>Login</Link>
