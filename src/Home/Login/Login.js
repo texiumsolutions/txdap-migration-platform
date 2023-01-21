@@ -1,13 +1,10 @@
-import React from 'react';
-import { useForm } from "react-hook-form";
+import React, { useEffect } from 'react';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import './Login.css';
 import auth from '../../firebase.init';
-import { FaFacebookF } from 'react-icons/fa';
-import { BsLinkedin } from 'react-icons/bs';
-import { AiOutlineTwitter, AiOutlineGoogle } from 'react-icons/ai';
+import { useForm } from "react-hook-form";
+
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Loading from '../Loading/Loading';
-import { Link } from 'react-router-dom';
 
 const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
@@ -19,6 +16,15 @@ const Login = () => {
     ] = useSignInWithEmailAndPassword(auth);
 
     let signInError;
+    let navigate = useNavigate();
+    let location = useLocation();
+    let from = location.state?.from?.pathname || "/";
+
+    useEffect(() => {
+        if (user) {
+            navigate(from, { replace: true });
+        }
+    }, [user, from, navigate])
 
     if (loading) {
         return <Loading></Loading>
@@ -28,76 +34,75 @@ const Login = () => {
         signInError = <p className='text-red-500'><small>{error?.message}</small></p>
     }
 
-    if (user) {
-        console.log(user);
-    }
-
     const onSubmit = data => {
         console.log(data);
         signInWithEmailAndPassword(data.email, data.password);
+        navigate('/home');
     };
 
     return (
-        <div className='flex'>
-            <div className='login-img w-1/2 h-[650px] text-white'>
-                <h2 className='text-4xl pt-48'>Welcome To Txdap</h2>
-                <h4 className='pl-[60px] pt-6'>Lorem Ipsum is simply dummy text of the printing <br />and typesetting industry. Lorem Ipsum has been .</h4>
-                <div className='flex pl-[217px] pt-10'>
-                    <a href='/' className='text-5xl bg-white border rounded text-blue-600 mr-4'><FaFacebookF></FaFacebookF></a>
-                    <a href='/' className='text-5xl bg-white border rounded text-blue-600 mr-4'><AiOutlineTwitter></AiOutlineTwitter></a>
-                    <a href='https://texiumsolutions.com' className='text-5xl bg-white border rounded text-blue-600 mr-4'><AiOutlineGoogle></AiOutlineGoogle></a>
-                    <a href='https://www.linkedin.com/company/texium-solutions/mycompany/' className='text-5xl bg-white border rounded text-blue-600'><BsLinkedin></BsLinkedin></a>
-                </div>
-            </div>
-            <div>
-                <div className='pt-32 pl-48'>
-                    <form className='' onSubmit={handleSubmit(onSubmit)}>
-                        <div className='pb-16'>
-                            <h1 className='text-3xl font-bold pb-2'>Txdap</h1>
-                            <h1 className='text-2xl'>Login Into Your Account</h1>
+        <div className='flex h-screen justify-center items-center'>
+            <div className="card w-96 bg-base-100 shadow-xl">
+                <div className="card-body">
+                    <h2 className="text-center text-2xl font-bold">Login</h2>
+                    <form onSubmit={handleSubmit(onSubmit)}>
+
+
+                        <div className="form-control w-full max-w-xs">
+                            <label className="label">
+                                <span className="label-text">Email</span>
+                            </label>
+                            <input
+                                type="email"
+                                placeholder="Your Email"
+                                className="input input-bordered w-full max-w-xs"
+                                {...register("email", {
+                                    required: {
+                                        value: true,
+                                        message: 'Email is Required'
+                                    },
+                                    pattern: {
+                                        value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
+                                        message: 'Provide a valid Email'
+                                    }
+                                })}
+                            />
+                            <label className="label">
+                                {errors.email?.type === 'required' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
+                                {errors.email?.type === 'pattern' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
+                            </label>
+                        </div>
+                        <div className="form-control w-full max-w-xs">
+                            <label className="label">
+                                <span className="label-text">Password</span>
+                            </label>
+
+                            <input
+                                type="password"
+                                placeholder="Password"
+                                className="input input-bordered w-full max-w-xs"
+                                {...register("password", {
+                                    required: {
+                                        value: true,
+                                        message: 'Password is required'
+                                    },
+                                    minLength: {
+                                        value: 6,
+                                        message: 'Must be 6 characters or more'
+                                    }
+                                })}
+                            />
+                            <label className="label">
+                                {errors.password?.type === 'required' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
+                                {errors.password?.type === 'minLength' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
+
+                            </label>
                         </div>
 
-                        <input type="email"
-                            placeholder='Your Email'
-                            {...register("email", {
-                                required: {
-                                    value: true,
-                                    message: 'Email is Required'
-                                },
-                                pattern: {
-                                    value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
-                                    message: 'Provide a valid Email'
-                                }
-                            })}
-                            className='form-control border pl-4 border-slate-400 h-[50px] w-[400px]' />
-                        <label class="label">
-                            {errors.email?.type === 'required' && <p className='text-red-500'>{errors.email.message}</p>}
-                            {errors.email?.type === 'pattern' && <p className='text-red-500'>{errors.email.message}</p>}
-                        </label>
-                        <br />
-
-                        <input type="password"
-                            placeholder='Password'
-                            {...register("password", {
-                                required: {
-                                    value: true,
-                                    message: 'Password is Required'
-                                },
-                                minLength: {
-                                    value: 6,
-                                    message: 'Must be 6 characters or longer'
-                                }
-                            })}
-                            className='form-control border pl-4 border-slate-400 h-[50px] w-[400px]' />
-                        <label class="label">
-                            {errors.password?.type === 'required' && <p className='text-red-500' role="alert">{errors.password.message}</p>}
-                            {errors.password?.type === 'minLength' && <p className='text-red-500' role="alert">{errors.password.message}</p>}
-                        </label>
-                        <br />
-                        {signInError}
-                        <input className='form-control border border-slate-400 h-[50px] w-[400px] btn bg-orange-400 text-white' type="submit" value='Login' />
+                        {signInError} <br />
+                        <input className='btn w-full max-w-xs text-white' type="submit" value="Login" />
                     </form>
-                    <p className='pt-4 pr-40'><small>New to Txdap? <Link className='text-secondary' to="/signup">Create New Account</Link></small></p>
+                    <p><small className='flex justify-center mt-2'>New to Txdap? <Link className='text-info pl-' to='/signup'> Create new account</Link></small></p>
                 </div>
             </div>
         </div>

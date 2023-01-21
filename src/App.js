@@ -3,6 +3,8 @@ import './App.css';
 import Home from './Home/Home';
 import Login from './Home/Login/Login';
 import SignUp from './Home/Login/SignUp';
+
+
 import Navbar from './Home/Navbar/Navbar';
 
 function App() {
@@ -10,8 +12,8 @@ function App() {
     <div className="App">
       <Navbar></Navbar>
       <Routes>
-        <Route path="/" element={<Home></Home>}></Route>
-        <Route path='/login' element={<Login></Login>}></Route>
+        <Route path="/home" element={<Home></Home>}></Route>
+        <Route path='/' element={<Login></Login>}></Route>
         <Route path='/signup' element={<SignUp></SignUp>}></Route>
       </Routes>
     </div>
