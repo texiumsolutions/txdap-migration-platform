@@ -22,7 +22,7 @@ const DashboardNavbar = () => {
     }
     return (
         <div className="flex bg-blue-800 justify-between h-[42px]">
-            <div className="flex font-semibold">
+            <div className="flex">
                 <div class="dropdown">
                     <label tabindex="0">
                         <div className="pl-3 pt-3">
@@ -75,14 +75,14 @@ const DashboardNavbar = () => {
             </div>
             {signInErrorMessage}
             <div className="flex justify-center items-center ">
-                <p className="text-white font-semibold">Sumaya</p>
+                <p className="text-white">Sumaya</p>
                 <div class="avatar mx-4">
                     <div class="w-6 h-6  rounded-full ">
                         <img alt=" " src="https://placeimg.com/192/192/people" />
                     </div>
                 </div>
                 <div className='mx-4'>
-                    {user ? <Link className='text-white text-1xl font-semibold' to="/" onClick={logout}>SignOut</Link> : <Link className='text-white text-1xl font-semibold' to="/">Login</Link>}
+                    {user ? <Link className='text-white text-1xl' to="/" onClick={logout}>SignOut</Link> : <Link className='text-white text-1xl font-semibold' to="/">Login</Link>}
                 </div>
 
             </div>
