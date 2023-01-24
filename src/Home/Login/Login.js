@@ -44,7 +44,7 @@ const Login = () => {
         <div className='flex h-screen justify-center items-center'>
             <div className="card w-96 bg-base-100 shadow-xl">
                 <div className="card-body">
-                    <h2 className="text-center text-2xl font-bold">Login</h2>
+                    <h2 className="text-center lg:text-4xl sm:text-2xl text-info my-3 font-semibold">Login Here!</h2>
                     <form onSubmit={handleSubmit(onSubmit)}>
 
 
@@ -100,9 +100,9 @@ const Login = () => {
                         </div>
 
                         {signInError} <br />
-                        <input className='btn w-full max-w-xs text-white' type="submit" value="Login" />
+                        <input className='btn w-full max-w-xs btn-info text-black' type="submit" value="Login" />
                     </form>
-                    <p><small className='flex justify-center mt-2'>New to Txdap? <Link className='text-info pl-' to='/signup'> Create new account</Link></small></p>
+                    <p><small className='flex justify-center mt-2'>New to Txdap? <Link className='text-info pl-1 text-md' to='/signup'> Create new account</Link></small></p>
                 </div>
             </div>
         </div>

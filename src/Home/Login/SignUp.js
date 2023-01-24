@@ -39,7 +39,7 @@ const SignUp = () => {
         <div className='flex h-screen justify-center items-center'>
             <div className="card w-96 bg-base-100 shadow-xl">
                 <div className="card-body">
-                    <h2 className="text-center text-2xl font-bold">Sign Up</h2>
+                    <h2 className="text-center lg:text-4xl sm:text-2xl text-info my-3 font-semibold">Sign Up Here!</h2>
                     <form onSubmit={handleSubmit(onSubmit)}>
 
 
@@ -116,9 +116,9 @@ const SignUp = () => {
                         </div>
 
                         {signInError} <br />
-                        <input className='btn w-full max-w-xs text-white' type="submit" value="Sign Up" />
+                        <input className='btn w-full max-w-xs btn-info text-black' type="submit" value="Sign Up" />
                     </form>
-                    <p><small className='flex justify-center mt-2'>Already have an account? <Link className='text-info pl-1' to='/'>Please login</Link></small></p>
+                    <p><small className='flex justify-center mt-2'>Already have an account? <Link className='text-info pl-1 text-md' to='/'>Please login</Link></small></p>
                 </div>
             </div>
         </div>

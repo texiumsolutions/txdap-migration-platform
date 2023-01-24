@@ -1,9 +1,10 @@
 import React from 'react';
+import DashboardNavbar from './Dashboard/DashboardNavbar';
 
 const Home = () => {
     return (
         <div>
-            <h1 className='mt-24'>This is homepage</h1>
+            <DashboardNavbar></DashboardNavbar>
         </div>
     );
 };
