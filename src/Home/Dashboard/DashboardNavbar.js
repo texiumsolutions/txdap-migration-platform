@@ -75,7 +75,6 @@ const DashboardNavbar = () => {
             </div>
             {signInErrorMessage}
             <div className="flex justify-center items-center ">
-                <p className="text-white">Sumaya</p>
                 <div class="avatar mx-4">
                     <div class="w-6 h-6  rounded-full ">
                         <img alt=" " src="https://placeimg.com/192/192/people" />
