@@ -1,6 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import Home from '../../Home';
+import UploadFile from './UploadFile';
 
 const Injection = () => {
     const { register, handleSubmit, reset } = useForm();
@@ -16,7 +17,7 @@ const Injection = () => {
         <div>
             <Home></Home>
             <div className='flex justify-between'>
-                <div className='pl-24 pt-10'>
+                <div className='pl-16 pt-10'>
                     <h1 className='text-3xl pl-16 text-start pt-6'>Document</h1>
 
                     <div className='pt-10'>
@@ -39,8 +40,14 @@ const Injection = () => {
                         </form>
                     </div>
                 </div>
-                <div className='pr-40 pt-10'>
-                    <h1 className='text-3xl pr-16 pt-6'>File Upload</h1>
+                <div className='pt-10'>
+                    <h1 className='text-3xl pr-2 pt-6'>File Upload</h1>
+                    <div className='flex gap-6 pr-60'>
+                        <div className='pt-10'>
+                            <UploadFile></UploadFile>
+                        </div>
+                        <div className='pt-10'>Uploading...</div>
+                    </div>
                 </div>
             </div>
 
