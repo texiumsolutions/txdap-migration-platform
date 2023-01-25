@@ -4,9 +4,9 @@ import Home from './Home/Home';
 import Login from './Home/Login/Login';
 import SignUp from './Home/Login/SignUp';
 import Dashboard from './Home/NavbarRoutes/Dashboard/Dashboard';
-import Exclude from './Home/NavbarRoutes/Extraction/Exclude';
+import Eprofile from './Home/NavbarRoutes/Extraction/Eprofile';
 import Extraction from './Home/NavbarRoutes/Extraction/Extraction';
-import Search from './Home/NavbarRoutes/Extraction/Search';
+import Run from './Home/NavbarRoutes/Extraction/Run';
 import Injection from './Home/NavbarRoutes/Injection/Injection';
 import Reports from './Home/NavbarRoutes/Reports/Reports';
 import Transformation from './Home/NavbarRoutes/Transformation/Transformation';
@@ -21,8 +21,8 @@ function App() {
         <Route path='/' element={<Login></Login>}></Route>
         <Route path='/signup' element={<SignUp></SignUp>}></Route>
         <Route path='/extraction' element={<Extraction></Extraction>}></Route>
-        <Route path='/search' element={<Search></Search>}></Route>
-        <Route path='/exclude' element={<Exclude></Exclude>}></Route>
+        <Route path='/run' element={<Run></Run>}></Route>
+        <Route path='/eprofile' element={<Eprofile></Eprofile>}></Route>
         <Route path='/transformation' element={<Transformation></Transformation>}></Route>
         <Route path='/injection' element={<Injection></Injection>}></Route>
         <Route path='/reports' element={<Reports></Reports>}></Route>
