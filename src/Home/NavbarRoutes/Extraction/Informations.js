@@ -9,7 +9,7 @@ const Informations = () => {
   const [informations] = useInformation();
   
   const { register} = useForm();
-
+ 
   
   return (
     <div>

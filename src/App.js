@@ -6,15 +6,20 @@ import SignUp from './Home/Login/SignUp';
 import Dashboard from './Home/NavbarRoutes/Dashboard/Dashboard';
 import Eprofile from './Home/NavbarRoutes/Extraction/Eprofile';
 import Extraction from './Home/NavbarRoutes/Extraction/Extraction';
-import Informations from './Home/NavbarRoutes/Extraction/Informations';
-import Document from './Home/NavbarRoutes/Injection/Document';
 import Injection from './Home/NavbarRoutes/Injection/Injection';
 import UploadFile from './Home/NavbarRoutes/Injection/UploadFile';
 import Reports from './Home/NavbarRoutes/Reports/Reports';
 import Transformation from './Home/NavbarRoutes/Transformation/Transformation';
+import DocumentInfo from './Home/NavbarRoutes/Injection/DocumentInfo';
+import Informations from './Home/NavbarRoutes/Extraction/Informations';
 
 
 function App() {
+
+  const onFileChange = (files) => {
+    console.log(files);
+  }
+
   return (
     <div className="App">
 
@@ -26,8 +31,10 @@ function App() {
         <Route path='/eprofile' element={<Eprofile></Eprofile>}></Route>
         <Route path='/transformation' element={<Transformation></Transformation>}></Route>
         <Route path='/injection' element={<Injection></Injection>}></Route>
-        <Route path='/document' element={<Document></Document>}></Route>
-        <Route path='/upload' element={<UploadFile></UploadFile>}></Route>
+        <Route path='/information' element={<DocumentInfo></DocumentInfo>}></Route>
+        <Route path='/upload' element={<UploadFile
+          onFileChange={(files) => onFileChange(files)}
+        />}></Route>
         <Route path='/reports' element={<Reports></Reports>}></Route>
         <Route path='/dashboard' element={<Dashboard></Dashboard>}></Route>
         <Route path='/informations' element={<Informations></Informations>}></Route>
