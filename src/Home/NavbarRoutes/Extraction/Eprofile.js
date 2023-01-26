@@ -32,6 +32,7 @@ const Eprofile = () => {
     <div>
         {/* <ToastContainer className="toast"></ToastContainer> */}
       <Extraction></Extraction>
+      <p className="text-2xl">Extraction profile </p>
       <div className=" bg-base-600 ep-form">
         <div class="form-control ep">
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -207,7 +208,7 @@ const Eprofile = () => {
               />
             </label>
 
-            <input className="btn btn-primary" type="submit" value="Save" />
+            <input className="btn bg-blue-700 text-white mt-5" type="submit" value="Save" />
           </form>
         </div>
       </div>
