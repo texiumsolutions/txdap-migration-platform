@@ -8,7 +8,7 @@ const Extraction = () => {
             <Home></Home>
             <ul class="menu menu-horizontal bg-gray-100 w-screen px-10 my-4 py-4 rounded-box">
                 <li><Link to="/eprofile">Extraction Profile</Link></li>
-                <li><Link to="/run">Run Profile</Link></li>
+                <li><Link to="/informations">Run Profile</Link></li>
             </ul>
         </div>
     );
