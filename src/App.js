@@ -31,6 +31,7 @@ function App() {
         <Route path='/reports' element={<Reports></Reports>}></Route>
         <Route path='/dashboard' element={<Dashboard></Dashboard>}></Route>
         <Route path='/informations' element={<Informations></Informations>}></Route>
+        
       </Routes>
     </div>
   );
