@@ -14,7 +14,39 @@ justify-content: center;
   width: 100px;
   margin-left: 20%;
 }
-.toast{
-  height: 200px;
-  width: 200px;
+.active {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  color: #2d02b1;
+  width: 0%;
+  height: 4px;
+  background-color: none;
+}
+.extraction-navbar{
+  font-size: 18px;
+    font-weight: 500;
+    color: #565966;
+    position: relative;
+    padding-top: 40px;
+    padding-bottom: 10px;
+    margin: 20px;
+}
+.extraction-navbar::after {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: #2d02b1;
+  width: 0%;
+  height: 4px;
+  content: "";
+  transition: 0.5s;
+}
+
+.extraction-navbar:hover::after {
+  width: 100%;
+}
+
+.extraction-navbar:hover {
+  color: #5833c8;
 }
