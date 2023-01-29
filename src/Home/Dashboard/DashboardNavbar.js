@@ -57,7 +57,7 @@ const DashboardNavbar = () => {
                         </NavLink>
                     </div>
                     <div exact activeClassName="active">
-                        <NavLink to="/injection" className="text-white mx-4 text-1xl">
+                        <NavLink to="/information" className="text-white mx-4 text-1xl">
                             Injection
                         </NavLink>
                     </div>
