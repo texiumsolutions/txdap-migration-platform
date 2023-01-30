@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-const UseInformation = () => {
+const useInformation = () => {
     const [information, setInformation] = useState([]);
     useEffect(() => {
         fetch('http://localhost:5000/run')
@@ -9,4 +9,4 @@ const UseInformation = () => {
     }, [information])
     return [information, setInformation];
 }
-export default UseInformation;
+export default useInformation;

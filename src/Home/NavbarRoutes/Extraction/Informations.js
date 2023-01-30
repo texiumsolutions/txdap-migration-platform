@@ -1,12 +1,12 @@
 import React from 'react';
-import UseInformation from '../../../Hooks/useInformation';
+import useInformation from '../../../Hooks/useInformation';
 import { useForm } from "react-hook-form";
 import './Extraction.css';
 import Progressbar2 from './ProgressBar/Progressbar2';
 import Extraction from './Extraction';
 
 const Informations = () => {
-  const [informations] = UseInformation();
+  const [informations] = useInformation();
   
   const { register} = useForm();
  
