@@ -7,15 +7,15 @@ const Extraction = () => {
   return (
     <div>
       <Home></Home>
-      <div class=" flex bg-gray-100 w-screen px-10 my-4 py-4 rounded-box">
-        <div exact activeClassName="active">
-          <Link class=" extraction-navbar" to="/eprofile">
+      <div class=" flex bg-gray-100 w-full px-5 my-4 py-4 rounded-box">
+        <div >
+          <Link class="extraction-navbar" to="/eprofile">
             Extraction Profile
           </Link>
         </div>
 
-        <div exact activeClassName="active">
-          <Link class=" extraction-navbar" to="/informations">
+        <div>
+          <Link class="extraction-navbar" to="/runs">
             Run Profile
           </Link>
         </div>

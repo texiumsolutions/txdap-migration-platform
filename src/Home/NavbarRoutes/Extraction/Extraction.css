@@ -3,17 +3,24 @@
   width: 80%;
 }
 .ep-form{
-  width: 100%;
+  width: 90%;
+}
+.ep-formI{
+  width: 90%;
+  justify-content: center;
   align-items: center;
-justify-content: center;
+  position: relative;
+  left: 10%;
+  top: 20%;
 }
 .ep{
   width: 90%;
 }
 .name-input{
   width: 100px;
-  margin-left: 20%;
 }
+
+/* Extraction  */
 
 .extraction-navbar{
   font-size: 18px;
@@ -25,6 +32,10 @@ justify-content: center;
     margin: 20px;
     background-color: transparent;
 }
+.extraction-navbar.active{
+  background-color: black;
+  color: #2d02b1;
+}
 .extraction-navbar::after {
   position: absolute;
   left: 0;
@@ -34,7 +45,7 @@ justify-content: center;
   height: 4px;
   content: "";
   transition: 0.5s;
-}
+} 
 
 .extraction-navbar:hover::after {
   width: 100%;
@@ -44,6 +55,47 @@ justify-content: center;
   color: #5833c8;
 }
 
-.active-link{
-  color: red;
+
+
+/* Progressbar CSS */
+
+.progressbar{
+  position: relative;
+  overflow: hidden;
+  height: 50px;
+  border-radius: 5px;
+  background-color: rgb(116, 174, 203);
+  width: 80%;
+  margin-left: 100px;
+  margin-top: 2%;
+
+}
+.progressPercent{
+  font-weight: 600;
+  font-family: 'Franklin Gothic Medium';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: #eee;
+  text-shadow: -1px 0 #555, 0 1px #555, 1px 0 #555, 0 -1px #555;
+}
+.ebtn{
+  display: flex;
+  margin: 10px auto;
+  border: none;
+  border-radius: 3px;
+  outline: none;
+  width: 150px;
+  height: 40px;
+  background-color: #3c03b7;
+  transition: box-shadow 0.5s;
+  font-size: 15px;
+  font-family: arial;
+  color: #fff;
+  cursor: pointer;
+}
+.ebtn:hover{
+  -webkit-box-shadow: inset 100px 0 0 0 #3c03b7;
+  box-shadow: inset 100px 0 0 0 #3c03b7;
 }

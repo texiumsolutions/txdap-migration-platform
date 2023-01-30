@@ -1,11 +1,11 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import useInformation from '../../../Hooks/useInformation';
+import UseInformation from '../../../Hooks/useInformation';
 
 import Injection from './Injection';
 
 const DocumentInfo = () => {
-    const [information] = useInformation();
+    const [information] = UseInformation();
     const { register, handleSubmit } = useForm();
 
     const onSubmit = (data) => {

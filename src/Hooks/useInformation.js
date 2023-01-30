@@ -1,14 +1,12 @@
 import { useEffect, useState } from "react"
 
-const useInformation = () =>{
-     const [informations, setInformations] = useState([]);
-
-     useEffect(() =>{
-      fetch ('http://localhost:5000/information')
-      .then((res) => res.json())
-      .then((data) => setInformations(data));
-     }, [informations]);
-     return [informations, setInformations];
+const UseInformation = () => {
+    const [information, setInformation] = useState([]);
+    useEffect(() => {
+        fetch('http://localhost:5000/run')
+            .then(res => res.json())
+            .then(data => setInformation(data))
+    }, [information])
+    return [information, setInformation];
 }
-
-export default useInformation;
+export default UseInformation;

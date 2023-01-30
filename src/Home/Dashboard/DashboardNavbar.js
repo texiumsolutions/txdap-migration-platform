@@ -47,27 +47,27 @@ const DashboardNavbar = () => {
                 </div>
                 <div className="flex justify-center items-center">
                     <div exact activeClassName="active">
-                        <NavLink to="/extraction" className="text-white mx-4 text-1xl ml-10">
+                        <NavLink to="/extraction" className="dash-nav text-white mx-4 text-1xl ml-10">
                             Extraction
                         </NavLink>
                     </div>
                     <div exact activeClassName="active">
-                        <NavLink to="/transformation" className="text-white mx-4 text-1xl">
+                        <NavLink to="/transformation" className="dash-nav text-white mx-4 text-1xl">
                             Transformation
                         </NavLink>
                     </div>
                     <div exact activeClassName="active">
-                        <NavLink to="/injection" className="text-white mx-4 text-1xl">
+                        <NavLink to="/injection" className="dash-nav text-white mx-4 text-1xl">
                             Injection
                         </NavLink>
                     </div>
                     <div exact activeClassName="active">
-                        <NavLink to="/reports" className=" text-white mx-4 text-1xl">
+                        <NavLink to="/reports" className="dash-nav text-white mx-4 text-1xl">
                             Reports
                         </NavLink>
                     </div>
                     <div exact activeClassName="active">
-                        <NavLink to="/dashboard" className=" text-white mx-4 text-1xl">
+                        <NavLink to="/dashboard" className="dash-nav text-white mx-4 text-1xl">
                             Dashboard
                         </NavLink>
                     </div>
