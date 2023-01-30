@@ -1,19 +1,30 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { toast, ToastContainer } from 'react-toastify';
 import useInformation from '../../../hooks/useInformation';
 import Home from '../../Home';
 
 import Injection from './Injection';
+import Progressbar2 from './Progressbar2';
 
 const DocumentInfo = () => {
     const [information] = useInformation();
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, reset } = useForm();
 
-    const onSubmit = (data) => {
-
-        console.log(data);
-
-
+    const onSubmit = data => {
+        const url = `http://localhost:5000/run`;
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(result => {
+                console.log(result);
+                reset();
+            })
     };
 
     return (
@@ -38,6 +49,7 @@ const DocumentInfo = () => {
                                 <input type="submit" value='Submit' className='text-[16px] text-black px-3 py-1 ml-2 border border-black rounded-sm cursor-pointer' />
                             </div>
                         </div>
+                        <Progressbar2></Progressbar2>
                     </form>
                 </div>
             </div>
