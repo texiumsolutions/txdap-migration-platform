@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^13.5.0",
     "daisyui": "^2.47.0",
     "drag-drop": "^7.2.0",
+    "exceljs": "^4.3.0",
     "firebase": "^9.15.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -19,6 +20,8 @@
     "react-router-dom": "^6.7.0",
     "react-scripts": "5.0.1",
     "react-toastify": "^9.1.1",
+    "react-xls": "^0.1.1",
+    "react-xlsx": "^0.4.10",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

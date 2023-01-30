@@ -82,7 +82,7 @@ const DocumentInfo = () => {
                             </div>
                         </form>
                     </div>
-                    <div className="pcontainer">
+                    <div className="pcontainer flex flex-col">
                         <div className="pcontent">
                             <div className="pprogressbar">
                                 <div
@@ -97,6 +97,12 @@ const DocumentInfo = () => {
                                 <Circle key={circle.id} circle={circle}></Circle>
                             ))}
 
+                        </div>
+                        <div className='flex justify-evenly'>
+                            <p>Select Files</p>
+                            <p>Entity Mapping</p>
+                            <p>Data Mapping</p>
+                            <p>Select Files</p>
                         </div>
                     </div>
                 </div>

@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { ImageConfig } from '../../../config/ImageConfig';
 import { useForm } from 'react-hook-form';
 import Home from '../../Home';
+import * as XLSX from 'xlsx/xlsx.mjs';
 
 const UploadFile = props => {
 
@@ -21,7 +22,7 @@ const UploadFile = props => {
         })
             .then(res => res.json())
             .then(result => {
-                console.log(result);
+
                 reset();
             })
     };
@@ -34,8 +35,42 @@ const UploadFile = props => {
     const onDragLeave = () => wrapperRef.current.classList.remove('dragover');
     const onDrop = () => wrapperRef.current.classList.remove('dragover');
 
-    const onFileDrop = (e) => {
-        const newFile = e.target.files[0];
+    const fileData = {};
+    const processExcelFile = (data) => {
+        var workbook = XLSX.read(data, { type: 'binary' });
+        const wsname = workbook.SheetNames[0];
+        const ws = workbook.Sheets[wsname];
+
+        /* Convert array to json*/
+        const dataParse = XLSX.utils.sheet_to_json(ws, { header: 1 });
+        console.log({ dataParse });
+
+    }
+
+    const onFileDrop = (event) => {
+        var files = event.target.files;
+        fileData['firstName'] = files[0].name;
+
+        if (typeof (FileReader) != "undefined") {
+            var reader = new FileReader();
+
+            if (reader.readAsBinaryString) {
+                reader.onload = function (e) {
+                    processExcelFile(e.target.result);
+                };
+            }
+        }
+        else {
+            reader.onload = function (e) {
+                var data = "";
+                var bytes = new Uint8Array(e.target.result);
+                for (var i = 0; i < bytes.byteLength; i++) {
+                    data = String.fromCharCode([i]);
+                }
+                processExcelFile(data)
+            }
+        }
+        const newFile = event.target.files[0];
         if (newFile) {
             const updatedList = [...fileList, newFile];
             setFileList(updatedList);

@@ -17,8 +17,8 @@ import Transformation from './Home/NavbarRoutes/Transformation/Transformation';
 
 function App() {
 
-  const onFileChange = (files) => {
-    console.log(files);
+  const onFileChange = () => {
+
   }
 
   return (
