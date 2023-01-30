@@ -50,7 +50,7 @@
 }
 .pcircle{
   background-color: #fff;
-  color: #999;
+  color: rgb(24, 11, 126);
   border-radius: 50%;
   height: 100px;
   width: 100px;
@@ -62,7 +62,7 @@
 }
 
 .pcircle.active{
-  border-color: #3498db;
+  border-color: #000a71;
 }
 .pbutton{
   display: flex;
