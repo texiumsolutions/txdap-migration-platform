@@ -21,12 +21,12 @@ const DashboardNavbar = () => {
         signInErrorMessage = <p className="text-red-500"><small>{error?.message}</small></p>
     }
     return (
-        <div className="flex bg-blue-800 justify-between h-[60px]">
+        <div className="flex bg-blue-800 justify-between h-[50px]">
             <div className="flex">
                 <div class="dropdown">
                     <label tabindex="0">
-                        <div className="pl-5 pt-5">
-                            <Link to="/home" className="text-white text-2xl">
+                        <div className="pl-5 pt-4">
+                            <Link to="/home" className="text-white text-xl">
                                 <AiOutlineMenu></AiOutlineMenu>
                             </Link>
                         </div>

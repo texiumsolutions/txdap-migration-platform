@@ -29,9 +29,11 @@ function App() {
         <Route path='/' element={<Login></Login>}></Route>
         <Route path='/signup' element={<SignUp></SignUp>}></Route>
         <Route path='/transformation' element={<Transformation></Transformation>}></Route>
-        <Route path='/injection' element={<Injection></Injection>}></Route>
-        <Route path='/information' element={<DocumentInfo></DocumentInfo>}></Route>
-        <Route path='/upload' element={<Upload></Upload>}></Route>
+        <Route path='/injection' element={<Injection></Injection>}>
+          <Route path='information' element={<DocumentInfo></DocumentInfo>}></Route>
+          <Route path='upload' element={<Upload></Upload>}></Route>
+        </Route>
+
         <Route path='/reports' element={<Reports></Reports>}></Route>
         <Route path='/dashboard' element={<Dashboard></Dashboard>}></Route>
 
