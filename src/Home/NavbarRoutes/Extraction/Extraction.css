@@ -5,19 +5,35 @@
 .ep-form{
   width: 90%;
 }
-.ep-formI{
+.ep{
   width: 90%;
-  justify-content: center;
-  align-items: center;
+}
+.ep-formI{
+
+  justify-content: start;
+  align-items: flex-start;
   position: relative;
-  left: 10%;
+  left: -4%;
   top: 20%;
 }
-.ep{
+.ep-formI{
+  width: 90%;
+}
+.ep-inputI{
+  border: 1px solid black;
+  width: 80%;
+}
+.epI{
   width: 90%;
 }
 .name-input{
   width: 100px;
+}
+.btn-src{
+   height: 35px;
+   width: 70px;
+   margin: 10px;
+   padding: 5px;
 }
 
 /* Extraction  */

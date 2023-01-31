@@ -7,13 +7,13 @@ import "./Extraction.css";
 const Eprofile = () => {
   const { register, handleSubmit, reset } = useForm();
 
-  const [filled, setFilled] = useState(0);
-  const [isRunning, setIsRunning] = useState(false);
-  useEffect(() => {
-    if (filled < 100 && isRunning) {
-      setTimeout(() => setFilled((prev) => (prev += 2)), 400);
-    }
-  }, [filled, isRunning]);
+  // const [filled, setFilled] = useState(0);
+  // const [isRunning, setIsRunning] = useState(false);
+  // useEffect(() => {
+  //   if (filled < 100 && isRunning) {
+  //     setTimeout(() => setFilled((prev) => (prev += 2)), 400);
+  //   }
+  // }, [filled, isRunning]);
 
   const onSubmit = (data) => {
     console.log(data);
@@ -232,7 +232,7 @@ const Eprofile = () => {
               />
             </label>
 
-            <div className="progressbar">
+            {/* <div className="progressbar">
               <div
                 style={{
                   height: "100%",
@@ -242,13 +242,12 @@ const Eprofile = () => {
                 }}
               ></div>
               <span className="progressPercent">{filled}%</span>
-            </div>
+            </div> */}
 
             <input
               className="ebtn btn bg-blue-700 text-white mt-5"
               type="submit"
               value="Save"
-              onClick={() => setIsRunning(true)}
             />
           </form>
         </div>
