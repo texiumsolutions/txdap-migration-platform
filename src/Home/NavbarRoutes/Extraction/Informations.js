@@ -7,10 +7,15 @@ import { Link } from "react-router-dom";
 import useInformation from "../../../hooks/useInformation";
 
 const Informations = () => {
+  const [showModal, setShowModal] = useState(true);
   const [informations] = useInformation();
   const [isRunning, setIsRunning] = useState(false);
   const [filled, setFilled] = useState(0);
   const { handleSubmit, register } = useForm();
+  const handleClose = () => {
+    setShowModal(false);
+  };
+
   const onSubmit = (data) => {
     console.log(data);
   };
@@ -56,28 +61,30 @@ const Informations = () => {
           </div>
         </div>
       </div>
-      <div class="modal" id="my-modal-2" for="my-modal-2">
-        <div class="modal-box progressbar">
-          <div
-            style={{
-              height: "100%",
-              width: `${filled}%`,
-              backgroundColor: "#3c03b7",
-              transition: "width 0.5s",
-              justifyContent: "center",
-              alignItems: "flex-start",
-            }}
-          ></div>
+      {showModal && (
+        <div class="modal" id="my-modal-2" for="my-modal-2">
+          <div class="modal-box progressbar">
+            <div
+              style={{
+                height: "100%",
+                width: `${filled}%`,
+                backgroundColor: "#3c03b7",
+                transition: "width 0.5s",
+                justifyContent: "center",
+                alignItems: "flex-start",
+              }}
+            ></div>
+          </div>
+          <span className="progressPercent">{filled}%</span>
+          <button
+            onClick={handleClose}
+            for="my-modal-2"
+            class="btn btn-sm btn-circle relative bg-blue-800 right-2 top-3"
+          >
+            ✕
+          </button>
         </div>
-        <span className="progressPercent">{filled}%</span>
-        <Link
-          to='/runs'
-          for="my-modal-2"
-          class="btn btn-sm btn-circle relative bg-blue-800 right-2 top-3"
-        >
-          ✕
-        </Link>
-      </div>
+      )}
     </div>
   );
 };
