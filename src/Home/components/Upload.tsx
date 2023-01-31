@@ -1,4 +1,5 @@
 import React, { CSSProperties, useState } from 'react';
+import { useForm } from 'react-hook-form';
 import {
     useCSVReader,
     lightenDarkenColor,
@@ -26,8 +27,9 @@ const styles = {
         height: '300px',
         width: "400px",
         justifyContent: 'center',
-        marginLeft: '50px',
-        marginTop: '50px',
+        marginLeft: '40px',
+        marginTop: '30px',
+        cursor: 'pointer'
     } as CSSProperties,
     file: {
         background: 'linear-gradient(to bottom, #EEE, #DDD)',
@@ -85,6 +87,24 @@ const styles = {
 
 
 const Upload = () => {
+
+
+    const { handleSubmit, reset } = useForm();
+    const onSubmit = (data) => {
+        const url = `http://localhost:5000/upload`;
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(result => {
+                console.log(result);
+                reset();
+            })
+    };
     const { CSVReader } = useCSVReader();
     const [zoneHover, setZoneHover] = useState(false);
     const [removeHoverColor, setRemoveHoverColor] = useState(
@@ -117,7 +137,7 @@ const Upload = () => {
                     getRemoveFileProps,
                     Remove,
                 }: any) => (
-                    <>
+                    <form onSubmit={handleSubmit(onSubmit)}>
                         <div
                             {...getRootProps()}
                             style={Object.assign(
@@ -127,7 +147,11 @@ const Upload = () => {
                             )}
                         >
                             {acceptedFile ? (
+
                                 <>
+                                    <div className='flex justify-center items-center'>
+                                        <p>Drop or upload Excel file</p>
+                                    </div>
                                     <div style={styles.file}>
                                         <div style={styles.info}>
                                             <span style={styles.size}>
@@ -159,7 +183,8 @@ const Upload = () => {
                                 'Drop or upload Excel file'
                             )}
                         </div>
-                    </>
+                        <input className='cursor-pointer' type="submit" />
+                    </form>
                 )}
             </CSVReader>
         </div>

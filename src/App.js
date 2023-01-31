@@ -11,6 +11,7 @@ import Extraction from './Home/NavbarRoutes/Extraction/Extraction';
 import Search from './Home/NavbarRoutes/Extraction/Search';
 import DocumentInfo from './Home/NavbarRoutes/Injection/DocumentInfo';
 import Injection from './Home/NavbarRoutes/Injection/Injection';
+import UploadFile from './Home/NavbarRoutes/Injection/UploadFile';
 import Reports from './Home/NavbarRoutes/Reports/Reports';
 import Transformation from './Home/NavbarRoutes/Transformation/Transformation';
 
