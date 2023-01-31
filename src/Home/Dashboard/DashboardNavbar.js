@@ -21,12 +21,12 @@ const DashboardNavbar = () => {
         signInErrorMessage = <p className="text-red-500"><small>{error?.message}</small></p>
     }
     return (
-        <div className="flex bg-blue-800 justify-between h-[42px]">
+        <div className="flex bg-blue-800 justify-between h-[60px]">
             <div className="flex">
                 <div class="dropdown">
                     <label tabindex="0">
-                        <div className="pl-3 pt-3">
-                            <Link to="/home" className="text-white text-xl">
+                        <div className="pl-5 pt-5">
+                            <Link to="/home" className="text-white text-2xl">
                                 <AiOutlineMenu></AiOutlineMenu>
                             </Link>
                         </div>
@@ -47,27 +47,27 @@ const DashboardNavbar = () => {
                 </div>
                 <div className="flex justify-center items-center">
                     <div exact activeClassName="active">
-                        <NavLink to="/extraction" className="text-white mx-4 text-1xl ml-10">
+                        <NavLink to="/extraction" className="dash-nav text-white mx-4 text-1xl ml-10">
                             Extraction
                         </NavLink>
                     </div>
                     <div exact activeClassName="active">
-                        <NavLink to="/transformation" className="text-white mx-4 text-1xl">
+                        <NavLink to="/transformation" className="dash-nav text-white mx-4 text-1xl">
                             Transformation
                         </NavLink>
                     </div>
                     <div exact activeClassName="active">
-                        <NavLink to="/information" className="text-white mx-4 text-1xl">
+                        <NavLink to="/injection" className="dash-nav text-white mx-4 text-1xl">
                             Injection
                         </NavLink>
                     </div>
                     <div exact activeClassName="active">
-                        <NavLink to="/reports" className=" text-white mx-4 text-1xl">
+                        <NavLink to="/reports" className="dash-nav text-white mx-4 text-1xl">
                             Reports
                         </NavLink>
                     </div>
                     <div exact activeClassName="active">
-                        <NavLink to="/dashboard" className=" text-white mx-4 text-1xl">
+                        <NavLink to="/dashboard" className="dash-nav text-white mx-4 text-1xl">
                             Dashboard
                         </NavLink>
                     </div>

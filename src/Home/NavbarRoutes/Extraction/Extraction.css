@@ -1,0 +1,117 @@
+.ep-input{
+  border: 1px solid black;
+  width: 80%;
+}
+.ep-form{
+  width: 90%;
+}
+.ep{
+  width: 90%;
+}
+.ep-formI{
+
+  justify-content: start;
+  align-items: flex-start;
+  position: relative;
+  left: -4%;
+  top: 20%;
+}
+.ep-formI{
+  width: 90%;
+}
+.ep-inputI{
+  border: 1px solid black;
+  width: 80%;
+}
+.epI{
+  width: 90%;
+}
+.name-input{
+  width: 100px;
+}
+.btn-src{
+   height: 35px;
+   width: 70px;
+   margin: 10px;
+   padding: 5px;
+}
+
+/* Extraction  */
+
+.extraction-navbar{
+  font-size: 18px;
+    font-weight: 500;
+    color: #565966;
+    position: relative;
+    padding-top: 40px;
+    padding-bottom: 10px;
+    margin: 20px;
+    background-color: transparent;
+}
+.extraction-navbar.active{
+  background-color: black;
+  color: #2d02b1;
+}
+.extraction-navbar::after {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: #2d02b1;
+  width: 0%;
+  height: 4px;
+  content: "";
+  transition: 0.5s;
+} 
+
+.extraction-navbar:hover::after {
+  width: 100%;
+}
+
+.extraction-navbar:hover {
+  color: #5833c8;
+}
+
+
+
+/* Progressbar CSS */
+
+.progressbar{
+  position: relative;
+  overflow: hidden;
+  height: 50px;
+  border-radius: 5px;
+  background-color: rgb(116, 174, 203);
+  width: 80%;
+  margin-left: 100px;
+  margin-top: 2%;
+
+}
+.progressPercent{
+  font-weight: 600;
+  font-family: 'Franklin Gothic Medium';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: #eee;
+  text-shadow: -1px 0 #555, 0 1px #555, 1px 0 #555, 0 -1px #555;
+}
+.ebtn{
+  display: flex;
+  margin: 10px auto;
+  border: none;
+  border-radius: 3px;
+  outline: none;
+  width: 150px;
+  height: 40px;
+  background-color: #3c03b7;
+  transition: box-shadow 0.5s;
+  font-size: 15px;
+  font-family: arial;
+  color: #fff;
+  cursor: pointer;
+}
+.ebtn:hover{
+  -webkit-box-shadow: inset 100px 0 0 0 #3c03b7;
+  box-shadow: inset 100px 0 0 0 #3c03b7;
+}

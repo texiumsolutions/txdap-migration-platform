@@ -57,17 +57,15 @@ const DocumentInfo = () => {
 
     return (
         <div>
-            <Home></Home>
-            <div className='card w-[1400px] h-[600px] mt-12 ml-16 bg-base-100 shadow-xl drop-shadow-2xl'>
-                <Injection></Injection>
-
+            <Injection></Injection>
+            <div className='ml-6'>
                 <div className='flex justify-between'>
                     <div className='pt-16'>
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <div className='pl-6'>
                                 <label className='text-md flex justify-start items-start pt-8 pb-2' htmlFor="doc">Search types of doc*</label>
                                 <div className='flex justify-start'>
-                                    <select {...register("doc")} className='w-[200px] flex justify-start text-md border border-slate-500 rounded-sm bg-white' name="doc" >
+                                    <select {...register("doc")} className='w-[600px] flex justify-start text-md border border-slate-500 rounded-sm bg-white' name="doc" >
                                         {
                                             information.map(info => <option
                                                 key={info._id}
@@ -81,29 +79,6 @@ const DocumentInfo = () => {
                                 </div>
                             </div>
                         </form>
-                    </div>
-                    <div className="pcontainer flex flex-col">
-                        <div className="pcontent">
-                            <div className="pprogressbar">
-                                <div
-                                    className="pprogress"
-                                    style={{
-                                        width: width + "%",
-                                    }}
-                                ></div>
-                                {arr}
-                            </div>
-                            {circles.map((circle) => (
-                                <Circle key={circle.id} circle={circle}></Circle>
-                            ))}
-
-                        </div>
-                        <div className='flex justify-evenly'>
-                            <p>Select Files</p>
-                            <p>Entity Mapping</p>
-                            <p>Data Mapping</p>
-                            <p>Select Files</p>
-                        </div>
                     </div>
                 </div>
             </div>

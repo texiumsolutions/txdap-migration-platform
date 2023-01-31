@@ -54,9 +54,8 @@ const UploadFile = props => {
 
     return (
         <div>
-            <Home></Home>
+            <Injection></Injection>
             <div className='card w-[1400px] h-[600px] mt-12 ml-16 bg-base-100 shadow-xl drop-shadow-2xl'>
-                <Injection></Injection>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className='flex gap-10 pt-16 pl-8'>
                         <>

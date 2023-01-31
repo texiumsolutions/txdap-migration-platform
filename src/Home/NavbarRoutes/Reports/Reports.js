@@ -8,7 +8,6 @@ const Reports = () => {
         <div>
             <Home></Home>
             <h1>This is Reports Page</h1>
-            <Upload></Upload>
         </div>
     );
 };

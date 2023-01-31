@@ -43,6 +43,13 @@ const styles = {
         justifyContent: 'center',
         marginLeft: '700px'
     } as CSSProperties,
+    btn: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        marginLeft: '170px',
+        marginTop: '20px',
+    } as CSSProperties,
     info: {
         alignItems: 'center',
         display: 'flex',
@@ -112,7 +119,6 @@ const Upload = () => {
     );
     return (
         <div>
-            <Home></Home>
             <Injection></Injection>
             <CSVReader
                 onUploadAccepted={(results: any) => {
@@ -137,7 +143,7 @@ const Upload = () => {
                     getRemoveFileProps,
                     Remove,
                 }: any) => (
-                    <form onSubmit={handleSubmit(onSubmit)}>
+                    <form className='flex flex-col justify-start' onSubmit={handleSubmit(onSubmit)}>
                         <div
                             {...getRootProps()}
                             style={Object.assign(
@@ -183,7 +189,9 @@ const Upload = () => {
                                 'Drop or upload Excel file'
                             )}
                         </div>
-                        <input className='cursor-pointer' type="submit" />
+                        <div>
+                            <input style={styles.btn} className='text-[18px] text-black px-10 py-2 border border-black rounded-sm cursor-pointer' type="submit" />
+                        </div>
                     </form>
                 )}
             </CSVReader>
