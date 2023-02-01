@@ -1,12 +1,12 @@
 import React, { CSSProperties, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import toast, { Toaster } from 'react-hot-toast';
+
 import {
     useCSVReader,
     lightenDarkenColor,
     formatFileSize,
 } from 'react-papaparse';
-import Home from '../Home';
-import Injection from '../NavbarRoutes/Injection/Injection';
 
 const GREY = '#CCC';
 const GREY_LIGHT = 'rgba(255, 255, 255, 0.4)';
@@ -96,7 +96,7 @@ const styles = {
 const Upload = () => {
 
     const [deta, setData] = useState({});
-    console.log(deta);
+    // console.log(deta);
     const { handleSubmit, reset } = useForm();
     const onSubmit = (data) => {
         const url = `http://localhost:5000/upload`;
@@ -111,6 +111,7 @@ const Upload = () => {
             .then(result => {
                 console.log(result);
                 reset();
+                toast('Successfully Store Data On Your Database');
             })
     };
     const { CSVReader } = useCSVReader();
@@ -192,11 +193,12 @@ const Upload = () => {
                             )}
                         </div>
                         <div>
-                            <input style={styles.btn} className='text-[18px] text-black px-10 py-2 border border-black rounded-sm cursor-pointer' type="submit" />
+                            <input style={styles.btn} className='text-[18px] ebtn btn bg-blue-700 text-white px-10 py-2 border border-black rounded-sm cursor-pointer' type="submit" />
                         </div>
                     </form>
                 )}
             </CSVReader>
+            <Toaster />
         </div>
     );
 };

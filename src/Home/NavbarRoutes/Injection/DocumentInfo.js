@@ -1,13 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { toast, ToastContainer } from 'react-toastify';
 import useInformation from '../../../hooks/useInformation';
-import Home from '../../Home';
 import Circle from './Circle';
-
-import Injection from './Injection';
-
-import '././Progress.css'
+import '././Progress.css';
+import './DocumentInfo.css';
 
 const DocumentInfo = () => {
 
@@ -57,7 +53,6 @@ const DocumentInfo = () => {
 
     return (
         <div>
-            {/* <Injection></Injection> */}
             <div className='ml-6'>
                 <div className='flex justify-between'>
                     <div className='pt-16'>
@@ -75,7 +70,7 @@ const DocumentInfo = () => {
                                     </select>
                                     <input onClick={() => {
                                         active >= pcircle ? setActive(pcircle) : setActive(active + 1);
-                                    }} type="submit" value='Submit' className='text-[16px] text-black px-3 py-1 ml-2 border border-black rounded-sm cursor-pointer' />
+                                    }} type="submit" value='Submit' className='text-[16px] bg-blue-700 sbtn text-black px-3 py-1 ml-2 border rounded-sm cursor-pointer' />
                                 </div>
                             </div>
                         </form>
