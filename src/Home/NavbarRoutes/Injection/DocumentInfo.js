@@ -57,7 +57,7 @@ const DocumentInfo = () => {
 
     return (
         <div>
-            <Injection></Injection>
+            {/* <Injection></Injection> */}
             <div className='ml-6'>
                 <div className='flex justify-between'>
                     <div className='pt-16'>

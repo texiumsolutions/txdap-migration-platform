@@ -95,7 +95,8 @@ const styles = {
 
 const Upload = () => {
 
-
+    const [deta, setData] = useState({});
+    console.log(deta);
     const { handleSubmit, reset } = useForm();
     const onSubmit = (data) => {
         const url = `http://localhost:5000/upload`;
@@ -104,7 +105,7 @@ const Upload = () => {
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify(deta)
         })
             .then(res => res.json())
             .then(result => {
@@ -119,11 +120,12 @@ const Upload = () => {
     );
     return (
         <div>
-            <Injection></Injection>
+            {/* <Injection></Injection> */}
             <CSVReader
                 onUploadAccepted={(results: any) => {
                     console.log('---------------------------');
-                    console.log(results);
+                    setData(results);
+                    console.log(results.data);
                     console.log('---------------------------');
                     setZoneHover(false);
                 }}
