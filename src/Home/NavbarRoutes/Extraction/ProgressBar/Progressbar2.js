@@ -1,6 +1,4 @@
-import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Circle from "./Circle";
 import "./Progress.css";
 
@@ -40,17 +38,16 @@ const Progressbar2 = () => {
           ></div>
           {arr}
         </div>
-        <div className='my-10'>
-        {/* {
+        <div className="my-10">
+          {/* {
                     circles.map(circle => <span
                         key={circle._id}
                         circle={circle}
                     >{circle.name}</span>)
                    
                 } */}
-    </div>
-        
-       
+        </div>
+
         <div className="pbutton">
           <button
             className="prev btnn"

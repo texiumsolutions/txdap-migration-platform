@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Outlet, Route, Routes } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import Home from '../../Home';
 import './Injection.css'
 
