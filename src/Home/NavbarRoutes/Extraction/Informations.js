@@ -66,15 +66,8 @@ const Informations = () => {
 
       <input type="checkbox" id="my-modal-3" className="modal-toggle" />
       {showModal && (
-        <div className="modal">
+        <div className="modal" id="my-modal-3" for="my-modal-3">
           <div className="modal-box relative progressbar">
-            <div
-              onClick={handleClose}
-              htmlFor="my-modal-3"
-              className="btn btn-sm btn-circle absolute right-0 top-2 modal_close_btn"
-            >
-              ✕
-            </div>
 
             <div
               style={{
@@ -99,84 +92,91 @@ const Informations = () => {
                 filled < 0
                   ? "progress_button progress_initiate"
                   : filled < 10
-                  ? "progress_button progress_running"
-                  : filled < 10
-                  ? "progress_button progress_complete"
-                  : "progress_button progress_complete"
+                    ? "progress_button progress_running"
+                    : filled < 10
+                      ? "progress_button progress_complete"
+                      : "progress_button progress_complete"
               }
             >
               {filled < 0
                 ? "Initiate"
                 : filled < 10
-                ? "Running"
-                : filled < 10
-                ? "Complete"
-                : "Complete"}
+                  ? "Running"
+                  : filled < 10
+                    ? "Complete"
+                    : "Complete"}
             </div>
-            
+
             {/* 2nd */}
             <div
               className={
                 filled < 42
                   ? "progress_button progress_initiate"
                   : filled < 40
-                  ? "progress_button progress_running"
-                  : filled < 45
-                  ? "progress_button progress_complete"
-                  : "progress_button progress_complete"
+                    ? "progress_button progress_running"
+                    : filled < 45
+                      ? "progress_button progress_complete"
+                      : "progress_button progress_complete"
               }
             >
               {filled < 42
                 ? "Initiate"
                 : filled < 40
-                ? "Running"
-                : filled < 45
-                ? "Complete"
-                : "Complete"}
+                  ? "Running"
+                  : filled < 45
+                    ? "Complete"
+                    : "Complete"}
             </div>
-            
+
             {/* 3rd */}
             <div
               className={
                 filled < 60
                   ? "progress_button progress_initiate"
                   : filled < 70
-                  ? "progress_button progress_running"
-                  : filled < 70
-                  ? "progress_button progress_complete"
-                  : "progress_button progress_complete"
+                    ? "progress_button progress_running"
+                    : filled < 70
+                      ? "progress_button progress_complete"
+                      : "progress_button progress_complete"
               }
             >
               {filled < 60
                 ? "Initiate"
                 : filled < 70
-                ? "Running"
-                : filled < 70
-                ? "Complete"
-                : "Complete"}
+                  ? "Running"
+                  : filled < 70
+                    ? "Complete"
+                    : "Complete"}
             </div>
-            
+
             {/* 4th */}
             <div
               className={
                 filled < 90
                   ? "progress_button progress_initiate"
                   : filled < 90
-                  ? "progress_button progress_running"
-                  : filled < 100
-                  ? "progress_button progress_complete"
-                  : "progress_button progress_complete"
+                    ? "progress_button progress_running"
+                    : filled < 100
+                      ? "progress_button progress_complete"
+                      : "progress_button progress_complete"
               }
             >
               {filled < 90
                 ? "Initiate"
                 : filled < 99
-                ? "Running"
-                : filled < 100
-                ? "Complete"
-                : "Complete"}
+                  ? "Running"
+                  : filled < 100
+                    ? "Complete"
+                    : "Complete"}
             </div>
           </div>
+          <button
+            onClick={handleClose}
+            for="my-modal-3"
+            class="btn btn-sm btn-circle relative bg-blue-800 right-2 top-0"
+          >
+            ✕
+          </button>
         </div>
       )}
     </div>
