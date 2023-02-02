@@ -1,18 +1,10 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import "./Extraction.css";
 
 const Eprofile = () => {
   const { register, handleSubmit, reset } = useForm();
-
-  // const [filled, setFilled] = useState(0);
-  // const [isRunning, setIsRunning] = useState(false);
-  // useEffect(() => {
-  //   if (filled < 100 && isRunning) {
-  //     setTimeout(() => setFilled((prev) => (prev += 2)), 400);
-  //   }
-  // }, [filled, isRunning]);
 
   const onSubmit = (data) => {
     console.log(data);
@@ -28,11 +20,11 @@ const Eprofile = () => {
       .then((res) => res.json())
       .then((inserted) => {
         if (inserted.insertedId) {
-          toast.success("Added New Product Successfully");
+          // toast.success("Added New Product Successfully");
 
           reset();
         } else {
-          toast.error("Failed add to the data");
+          // toast.error("Failed add to the data");
         }
       });
   };
@@ -230,18 +222,6 @@ const Eprofile = () => {
               />
             </label>
 
-            {/* <div className="progressbar">
-              <div
-                style={{
-                  height: "100%",
-                  width: `${filled}%`,
-                  backgroundColor: "#3c03b7",
-                  transition: "width 0.5s",
-                }}
-              ></div>
-              <span className="progressPercent">{filled}%</span>
-            </div> */}
-
             <input
               className="ebtn btn bg-blue-700 text-white mt-5"
               type="submit"
@@ -249,6 +229,7 @@ const Eprofile = () => {
             />
           </form>
         </div>
+        <ToastContainer></ToastContainer>
       </div>
     </div>
   );
