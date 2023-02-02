@@ -1,54 +1,53 @@
-.ep-input{
+.ep-input {
   border: 1px solid black;
   width: 80%;
 }
-.ep-form{
+.ep-form {
   width: 90%;
 }
-.ep{
+.ep {
   width: 90%;
 }
-.ep-formI{
-
+.ep-formI {
   justify-content: start;
   align-items: flex-start;
   position: relative;
-  left: -4%;
+  left: 0;
   top: 20%;
 }
-.ep-formI{
+.ep-formI {
   width: 90%;
 }
-.ep-inputI{
+.ep-inputI {
   border: 1px solid black;
   width: 80%;
 }
-.epI{
+.epI {
   width: 90%;
 }
-.name-input{
+.name-input {
   width: 100px;
 }
-.btn-src{
-   height: 35px;
-   width: 70px;
-   margin: 10px;
-   padding: 5px;
+.btn-src {
+  height: 35px;
+  width: 70px;
+  margin: 10px;
+  padding: 5px;
 }
 
 /* Extraction  */
 
-.extraction-navbar{
+.extraction-navbar {
   font-size: 18px;
-    font-weight: 500;
-    color: #565966;
-    position: relative;
-    padding-top: 40px;
-    padding-bottom: 10px;
-    margin: 20px;
-    background-color: transparent;
+  font-weight: 500;
+  color: #565966;
+  position: relative;
+  padding-top: 40px;
+  padding-bottom: 10px;
+  margin: 20px;
+  background-color: transparent;
 }
-.extraction-navbar.active{
+.extraction-navbar.active {
   background-color: black;
   color: #2d02b1;
 }
@@ -61,7 +60,7 @@
   height: 4px;
   content: "";
   transition: 0.5s;
-} 
+}
 
 .extraction-navbar:hover::after {
   width: 100%;
@@ -71,24 +70,20 @@
   color: #5833c8;
 }
 
-
-
 /* Progressbar CSS */
-
-.progressbar{
-  position: relative;
-  overflow: hidden;
-  height: 50px;
-  border-radius: 5px;
-  background-color: rgb(116, 174, 203);
+.modal-box {
   width: 80%;
-  margin-left: 100px;
-  margin-top: 2%;
-
+  max-width: none;
 }
-.progressPercent{
+.progressbar {
+  overflow: hidden;
+  position: relative;
+  border-radius: 10px;
+  background-color: #010a0f;
+}
+.progressPercent {
   font-weight: 600;
-  font-family: 'Franklin Gothic Medium';
+  font-family: "Franklin Gothic Medium";
   position: absolute;
   left: 50%;
   top: 50%;
@@ -96,7 +91,7 @@
   color: #eee;
   text-shadow: -1px 0 #555, 0 1px #555, 1px 0 #555, 0 -1px #555;
 }
-.ebtn{
+.ebtn {
   display: flex;
   margin: 10px auto;
   border: none;
@@ -111,7 +106,54 @@
   color: #fff;
   cursor: pointer;
 }
-.ebtn:hover{
+.ebtn:hover {
   -webkit-box-shadow: inset 100px 0 0 0 #3c03b7;
   box-shadow: inset 100px 0 0 0 #3c03b7;
+}
+
+.pcircle {
+  background-color: #fff;
+  color: rgb(24, 11, 126);
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid #e0e0e0;
+  transition: 0.4s ease;
+}
+
+.progressbar_modal {
+  position: absolute;
+  width: 80%;
+
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 25px;
+}
+
+.progress_button {
+  text-align: center;
+  width: 10%;
+  height: fit-content;
+  background-color: skyblue;
+  border-radius: 5px;
+  padding: 5px 15px;
+  color: white;
+}
+.progress_initiate {
+  background-color: #4a4af1;
+}
+.progress_running {
+  background-color: #f5f542;
+  color: #010a0f;
+}
+.progress_complete {
+  background-color: #7fbe21;
+  color: #010a0f;
+}
+.modal_close_btn {
+  position: absolute;
+  right: -10px;
 }

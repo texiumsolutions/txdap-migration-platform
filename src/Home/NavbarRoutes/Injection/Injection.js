@@ -1,8 +1,6 @@
 import React from 'react';
-import { Link, Outlet, Route, Routes } from 'react-router-dom';
-import Upload from '../../components/Upload.tsx';
+import { Link, Outlet } from 'react-router-dom';
 import Home from '../../Home';
-import DocumentInfo from './DocumentInfo';
 import './Injection.css'
 
 

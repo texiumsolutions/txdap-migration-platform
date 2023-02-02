@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast, ToastContainer } from 'react-toastify';
-import useInformation from '../../../hooks/useInformation';
 import Home from '../../Home';
 import Circle from './Circle';
 
 import Injection from './Injection';
 
-import '././Progress.css'
+import '././Progress.css';
+import useInformation from '../../../hooks/useInformation';
 
 const DocumentInfo = () => {
 
