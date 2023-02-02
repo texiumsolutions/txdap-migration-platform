@@ -36,21 +36,23 @@
 }
 
 /* Extraction  */
-
+.extraction-navbar:focus{
+  background: rgb(153, 160, 198);
+  width: 0%;
+  height: 0px;
+  color: #2d02b1;
+}
 .extraction-navbar {
   font-size: 18px;
   font-weight: 500;
   color: #565966;
   position: relative;
-  padding-top: 40px;
-  padding-bottom: 10px;
+  margin-top: 40px;
+  padding: 7px;
   margin: 20px;
   background-color: transparent;
 }
-.extraction-navbar.active {
-  background-color: black;
-  color: #2d02b1;
-}
+
 .extraction-navbar::after {
   position: absolute;
   left: 0;
