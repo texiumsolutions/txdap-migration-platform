@@ -1,42 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import useInformation from '../../../hooks/useInformation';
-import Circle from './Circle';
 import '././Progress.css';
 import './DocumentInfo.css';
 
 const DocumentInfo = () => {
-
-
-    const [pcircle] = useState(5);
-    const [active, setActive] = useState(0);
-    const [width, setWidth] = useState(0);
-    useEffect(() => {
-        setWidth((100 / (pcircle - 1)) * active);
-    }, [pcircle, active]);
-
-    const arr = [];
-    for (let i = 0; i < pcircle; i++) {
-        arr.push(
-            <Circle className={i <= active ? "pcircle active" : "pcircle"} key={i}>
-                {i}
-            </Circle>
-        );
-    }
-
-    const [circles, setCircles] = useState([]);
-
-    useEffect(() => {
-        fetch("circleData.json")
-            .then((res) => res.json())
-            .then((data) => setCircles(data));
-    }, []);
-
     const [information] = useInformation();
     const { register, handleSubmit, reset } = useForm();
 
     const onSubmit = data => {
-        const url = `http://localhost:5000/run`;
+        const url = `http://localhost:5000/injection`;
         fetch(url, {
             method: 'POST',
             headers: {
@@ -68,9 +41,7 @@ const DocumentInfo = () => {
                                             >{info.name}</option>)
                                         }
                                     </select>
-                                    <input onClick={() => {
-                                        active >= pcircle ? setActive(pcircle) : setActive(active + 1);
-                                    }} type="submit" value='Submit' className='text-[16px] bg-blue-700 sbtn text-black px-3 py-1 ml-2 border rounded-sm cursor-pointer' />
+                                    <input type="submit" value='Submit' className='text-[16px] bg-blue-700 sbtn text-black px-3 py-1 ml-2 border rounded-sm cursor-pointer' />
                                 </div>
                             </div>
                         </form>

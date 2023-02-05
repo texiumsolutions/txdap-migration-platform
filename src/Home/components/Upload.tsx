@@ -5,11 +5,11 @@ import toast, { Toaster } from 'react-hot-toast';
 import {
     useCSVReader,
     lightenDarkenColor,
-    formatFileSize,
 } from 'react-papaparse';
+import ShowFile from '../NavbarRoutes/Injection/ShowFile';
 
-const GREY = '#CCC';
-const GREY_LIGHT = 'rgba(255, 255, 255, 0.4)';
+const GREY = 'rgb(173, 166, 166)';
+const GREY_LIGHT = 'rgb(245, 234, 234)';
 const DEFAULT_REMOVE_HOVER_COLOR = '#A01919';
 const REMOVE_HOVER_COLOR_LIGHT = lightenDarkenColor(
     DEFAULT_REMOVE_HOVER_COLOR,
@@ -35,13 +35,14 @@ const styles = {
         background: 'linear-gradient(to bottom, #EEE, #DDD)',
         borderRadius: 20,
         display: 'flex',
-        height: 120,
-        width: 120,
+        height: '80px',
+        width: '160px',
         position: 'relative',
         zIndex: 10,
         flexDirection: 'column',
         justifyContent: 'center',
-        marginLeft: '700px'
+
+
     } as CSSProperties,
     btn: {
         display: 'flex',
@@ -65,7 +66,6 @@ const styles = {
         display: 'flex',
     } as CSSProperties,
     name: {
-        backgroundColor: GREY_LIGHT,
         borderRadius: 3,
         fontSize: 12,
         marginBottom: '0.5em',
@@ -96,9 +96,9 @@ const styles = {
 const Upload = () => {
 
     const [deta, setData] = useState({});
-    // console.log(deta);
+    console.log(deta);
     const { handleSubmit, reset } = useForm();
-    const onSubmit = (data) => {
+    const onSubmit = () => {
         const url = `http://localhost:5000/upload`;
         fetch(url, {
             method: 'POST',
@@ -120,85 +120,94 @@ const Upload = () => {
         DEFAULT_REMOVE_HOVER_COLOR
     );
     return (
-        <div>
-            {/* <Injection></Injection> */}
-            <CSVReader
-                onUploadAccepted={(results: any) => {
-                    console.log('---------------------------');
-                    setData(results);
-                    console.log(results.data);
-                    console.log('---------------------------');
-                    setZoneHover(false);
-                }}
-                onDragOver={(event: DragEvent) => {
-                    event.preventDefault();
-                    setZoneHover(true);
-                }}
-                onDragLeave={(event: DragEvent) => {
-                    event.preventDefault();
-                    setZoneHover(false);
-                }}
-            >
-                {({
-                    getRootProps,
-                    acceptedFile,
-                    ProgressBar,
-                    getRemoveFileProps,
-                    Remove,
-                }: any) => (
-                    <form className='flex flex-col justify-start' onSubmit={handleSubmit(onSubmit)}>
-                        <div
-                            {...getRootProps()}
-                            style={Object.assign(
-                                {},
-                                styles.zone,
-                                zoneHover && styles.zoneHover
-                            )}
-                        >
-                            {acceptedFile ? (
+        <div className='flex'>
+            <div>
+                <CSVReader
+                    onUploadAccepted={(results: any) => {
+                        console.log('---------------------------');
+                        setData(results);
+                        console.log(results.data);
+                        console.log('---------------------------');
+                        setZoneHover(false);
+                    }}
+                    onDragOver={(event: DragEvent) => {
+                        event.preventDefault();
+                        setZoneHover(true);
+                    }}
+                    onDragLeave={(event: DragEvent) => {
+                        event.preventDefault();
+                        setZoneHover(false);
+                    }}
+                >
+                    {({
+                        getRootProps,
+                        acceptedFile,
+                        ProgressBar,
+                        getRemoveFileProps,
+                        Remove,
+                    }: any) => (
+                        <form className='' onSubmit={handleSubmit(onSubmit)}>
+                            <div
+                                {...getRootProps()}
+                                style={Object.assign(
+                                    {},
+                                    styles.zone,
+                                    zoneHover && styles.zoneHover
+                                )}
+                            >
+                                {acceptedFile ? (
 
-                                <>
-                                    <div className='flex justify-center items-center'>
-                                        <p>Drop or upload Excel file</p>
+                                    <>
+                                        <div className='flex justify-center items-center pb-4'>
+                                            <p>Drop or upload Excel file</p>
+                                        </div>
+                                        <div style={styles.file}>
+                                            <div className='mt-4' style={styles.info}>
+                                                <span style={styles.name}>{acceptedFile.name}</span>
+                                            </div>
+                                            <div
+                                                {...getRemoveFileProps()}
+                                                style={styles.remove}
+                                                onMouseOver={(event: Event) => {
+                                                    event.preventDefault();
+                                                    setRemoveHoverColor(REMOVE_HOVER_COLOR_LIGHT);
+                                                }}
+                                                onMouseOut={(event: Event) => {
+                                                    event.preventDefault();
+                                                    setRemoveHoverColor(DEFAULT_REMOVE_HOVER_COLOR);
+                                                }}
+                                            >
+                                                <Remove color={removeHoverColor} />
+                                            </div>
+                                        </div>
+                                    </>
+                                ) : (
+                                    // 'Drop CSV file here or click to upload'
+                                    'Drop or upload Excel file'
+                                )}
+                            </div>
+                            {
+                                acceptedFile ? (
+                                    <div>
+                                        <input style={styles.btn} className='text-[18px] ebtn btn bg-blue-700 text-white px-10 py-2 border border-black rounded-sm cursor-pointer' type="submit" />
                                     </div>
-                                    <div style={styles.file}>
-                                        <div style={styles.info}>
-                                            <span style={styles.size}>
-                                                {formatFileSize(acceptedFile.size)}
-                                            </span>
-                                            <span style={styles.name}>{acceptedFile.name}</span>
+                                ) :
+                                    (
+                                        // 'Drop CSV file here or click to upload'
+                                        <div className='ml-10 mt-12'>
+                                            <p className='ml-10 text-info font-semibold text-2xl'>Please Upload a Excel File</p>
                                         </div>
-                                        <div style={styles.progressBar}>
-                                            <ProgressBar />
-                                        </div>
-                                        <div
-                                            {...getRemoveFileProps()}
-                                            style={styles.remove}
-                                            onMouseOver={(event: Event) => {
-                                                event.preventDefault();
-                                                setRemoveHoverColor(REMOVE_HOVER_COLOR_LIGHT);
-                                            }}
-                                            onMouseOut={(event: Event) => {
-                                                event.preventDefault();
-                                                setRemoveHoverColor(DEFAULT_REMOVE_HOVER_COLOR);
-                                            }}
-                                        >
-                                            <Remove color={removeHoverColor} />
-                                        </div>
-                                    </div>
-                                </>
-                            ) : (
-                                // 'Drop CSV file here or click to upload'
-                                'Drop or upload Excel file'
-                            )}
-                        </div>
-                        <div>
-                            <input style={styles.btn} className='text-[18px] ebtn btn bg-blue-700 text-white px-10 py-2 border border-black rounded-sm cursor-pointer' type="submit" />
-                        </div>
-                    </form>
-                )}
-            </CSVReader>
-            <Toaster />
+                                    )
+                            }
+
+                        </form>
+                    )}
+                </CSVReader>
+                <Toaster />
+            </div>
+            <div>
+                <ShowFile></ShowFile>
+            </div>
         </div>
     );
 };
