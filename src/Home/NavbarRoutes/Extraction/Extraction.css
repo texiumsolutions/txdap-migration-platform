@@ -2,12 +2,15 @@
   border: 1px solid black;
   width: 80%;
 }
+
 .ep-form {
   width: 90%;
 }
+
 .ep {
   width: 90%;
 }
+
 .ep-formI {
   justify-content: start;
   align-items: flex-start;
@@ -15,19 +18,24 @@
   left: 0;
   top: 20%;
 }
+
 .ep-formI {
   width: 90%;
 }
+
 .ep-inputI {
   border: 1px solid black;
   width: 80%;
 }
+
 .epI {
   width: 90%;
 }
+
 .name-input {
   width: 100px;
 }
+
 .btn-src {
   height: 35px;
   width: 70px;
@@ -36,40 +44,18 @@
 }
 
 /* Extraction  */
-.extraction-navbar:focus{
-  background: rgb(205, 208, 228);
-  width: 0%;
-  height: 0px;
-  color: #2d02b1;
-}
+
 .extraction-navbar {
-  font-size: 18px;
-  font-weight: 500;
-  color: #565966;
-  position: relative;
-  margin-top: 40px;
-  padding: 7px;
-  margin: 20px;
-  background-color: transparent;
+  font-size: 17px;
 }
 
-.extraction-navbar::after {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  background: #2d02b1;
-  width: 0%;
-  height: 4px;
-  content: "";
-  transition: 0.5s;
-}
+.extraction-navbar.active {
+  background-color: rgb(175, 230, 230);
+  padding: 10px;
+  color: black;
+  border-radius: 3px;
+  font-size: 17px;
 
-.extraction-navbar:hover::after {
-  width: 100%;
-}
-
-.extraction-navbar:hover {
-  color: #5833c8;
 }
 
 /* Progressbar CSS */
@@ -77,12 +63,14 @@
   width: 80%;
   max-width: none;
 }
+
 .progressbar {
   overflow: hidden;
   position: relative;
   border-radius: 10px;
   background-color: #010a0f;
 }
+
 .progressPercent {
   font-weight: 600;
   font-family: "Franklin Gothic Medium";
@@ -93,6 +81,7 @@
   color: #eee;
   text-shadow: -1px 0 #555, 0 1px #555, 1px 0 #555, 0 -1px #555;
 }
+
 .ebtn {
   display: flex;
   margin: 10px auto;
@@ -108,6 +97,7 @@
   color: #fff;
   cursor: pointer;
 }
+
 .ebtn:hover {
   -webkit-box-shadow: inset 100px 0 0 0 #3c03b7;
   box-shadow: inset 100px 0 0 0 #3c03b7;
@@ -144,17 +134,21 @@
   padding: 5px 15px;
   color: white;
 }
+
 .progress_initiate {
   background-color: #4a4af1;
 }
+
 .progress_running {
   background-color: #f5f542;
   color: #010a0f;
 }
+
 .progress_complete {
   background-color: #7fbe21;
   color: #010a0f;
 }
+
 .modal_close_btn {
   position: absolute;
   right: -10px;

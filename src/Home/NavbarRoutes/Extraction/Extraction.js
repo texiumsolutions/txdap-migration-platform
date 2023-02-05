@@ -1,25 +1,25 @@
 import React from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import Home from "../../Home";
 import "./Extraction.css";
 
 
 const Extraction = () => {
-  
+
   return (
     <div>
       <Home></Home>
-      <div className="flex bg-gray-100 w-full px-5 my-4 py-4 rounded-box">
-        <div>
-          <Link exact activeClassName=" active" className="extraction-navbar" to="/extraction/eprofile">
+      <div className="flex gap-5 bg-gray-100 w-full px-5 my-4 py-4 rounded-box">
+        <div exact activeClassName="active">
+          <NavLink className="extraction-navbar" to="/extraction/eprofile">
             Extraction Profile
-          </Link>
+          </NavLink>
         </div>
 
-        <div>
-          <Link exact activeClassName="active" className="extraction-navbar" to="/extraction/runs">
+        <div exact activeClassName="active">
+          <NavLink className="extraction-navbar" to="/extraction/runs">
             Run Profile
-          </Link>
+          </NavLink>
         </div>
       </div>
       <div>
