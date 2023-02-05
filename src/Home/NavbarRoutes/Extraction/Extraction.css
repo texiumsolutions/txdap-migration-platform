@@ -50,11 +50,12 @@
 }
 
 .extraction-navbar.active {
-  background-color: rgb(175, 230, 230);
-  padding: 10px;
-  color: black;
-  border-radius: 3px;
+  padding-bottom: 8px;
+  color: rgb(30, 52, 162);
+  font-weight: 500;
+  border-radius: 1px;
   font-size: 17px;
+  border-bottom: 5px solid rgb(34, 184, 184);
 
 }
 

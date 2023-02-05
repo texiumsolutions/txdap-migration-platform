@@ -186,9 +186,20 @@ const Upload = () => {
                                     'Drop or upload Excel file'
                                 )}
                             </div>
-                            <div>
-                                <input style={styles.btn} className='text-[18px] ebtn btn bg-blue-700 text-white px-10 py-2 border border-black rounded-sm cursor-pointer' type="submit" />
-                            </div>
+                            {
+                                acceptedFile ? (
+                                    <div>
+                                        <input style={styles.btn} className='text-[18px] ebtn btn bg-blue-700 text-white px-10 py-2 border border-black rounded-sm cursor-pointer' type="submit" />
+                                    </div>
+                                ) :
+                                    (
+                                        // 'Drop CSV file here or click to upload'
+                                        <div className='ml-10 mt-12'>
+                                            <p className='ml-10 text-info font-semibold text-2xl'>Please Upload a Excel File</p>
+                                        </div>
+                                    )
+                            }
+
                         </form>
                     )}
                 </CSVReader>
