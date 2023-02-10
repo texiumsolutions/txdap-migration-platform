@@ -11,7 +11,7 @@ const Transformation = () => {
   const onSubmit = (data) => {
     console.log(data);
 
-    fetch("http://localhost:5000/run", {
+    fetch("http://localhost:5000/updateRun", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -22,11 +22,11 @@ const Transformation = () => {
       .then((res) => res.json())
       .then((inserted) => {
         if (inserted.insertedId) {
-          // toast.success("Added New Product Successfully");
+          alert("Added New Product Successfully")
 
           reset();
         } else {
-          // toast.error("Failed add to the data");
+          alert("Failed add to the data");
         }
       });
   };
@@ -34,7 +34,35 @@ const Transformation = () => {
   return (
     <div>
       <Home></Home>
+      
+      <div className="">
       <p className="text-2xl p-6">Action Mapping </p>
+        <p className="p-5">Total Data: {informations.length}</p>
+        <div className="bg-base-600 ">
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <select
+                type="text"
+                className=" ep-inputI p-1"
+                {...register("dropdown")}
+              >
+                <option disabled selected>
+                  Pick your favorite Simpson
+                </option>
+                {informations.map((information) => (
+                  <option key={information._id} information={information}>
+                    {information.name}
+                  </option>
+                ))}
+              </select>
+              <label
+                htmlFor="my-modal-3"
+                className="btn btn-src bg-blue-700 text-white"
+              >
+                Run
+              </label>
+            </form>
+        </div>
+      </div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div class="overflow-x-auto">
           <table class="table w-full">
@@ -58,7 +86,7 @@ const Transformation = () => {
                     key={information._id}
                     information={information}
                   >
-                    {information.name}
+                    {information.input1}
                   </label>
                 ))}
               </td>
@@ -74,7 +102,7 @@ const Transformation = () => {
                         border: "1px solid black",
                       }}
                       type="text"
-                      defaultValue={information.name}
+                      defaultValue={information.input1}
                       required
                     />
                   </label>

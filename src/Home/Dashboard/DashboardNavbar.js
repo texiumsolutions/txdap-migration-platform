@@ -1,7 +1,6 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
-import { AiOutlineMenu, AiFillFileAdd, AiFillSetting } from "react-icons/ai";
-import { FaHome } from "react-icons/fa";
+import { AiOutlineMenu} from "react-icons/ai";
 import { signOut } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
@@ -23,32 +22,19 @@ const DashboardNavbar = () => {
     return (
         <div className="flex bg-blue-800 justify-between h-[50px]">
             <div className="flex">
-                <div class="dropdown">
-                    <label tabindex="0">
-                        <div className="pl-5 pt-4">
-                            <Link to="/home" className="text-white text-xl">
+                 <div class="dropdown">
+                        <div className="p-4">
+                    <NavLink to="/home" className=" text-white text-2xl ">
                                 <AiOutlineMenu></AiOutlineMenu>
-                            </Link>
-                        </div>
-                    </label>
-                    <div className="flex justify-start items-start">
-                        <ul tabindex="0" className="menu menu-compact dropdown-content shadow bg-blue-800 h-[681px] w-12">
-                            <Link to="/home" className=" text-white mx-2 pt-12 pb-4 text-2xl">
-                                <FaHome></FaHome>
-                            </Link>
-                            <Link to="/home" className=" text-white mx-2 pt-4 pb-4 text-2xl">
-                                <AiFillFileAdd></AiFillFileAdd>
-                            </Link>
-                            <Link to="/home" className=" text-white mx-2 pt-4 text-2xl">
-                                <AiFillSetting></AiFillSetting>
-                            </Link>
-                        </ul>
+                            </NavLink>
                     </div>
+                    
                 </div>
                 <div className="flex justify-center items-center">
+                    
                     <div exact activeClassName="active">
                         <NavLink to="/extraction" className="dash-nav text-white mx-4 text-1xl ml-10">
-                            Extraction
+                           Document
                         </NavLink>
                     </div>
                     <div exact activeClassName="active">
