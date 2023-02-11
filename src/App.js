@@ -13,7 +13,6 @@ import Transformation from "./Home/NavbarRoutes/Transformation/Transformation";
 import DocumentInfo from "./Home/NavbarRoutes/Injection/DocumentInfo";
 import Eprofile from "./Home/NavbarRoutes/Extraction/Eprofile";
 import Informations from "./Home/NavbarRoutes/Extraction/Informations";
-import UploadFile from "./Home/NavbarRoutes/Injection/UploadFile";
 
 function App() {
   return (
