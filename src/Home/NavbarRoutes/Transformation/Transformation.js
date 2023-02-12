@@ -1,17 +1,17 @@
-import React from 'react';
-import { useForm } from 'react-hook-form';
-import { toast } from "react-toastify";
-import useInformation from '../../../hooks/useInformation';
-import Home from '../../Home';
+import React from "react";
+import { useForm } from "react-hook-form";
+import useInformation from "../../../hooks/useInformation";
+import Home from "../../Home";
+import "./Transformation.css";
 
 const Transformation = () => {
-    const [informations] = useInformation();
-    const { register, handleSubmit, reset } = useForm();
+  const [informations] = useInformation();
+  const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = (data) => {
     console.log(data);
 
-    fetch("http://localhost:5000/run", {
+    fetch("http://localhost:5000/updateRun", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -22,59 +22,103 @@ const Transformation = () => {
       .then((res) => res.json())
       .then((inserted) => {
         if (inserted.insertedId) {
-          toast.success("Added New Product Successfully");
+          alert("Added New Product Successfully")
 
           reset();
         } else {
-          toast.error("Failed add to the data");
+          alert("Failed add to the data");
         }
       });
   };
-    return (
-        <div>
-            <Home></Home>
-            <p className="text-2xl p-6">Action Mapping </p>
-            <div class="overflow-x-auto">
-  <table class="table w-full">
-    {/* <!-- head --> */}
-    <thead>
-        
-      <tr>
-        <th>Source Key</th>
-        <th>Target Key</th>
-        <th>Data Type</th>
-      </tr>
-    </thead>
-    <tbody style={{
-        border: "1px solid black",
-    }}>   
+
+  return (
+    <div>
+      <Home></Home>
       
-      <td className='px-20'>
-      {informations.map((information) => (
-                  <label className="label justify-start" key={information._id} information={information}>
-                    {information.name}
-                    </label>
-                ))}
-      </td>   
-      <td>
-      {informations.map((information) => (
-                  <label className="label justify-start" key={information._id} information={information}>
-                    <input 
-                    style={{
-                        border: "1px solid black",
-                    }}
+      <div className="">
+      <p className="text-2xl p-6">Action Mapping </p>
+        <p className="p-5">Total Data: {informations.length}</p>
+        <div className="bg-base-600 ">
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <select
                 type="text"
-                placeholder="Update here"
-                required
-              />
-                    </label>
+                className=" ep-inputI p-1"
+                {...register("dropdown")}
+              >
+                <option disabled selected>
+                  Pick your favorite Simpson
+                </option>
+                {informations.map((information) => (
+                  <option key={information._id} information={information}>
+                    {information.name}
+                  </option>
                 ))}
-      </td>     
-    </tbody>
-  </table>
-</div>
+              </select>
+              <label
+                htmlFor="my-modal-3"
+                className="btn btn-src bg-blue-700 text-white"
+              >
+                Run
+              </label>
+            </form>
+        </div>
+      </div>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div class="overflow-x-auto">
+          <table class="table w-full">
+            {/* <!-- head --> */}
+            <thead>
+              <tr>
+                <th>Source Key</th>
+                <th>Target Key</th>
+                <th>Data Type</th>
+              </tr>
+            </thead>
+            <tbody
+              style={{
+                border: "1px solid black",
+              }}
+            >
+              <td className="px-20">
+                {informations.map((information) => (
+                  <label
+                    className="label justify-start"
+                    key={information._id}
+                    information={information}
+                  >
+                    {information.input1}
+                  </label>
+                ))}
+              </td>
+              <td>
+                {informations.map((information) => (
+                  <label
+                    className="label justify-start"
+                    key={information._id}
+                    information={information}
+                  >
+                    <input
+                      style={{
+                        border: "1px solid black",
+                      }}
+                      type="text"
+                      defaultValue={information.input1}
+                      required
+                    />
+                  </label>
+                ))}
+              </td>
+            </tbody>
+          </table>
+          <input
+              className="btn transformation_button bg-blue-700 m-8"
+              type="submit"
+              value="Create Mapping"
+            />
+        </div>
+      </form>
     </div>
-    );
+  );
 };
 
 export default Transformation;

@@ -1,6 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { toast, ToastContainer } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "./Extraction.css";
 
 const Eprofile = () => {
@@ -50,7 +50,7 @@ const Eprofile = () => {
             {/* Number-02  */}
 
             <label className="label justify-start">
-              <span className="label-text name-input">Dropdown:</span>
+              <span className="label-text name-input">Type:</span>
               <select
                 type="text"
                 className=" ep-input p-1"
@@ -60,14 +60,14 @@ const Eprofile = () => {
                 <option  placeholder="Pick your favorite dropdown" disabled>
                   Pick your favorite dropdown
                 </option>
-                <option value="hello1">Hello1</option>
-                <option value="hello2">Hello2 </option>
-                <option value="other">Hello3</option>
+                <option value="hello1">File System</option>
+                <option value="hello2">Mongo DB</option>
+                <option value="other">MySQL Server</option>
               </select>
             </label>
             {/* Number-03 */}
 
-            <label className="label justify-start">
+            {/* <label className="label justify-start">
               <span className="label-text name-input">Input 01:</span>
               <input
                 type="text"
@@ -79,7 +79,7 @@ const Eprofile = () => {
             </label>
             {/* Number-04  */}
 
-            <label className="label justify-start">
+            {/* <label className="label justify-start">
               <span className="label-text name-input">Input 02:</span>
               <input
                 type="text"
@@ -88,10 +88,10 @@ const Eprofile = () => {
                 {...register("input2")}
                 required
               />
-            </label>
+            </label> */}
             {/* Number-05  */}
 
-            <label className="label justify-start">
+            {/* <label className="label justify-start">
               <span className="label-text name-input">Input 03:</span>
               <input
                 type="text"
@@ -100,10 +100,10 @@ const Eprofile = () => {
                 {...register("input3")}
                 required
               />
-            </label>
+            </label> */}
             {/* Number-06  */}
 
-            <label className="label justify-start">
+            {/* <label className="label justify-start">
               <span className="label-text name-input">Input 04:</span>
               <input
                 type="text"
@@ -112,10 +112,10 @@ const Eprofile = () => {
                 {...register("input4")}
                 required
               />
-            </label>
+            </label> */}
             {/* Number-07  */}
 
-            <label className="label justify-start">
+            {/* <label className="label justify-start">
               <span className="label-text name-input">Input 05:</span>
               <input
                 type="text"
@@ -124,10 +124,10 @@ const Eprofile = () => {
                 {...register("input5")}
                 required
               />
-            </label>
+            </label> */}
             {/* Number-08  */}
 
-            <label className="label justify-start">
+            {/* <label className="label justify-start">
               <span className="label-text name-input">Input 06:</span>
               <input
                 type="text"
@@ -136,10 +136,10 @@ const Eprofile = () => {
                 {...register("input6")}
                 required
               />
-            </label>
+            </label> */}
             {/* Number-09  */}
 
-            <label className="label justify-start">
+            {/* <label className="label justify-start">
               <span className="label-text name-input">Input 07:</span>
               <input
                 type="text"
@@ -148,10 +148,10 @@ const Eprofile = () => {
                 {...register("input7")}
                 required
               />
-            </label>
+            </label> */}
             {/* Number-10  */}
 
-            <label className="label justify-start">
+            {/* <label className="label justify-start">
               <span className="label-text name-input">Input 08:</span>
               <input
                 type="text"
@@ -160,10 +160,10 @@ const Eprofile = () => {
                 {...register("input8")}
                 required
               />
-            </label>
+            </label> */}
             {/* Number-11  */}
 
-            <label className="label justify-start">
+            {/* <label className="label justify-start">
               <span className="label-text name-input">Input 09:</span>
               <input
                 type="text"
@@ -172,10 +172,10 @@ const Eprofile = () => {
                 {...register("input9")}
                 required
               />
-            </label>
+            </label> */}
             {/* Number-12  */}
 
-            <label className="label justify-start">
+            {/* <label className="label justify-start">
               <span className="label-text name-input">Input 10:</span>
               <input
                 type="text"
@@ -184,10 +184,10 @@ const Eprofile = () => {
                 {...register("input10")}
                 required
               />
-            </label>
+            </label> */}
             {/* Number-13  */}
 
-            <label className="label justify-start">
+            {/* <label className="label justify-start">
               <span className="label-text name-input">Input 11:</span>
               <input
                 type="text"
@@ -196,10 +196,10 @@ const Eprofile = () => {
                 {...register("input11")}
                 required
               />
-            </label>
+            </label> */}
             {/* Number-14  */}
 
-            <label className="label justify-start">
+            {/* <label className="label justify-start">
               <span className="label-text name-input">Input 12:</span>
               <input
                 type="text"
@@ -208,10 +208,10 @@ const Eprofile = () => {
                 {...register("input12")}
                 required
               />
-            </label>
+            </label> */}
             {/* Number-15  */}
 
-            <label className="label justify-start">
+            {/* <label className="label justify-start">
               <span className="label-text name-input">Input 13:</span>
               <input
                 type="text"
@@ -220,7 +220,7 @@ const Eprofile = () => {
                 {...register("input13")}
                 required
               />
-            </label>
+            </label> */}
 
             <input
               className="ebtn btn bg-blue-700 text-white mt-5"
@@ -228,7 +228,7 @@ const Eprofile = () => {
               value="Save"
             />
           </form>
-        </div>
+        </div> 
         <ToastContainer></ToastContainer>
       </div>
     </div>
