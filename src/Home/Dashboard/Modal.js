@@ -54,8 +54,9 @@ const Modal = ({ id }) => {
     };
 
 
-    const onSubmit = (data, id) => {
+    const onSubmit = (data) => {
         const url = `http://localhost:5000/all_information/${id}`;
+
         fetch(url, {
             method: 'PUT',
             headers: {
@@ -81,7 +82,6 @@ const Modal = ({ id }) => {
                             <span className="label-text name-input ">Name:</span>
                             <input
                                 type="text"
-
                                 className="ep-input p-1"
                                 {...register("name")}
                                 defaultValue={information.name}
@@ -95,7 +95,6 @@ const Modal = ({ id }) => {
                             <input
                                 className=" ep-input p-1"
                                 value={information.dropdown}
-
                                 disabled
                             >
                             </input>
@@ -105,11 +104,9 @@ const Modal = ({ id }) => {
                             <span className="label-text name-input">Description:</span>
                             <input
                                 type="text"
-                                value={information.description}
                                 className=" ep-input p-1"
                                 {...register("description")}
-                                required
-                                onChange={handleChange}
+                                defaultValue={information.description}
                             />
                         </label>
                         <p className="text-2xl"> Parameters</p>
@@ -121,10 +118,9 @@ const Modal = ({ id }) => {
                                     <span className="label-text name-input">Input 01:</span>
                                     <input
                                         type="text"
-                                        value={information.input1}
                                         className="ep-input p-1"
                                         {...register("input1")}
-                                        required
+                                        defaultValue={information.input1}
                                     />
                                 </label>
 
@@ -133,10 +129,10 @@ const Modal = ({ id }) => {
                                     <span className="label-text name-input">Input 02:</span>
                                     <input
                                         type="text"
-                                        value={information.input2}
+                                        defaultValue={information.input2}
                                         className="ep-input p-1"
                                         {...register("input2")}
-                                        required
+
                                     />
                                 </label>
 
@@ -144,10 +140,10 @@ const Modal = ({ id }) => {
                                     <span className="label-text name-input">Input 03:</span>
                                     <input
                                         type="text"
-                                        value={information.input3}
+                                        defaultValue={information.input3}
                                         className="ep-input p-1"
                                         {...register("input3")}
-                                        required
+
                                     />
                                 </label>
                             </div>
@@ -158,10 +154,10 @@ const Modal = ({ id }) => {
                                     <span className="label-text name-input">Input 04:</span>
                                     <input
                                         type="text"
-                                        value={information.input4}
+                                        defaultValue={information.input4}
                                         className="ep-input p-1"
                                         {...register("input4")}
-                                        required
+
                                     />
                                 </label>
 
@@ -169,10 +165,10 @@ const Modal = ({ id }) => {
                                     <span className="label-text name-input">Input 05:</span>
                                     <input
                                         type="text"
-                                        value={information.input5}
+                                        defaultValue={information.input5}
                                         className="ep-input p-1"
                                         {...register("input5")}
-                                        required
+
                                     />
                                 </label>
 
@@ -180,10 +176,10 @@ const Modal = ({ id }) => {
                                     <span className="label-text name-input">Input 06:</span>
                                     <input
                                         type="text"
-                                        value={information.input6}
+                                        defaultValue={information.input6}
                                         className="ep-input p-1"
                                         {...register("input6")}
-                                        required
+
                                     />
                                 </label>
                             </div>
@@ -194,10 +190,10 @@ const Modal = ({ id }) => {
                                     <span className="label-text name-input">Input 07:</span>
                                     <input
                                         type="text"
-                                        value={information.input7}
+                                        defaultValue={information.input7}
                                         className="ep-input p-1"
                                         {...register("input7")}
-                                        required
+
                                     />
                                 </label>
 
@@ -205,10 +201,10 @@ const Modal = ({ id }) => {
                                     <span className="label-text name-input">Input 08:</span>
                                     <input
                                         type="text"
-                                        value={information.input8}
+                                        defaultValue={information.input8}
                                         className="ep-input p-1"
                                         {...register("input8")}
-                                        required
+
                                     />
                                 </label>
 
@@ -216,10 +212,10 @@ const Modal = ({ id }) => {
                                     <span className="label-text name-input">Input 09:</span>
                                     <input
                                         type="text"
-                                        value={information.input9}
+                                        defaultValue={information.input9}
                                         className="ep-input p-1"
                                         {...register("input9")}
-                                        required
+
                                     />
                                 </label>
                             </div>

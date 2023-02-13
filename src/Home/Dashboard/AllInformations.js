@@ -9,7 +9,7 @@ const AllInformations = () => {
   const [allinformations, setAllInformations] = useAllInformation();
   // console.log(allinformations);
   const [informations, setInformations] = useState(null);
-  console.log(informations);
+  // console.log(informations);
 
   const handleDelete = informations => {
 
