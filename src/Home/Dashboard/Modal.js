@@ -16,7 +16,7 @@ const Modal = ({ id }) => {
             .then(data => setInformation(data));
     }, [id]);
 
-    const { register, handleSubmit, reset } = useForm();
+    const { register, handleSubmit } = useForm();
 
     const options = [
         { value: "", text: "--Choose an option--" },
@@ -76,7 +76,6 @@ const Modal = ({ id }) => {
                     <label for="update-modal" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                     <h3 class="font-bold text-3xl">Update for: {information.name}</h3>
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        {/* Number-01  */}
 
                         <label className="label justify-start">
                             <span className="label-text name-input ">Name:</span>
@@ -89,7 +88,6 @@ const Modal = ({ id }) => {
 
                             />
                         </label>
-                        {/* Number-02  */}
 
                         <label className="label justify-start">
                             <span className="label-text name-input ">Type:</span>
@@ -102,7 +100,6 @@ const Modal = ({ id }) => {
                             >
                             </input>
                         </label>
-                        {/* Number-03 */}
 
                         <label className="label justify-start">
                             <span className="label-text name-input">Description:</span>
@@ -112,134 +109,120 @@ const Modal = ({ id }) => {
                                 className=" ep-input p-1"
                                 {...register("description")}
                                 required
+                                onChange={handleChange}
                             />
                         </label>
                         <p className="text-2xl"> Parameters</p>
                         <div className="form-control ep">
-                            {selectedFirstFive && (
-                                <div>
+                            <div>
 
 
-                                    {/* Number-01 */}
+                                <label className="label justify-start">
+                                    <span className="label-text name-input">Input 01:</span>
+                                    <input
+                                        type="text"
+                                        value={information.input1}
+                                        className="ep-input p-1"
+                                        {...register("input1")}
+                                        required
+                                    />
+                                </label>
 
-                                    <label className="label justify-start">
-                                        <span className="label-text name-input">Input 01:</span>
-                                        <input
-                                            type="text"
-                                            value={information.input1}
-                                            className="ep-input p-1"
-                                            {...register("input1")}
-                                            required
-                                        />
-                                    </label>
-                                    {/* Number-02  */}
 
-                                    <label className="label justify-start">
-                                        <span className="label-text name-input">Input 02:</span>
-                                        <input
-                                            type="text"
-                                            value={information.input2}
-                                            className="ep-input p-1"
-                                            {...register("input2")}
-                                            required
-                                        />
-                                    </label>
-                                    {/* Number-03  */}
+                                <label className="label justify-start">
+                                    <span className="label-text name-input">Input 02:</span>
+                                    <input
+                                        type="text"
+                                        value={information.input2}
+                                        className="ep-input p-1"
+                                        {...register("input2")}
+                                        required
+                                    />
+                                </label>
 
-                                    <label className="label justify-start">
-                                        <span className="label-text name-input">Input 03:</span>
-                                        <input
-                                            type="text"
-                                            value={information.input3}
-                                            className="ep-input p-1"
-                                            {...register("input3")}
-                                            required
-                                        />
-                                    </label>
-                                </div>
-                            )}
+                                <label className="label justify-start">
+                                    <span className="label-text name-input">Input 03:</span>
+                                    <input
+                                        type="text"
+                                        value={information.input3}
+                                        className="ep-input p-1"
+                                        {...register("input3")}
+                                        required
+                                    />
+                                </label>
+                            </div>
 
-                            {selectedSecondFive && (
-                                <div>
-                                    {/* Number-04  */}
+                            <div>
 
-                                    <label className="label justify-start">
-                                        <span className="label-text name-input">Input 04:</span>
-                                        <input
-                                            type="text"
-                                            value={information.input4}
-                                            className="ep-input p-1"
-                                            {...register("input4")}
-                                            required
-                                        />
-                                    </label>
-                                    {/* Number-05  */}
+                                <label className="label justify-start">
+                                    <span className="label-text name-input">Input 04:</span>
+                                    <input
+                                        type="text"
+                                        value={information.input4}
+                                        className="ep-input p-1"
+                                        {...register("input4")}
+                                        required
+                                    />
+                                </label>
 
-                                    <label className="label justify-start">
-                                        <span className="label-text name-input">Input 05:</span>
-                                        <input
-                                            type="text"
-                                            value={information.input5}
-                                            className="ep-input p-1"
-                                            {...register("input5")}
-                                            required
-                                        />
-                                    </label>
-                                    {/* Number-06  */}
+                                <label className="label justify-start">
+                                    <span className="label-text name-input">Input 05:</span>
+                                    <input
+                                        type="text"
+                                        value={information.input5}
+                                        className="ep-input p-1"
+                                        {...register("input5")}
+                                        required
+                                    />
+                                </label>
 
-                                    <label className="label justify-start">
-                                        <span className="label-text name-input">Input 06:</span>
-                                        <input
-                                            type="text"
-                                            value={information.input6}
-                                            className="ep-input p-1"
-                                            {...register("input6")}
-                                            required
-                                        />
-                                    </label>
-                                </div>
-                            )}
+                                <label className="label justify-start">
+                                    <span className="label-text name-input">Input 06:</span>
+                                    <input
+                                        type="text"
+                                        value={information.input6}
+                                        className="ep-input p-1"
+                                        {...register("input6")}
+                                        required
+                                    />
+                                </label>
+                            </div>
 
-                            {selectedThirdFive && (
-                                <div>
-                                    {/* Number-07  */}
+                            <div>
 
-                                    <label className="label justify-start">
-                                        <span className="label-text name-input">Input 07:</span>
-                                        <input
-                                            type="text"
-                                            value={information.input7}
-                                            className="ep-input p-1"
-                                            {...register("input7")}
-                                            required
-                                        />
-                                    </label>
-                                    {/* Number-08  */}
+                                <label className="label justify-start">
+                                    <span className="label-text name-input">Input 07:</span>
+                                    <input
+                                        type="text"
+                                        value={information.input7}
+                                        className="ep-input p-1"
+                                        {...register("input7")}
+                                        required
+                                    />
+                                </label>
 
-                                    <label className="label justify-start">
-                                        <span className="label-text name-input">Input 08:</span>
-                                        <input
-                                            type="text"
-                                            value={information.input8}
-                                            className="ep-input p-1"
-                                            {...register("input8")}
-                                            required
-                                        />
-                                    </label>
-                                    {/* Number-09  */}
+                                <label className="label justify-start">
+                                    <span className="label-text name-input">Input 08:</span>
+                                    <input
+                                        type="text"
+                                        value={information.input8}
+                                        className="ep-input p-1"
+                                        {...register("input8")}
+                                        required
+                                    />
+                                </label>
 
-                                    <label className="label justify-start">
-                                        <span className="label-text name-input">Input 09:</span>
-                                        <input
-                                            type="text"
-                                            value={information.input9}
-                                            className="ep-input p-1"
-                                            {...register("input9")}
-                                            required
-                                        />
-                                    </label>
-                                </div>
-                            )}
+                                <label className="label justify-start">
+                                    <span className="label-text name-input">Input 09:</span>
+                                    <input
+                                        type="text"
+                                        value={information.input9}
+                                        className="ep-input p-1"
+                                        {...register("input9")}
+                                        required
+                                    />
+                                </label>
+                            </div>
 
                             <input
                                 className="ebtn btn bg-blue-700 text-white mt-5"

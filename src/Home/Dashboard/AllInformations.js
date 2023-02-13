@@ -7,27 +7,27 @@ import Modal from "./Modal";
 
 const AllInformations = () => {
   const [allinformations, setAllInformations] = useAllInformation();
+  // console.log(allinformations);
   const [informations, setInformations] = useState(null);
-  console.log(informations)
+  console.log(informations);
 
+  const handleDelete = informations => {
 
-  // const handleDelete = informations => {
+    const proceed = window.confirm('Are you sure delete this?');
+    if (proceed) {
+      const url = `http://localhost:5000/all_information/${informations}`;
+      fetch(url, {
+        method: 'DELETE'
+      })
+        .then(res => res.json())
+        .then(data => {
+          console.log(data);
+          const remainingInfo = allinformations.filter(info => info._id !== informations);
+          setAllInformations(remainingInfo);
+        })
 
-  //   const proceed = window.confirm('Are you sure delete this?');
-  //   if (proceed) {
-  //     const url = `http://localhost:5000/upload/${informations}`;
-  //     fetch(url, {
-  //       method: 'DELETE'
-  //     })
-  //       .then(res => res.json())
-  //       .then(data => {
-  //         console.log(data);
-  //         const remainingInfo = allinformations.filter(info => info !== informations);
-  //         setAllInformations(remainingInfo);
-  //       })
-
-  //   }
-  // }
+    }
+  }
 
   return (
     <div>
@@ -76,7 +76,8 @@ const AllInformations = () => {
                     className="btn bg-blue-700 text-white mt-2">Update
                   </label>
                   <label
-                    // onClick={() => handleDelete(informations)}
+                    onClick={() => handleDelete(info._id)}
+
                     className="btn bg-red-700 text-white ml-10">Delete
                   </label>
                 </tr>)
@@ -87,7 +88,7 @@ const AllInformations = () => {
         </div>
 
       </div>
-      {/* {informations && <UpdateModal informations={informations}></UpdateModal>} */}
+
       {informations && <Modal id={informations}></Modal>}
       <Outlet></Outlet>
     </div>
