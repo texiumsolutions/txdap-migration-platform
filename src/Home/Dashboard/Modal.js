@@ -82,10 +82,11 @@ const Modal = ({ id }) => {
                             <span className="label-text name-input ">Name:</span>
                             <input
                                 type="text"
-                                value={information.name}
+
                                 className="ep-input p-1"
                                 {...register("name")}
-                                defaultValue
+                                defaultValue={information.name}
+
                             />
                         </label>
                         {/* Number-02  */}
@@ -93,19 +94,13 @@ const Modal = ({ id }) => {
                         <label className="label justify-start">
                             <span className="label-text name-input ">Type:</span>
 
-                            <select
+                            <input
                                 className=" ep-input p-1"
-                                {...register("dropdown")}
-                                required
                                 value={information.dropdown}
-                                onChange={handleChange}
+
+                                disabled
                             >
-                                {options.map((option) => (
-                                    <option key={option.value} value={option.value}>
-                                        {option.text}
-                                    </option>
-                                ))}
-                            </select>
+                            </input>
                         </label>
                         {/* Number-03 */}
 
