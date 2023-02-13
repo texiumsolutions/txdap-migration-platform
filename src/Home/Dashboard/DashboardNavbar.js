@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
-import { AiOutlineMenu} from "react-icons/ai";
+import { AiOutlineMenu } from "react-icons/ai";
 import { signOut } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
@@ -22,19 +22,19 @@ const DashboardNavbar = () => {
     return (
         <div className="flex bg-blue-800 justify-between h-[50px]">
             <div className="flex">
-                 <div class="dropdown">
-                        <div className="p-4">
-                    <NavLink to="/home" className=" text-white text-2xl ">
-                                <AiOutlineMenu></AiOutlineMenu>
-                            </NavLink>
+                <div class="dropdown">
+                    <div className="pt-4 pl-2">
+                        <NavLink to="/home" className=" text-white text-2xl ">
+                            <AiOutlineMenu></AiOutlineMenu>
+                        </NavLink>
                     </div>
-                    
+
                 </div>
                 <div className="flex justify-center items-center">
-                    
+
                     <div exact activeClassName="active">
-                        <NavLink to="/extraction" className="dash-nav text-white mx-4 text-1xl ml-10">
-                           Document
+                        <NavLink to="/extraction" className="dash-nav text-white mx-4 text-1xl ml-6">
+                            Document
                         </NavLink>
                     </div>
                     <div exact activeClassName="active">

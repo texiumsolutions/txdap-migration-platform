@@ -2,6 +2,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Modal = ({ id }) => {
     // console.log(id);
@@ -67,6 +68,7 @@ const Modal = ({ id }) => {
             .then(res => res.json())
             .then(result => {
                 console.log(result);
+                toast('Successfully Update Your Data');
             })
     };
     return (
@@ -85,7 +87,7 @@ const Modal = ({ id }) => {
                                 className="ep-input p-1"
                                 {...register("name")}
                                 defaultValue={information.name}
-
+                                disabled
                             />
                         </label>
 
@@ -230,6 +232,7 @@ const Modal = ({ id }) => {
                     </form>
                 </div>
             </div>
+            <Toaster></Toaster>
         </div>
     );
 };
