@@ -5,7 +5,29 @@ import "./Plus.css";
 const Plus = () => {
   const { register, handleSubmit, reset } = useForm();
 
-  const options = [
+  const onSubmit = (data) => {
+    console.log(data);
+
+    fetch("http://localhost:5000/all_information", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((inserted) => {
+        if (inserted.insertedId) {
+          alert("Added New Product Successfully");
+
+          reset();
+        } else {
+          alert("Failed add to the data");
+        }
+      });
+  };
+   const options = [
     { value: "", text: "--Choose an option--" },
     { value: "File System", text: "File System" },
     { value: "Mongo DB", text: "Mongo DB" },
@@ -17,26 +39,6 @@ const Plus = () => {
   const [selectedThirdFive, setSelectedThirdFive] = useState(false);
 
   const [selected, setSelected] = useState(options[0].value);
-  const onSubmit = (data) => {
-    fetch("http://localhost:5000/run", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((inserted) => {
-        if (inserted.insertedId) {
-          alert.success("Added New Product Successfully");
-
-          reset();
-        } else {
-          alert.error("Failed add to the data");
-        }
-      });
-  };
 
   const handleChange = (event) => {
     let value = event.target.value;
@@ -89,27 +91,10 @@ const Plus = () => {
 
                   <label className="label justify-start">
                     <span className="label-text name-input ">Type:</span>
-                    {/* <select
-                      value={selected}
-                      onChange={handleChange}
-                      // type="text"
-                      className=" ep-input p-1"
-                      {...register("dropdown")}
-                      required
-                    >
-                      <option
-                        placeholder="Pick your favorite dropdown"
-                        disabled
-                      >
-                        Pick your favorite dropdown
-                      </option>
-                      <option value="fileSystem">File System</option>
-                      <option value="mongodb">Mongo DB</option>
-                      <option value="mysql">MySQL Server</option>
-                    </select> */}
+                   
                     <select
                       className=" ep-input p-1"
-                      {...register("dropdown")}
+                      {...register("type")}
                       required
                       value={selected}
                       onChange={handleChange}
@@ -134,11 +119,6 @@ const Plus = () => {
                     />
                   </label>
 
-                  {/* <input
-                    className="ebtn  btn bg-blue-700 text-white mt-5"
-                    type="submit"
-                    value="Save"
-                  /> */}
                 </form>
               </div>
             </div>
@@ -153,31 +133,7 @@ const Plus = () => {
                   {/* Number-01  */}
 
                   <label className="label justify-start">
-                    <span className="label-text name-input">Name:</span>
-                    <input
-                      type="text"
-                      placeholder="Type here"
-                      className="ep-input p-1"
-                      {...register("name")}
-                      required
-                    />
-                  </label>
-                  {/* Number-02  */}
-
-                  <label className="label justify-start">
-                    <span className="label-text name-input">Name:</span>
-                    <input
-                      type="text"
-                      placeholder="Type here"
-                      className="ep-input p-1"
-                      {...register("name")}
-                      required
-                    />
-                  </label>
-                  {/* Number-03 */}
-
-                  <label className="label justify-start">
-                    <span className="label-text name-input">Input 01:</span>
+                    <span className="label-text name-input">Input:01</span>
                     <input
                       type="text"
                       placeholder="Type here"
@@ -186,10 +142,10 @@ const Plus = () => {
                       required
                     />
                   </label>
-                  {/* Number-04  */}
+                  {/* Number-02  */}
 
                   <label className="label justify-start">
-                    <span className="label-text name-input">Input 02:</span>
+                    <span className="label-text name-input">Input02:</span>
                     <input
                       type="text"
                       placeholder="Type here"
@@ -198,7 +154,7 @@ const Plus = () => {
                       required
                     />
                   </label>
-                  {/* Number-05  */}
+                  {/* Number-03 */}
 
                   <label className="label justify-start">
                     <span className="label-text name-input">Input 03:</span>
@@ -210,12 +166,7 @@ const Plus = () => {
                       required
                     />
                   </label>
-                </div>
-              )}
-
-              {selectedSecondFive && (
-                <div>
-                  {/* Number-06  */}
+                  {/* Number-04  */}
 
                   <label className="label justify-start">
                     <span className="label-text name-input">Input 04:</span>
@@ -227,7 +178,7 @@ const Plus = () => {
                       required
                     />
                   </label>
-                  {/* Number-07  */}
+                  {/* Number-05  */}
 
                   <label className="label justify-start">
                     <span className="label-text name-input">Input 05:</span>
@@ -239,7 +190,12 @@ const Plus = () => {
                       required
                     />
                   </label>
-                  {/* Number-08  */}
+                </div>
+              )}
+
+              {selectedSecondFive && (
+                <div>
+                  {/* Number-06  */}
 
                   <label className="label justify-start">
                     <span className="label-text name-input">Input 06:</span>
@@ -251,7 +207,7 @@ const Plus = () => {
                       required
                     />
                   </label>
-                  {/* Number-09  */}
+                  {/* Number-07  */}
 
                   <label className="label justify-start">
                     <span className="label-text name-input">Input 07:</span>
@@ -263,7 +219,7 @@ const Plus = () => {
                       required
                     />
                   </label>
-                  {/* Number-10  */}
+                  {/* Number-08  */}
 
                   <label className="label justify-start">
                     <span className="label-text name-input">Input 08:</span>
@@ -275,12 +231,7 @@ const Plus = () => {
                       required
                     />
                   </label>
-                </div>
-              )}
-
-              {selectedThirdFive && (
-                <div>
-                  {/* Number-11  */}
+                  {/* Number-09  */}
 
                   <label className="label justify-start">
                     <span className="label-text name-input">Input 09:</span>
@@ -292,7 +243,7 @@ const Plus = () => {
                       required
                     />
                   </label>
-                  {/* Number-12  */}
+                  {/* Number-10  */}
 
                   <label className="label justify-start">
                     <span className="label-text name-input">Input 10:</span>
@@ -304,7 +255,12 @@ const Plus = () => {
                       required
                     />
                   </label>
-                  {/* Number-13  */}
+                </div>
+              )}
+
+              {selectedThirdFive && (
+                <div>
+                  {/* Number-11  */}
 
                   <label className="label justify-start">
                     <span className="label-text name-input">Input 11:</span>
@@ -316,7 +272,7 @@ const Plus = () => {
                       required
                     />
                   </label>
-                  {/* Number-14  */}
+                  {/* Number-12  */}
 
                   <label className="label justify-start">
                     <span className="label-text name-input">Input 12:</span>
@@ -328,7 +284,7 @@ const Plus = () => {
                       required
                     />
                   </label>
-                  {/* Number-15  */}
+                  {/* Number-13  */}
 
                   <label className="label justify-start">
                     <span className="label-text name-input">Input 13:</span>
@@ -340,14 +296,34 @@ const Plus = () => {
                       required
                     />
                   </label>
+                  {/* Number-14  */}
+
+                  <label className="label justify-start">
+                    <span className="label-text name-input">Input 14:</span>
+                    <input
+                      type="text"
+                      placeholder="Type here"
+                      className="ep-input p-1"
+                      {...register("input14")}
+                      required
+                    />
+                  </label>
+                  {/* Number-15  */}
+
+                  <label className="label justify-start">
+                    <span className="label-text name-input">Input 15:</span>
+                    <input
+                      type="text"
+                      placeholder="Type here"
+                      className="ep-input p-1"
+                      {...register("input15")}
+                      required
+                    />
+                  </label>
                 </div>
               )}
 
-              {/* <input
-                className="ebtn btn bg-blue-700 text-white mt-5"
-                type="submit"
-                value="Save"
-              /> */}
+             
             </form>
           </div>
         </div>
@@ -367,7 +343,7 @@ const Plus = () => {
                       type="text"
                       placeholder="Type here"
                       className="ep-input p-1"
-                      {...register("name")}
+                      {...register("target_name")}
                       required
                     />
                   </label>
@@ -375,27 +351,9 @@ const Plus = () => {
 
                   <label className="label justify-start">
                     <span className="label-text name-input ">Type:</span>
-                    {/* <select
-                      value={selected}
-                      onChange={handleChange}
-                      // type="text"
-                      className=" ep-input p-1"
-                      {...register("dropdown")}
-                      required
-                    >
-                      <option
-                        placeholder="Pick your favorite dropdown"
-                        disabled
-                      >
-                        Pick your favorite dropdown
-                      </option>
-                      <option value="fileSystem">File System</option>
-                      <option value="mongodb">Mongo DB</option>
-                      <option value="mysql">MySQL Server</option>
-                    </select> */}
                     <select
                       className=" ep-input p-1"
-                      {...register("dropdown")}
+                      {...register("target_type")}
                       required
                       value={selected}
                       onChange={handleChange}
@@ -415,16 +373,10 @@ const Plus = () => {
                       type="text"
                       placeholder="Type here"
                       className=" ep-input p-1"
-                      {...register("description")}
+                      {...register("target_description")}
                       required
                     />
                   </label>
-
-                  {/* <input
-                    className="ebtn  btn bg-blue-700 text-white mt-5"
-                    type="submit"
-                    value="Save"
-                  /> */}
                 </form>
               </div>
             </div>
@@ -439,40 +391,16 @@ const Plus = () => {
                   {/* Number-01  */}
 
                   <label className="label justify-start">
-                    <span className="label-text name-input">Name:</span>
+                    <span className="label-text name-input">Input01:</span>
                     <input
                       type="text"
                       placeholder="Type here"
                       className="ep-input p-1"
-                      {...register("name")}
+                      {...register("target_input1")}
                       required
                     />
                   </label>
                   {/* Number-02  */}
-
-                  <label className="label justify-start">
-                    <span className="label-text name-input">Name:</span>
-                    <input
-                      type="text"
-                      placeholder="Type here"
-                      className="ep-input p-1"
-                      {...register("name")}
-                      required
-                    />
-                  </label>
-                  {/* Number-03 */}
-
-                  <label className="label justify-start">
-                    <span className="label-text name-input">Input 01:</span>
-                    <input
-                      type="text"
-                      placeholder="Type here"
-                      className="ep-input p-1"
-                      {...register("input1")}
-                      required
-                    />
-                  </label>
-                  {/* Number-04  */}
 
                   <label className="label justify-start">
                     <span className="label-text name-input">Input 02:</span>
@@ -480,11 +408,11 @@ const Plus = () => {
                       type="text"
                       placeholder="Type here"
                       className="ep-input p-1"
-                      {...register("input2")}
+                      {...register("target_input2")}
                       required
                     />
                   </label>
-                  {/* Number-05  */}
+                  {/* Number-03 */}
 
                   <label className="label justify-start">
                     <span className="label-text name-input">Input 03:</span>
@@ -492,7 +420,31 @@ const Plus = () => {
                       type="text"
                       placeholder="Type here"
                       className="ep-input p-1"
-                      {...register("input3")}
+                      {...register("target_input3")}
+                      required
+                    />
+                  </label>
+                  {/* Number-04  */}
+
+                  <label className="label justify-start">
+                    <span className="label-text name-input">Input 04:</span>
+                    <input
+                      type="text"
+                      placeholder="Type here"
+                      className="ep-input p-1"
+                      {...register("target_input4")}
+                      required
+                    />
+                  </label>
+                  {/* Number-05  */}
+
+                  <label className="label justify-start">
+                    <span className="label-text name-input">Input 05:</span>
+                    <input
+                      type="text"
+                      placeholder="Type here"
+                      className="ep-input p-1"
+                      {...register("target_input5")}
                       required
                     />
                   </label>
@@ -504,40 +456,16 @@ const Plus = () => {
                   {/* Number-06  */}
 
                   <label className="label justify-start">
-                    <span className="label-text name-input">Input 04:</span>
-                    <input
-                      type="text"
-                      placeholder="Type here"
-                      className="ep-input p-1"
-                      {...register("input4")}
-                      required
-                    />
-                  </label>
-                  {/* Number-07  */}
-
-                  <label className="label justify-start">
-                    <span className="label-text name-input">Input 05:</span>
-                    <input
-                      type="text"
-                      placeholder="Type here"
-                      className="ep-input p-1"
-                      {...register("input5")}
-                      required
-                    />
-                  </label>
-                  {/* Number-08  */}
-
-                  <label className="label justify-start">
                     <span className="label-text name-input">Input 06:</span>
                     <input
                       type="text"
                       placeholder="Type here"
                       className="ep-input p-1"
-                      {...register("input6")}
+                      {...register("target_input6")}
                       required
                     />
                   </label>
-                  {/* Number-09  */}
+                  {/* Number-07  */}
 
                   <label className="label justify-start">
                     <span className="label-text name-input">Input 07:</span>
@@ -545,11 +473,11 @@ const Plus = () => {
                       type="text"
                       placeholder="Type here"
                       className="ep-input p-1"
-                      {...register("input7")}
+                      {...register("target_input7")}
                       required
                     />
                   </label>
-                  {/* Number-10  */}
+                  {/* Number-08  */}
 
                   <label className="label justify-start">
                     <span className="label-text name-input">Input 08:</span>
@@ -557,7 +485,31 @@ const Plus = () => {
                       type="text"
                       placeholder="Type here"
                       className="ep-input p-1"
-                      {...register("input8")}
+                      {...register("target_input8")}
+                      required
+                    />
+                  </label>
+                  {/* Number-09  */}
+
+                  <label className="label justify-start">
+                    <span className="label-text name-input">Input 09:</span>
+                    <input
+                      type="text"
+                      placeholder="Type here"
+                      className="ep-input p-1"
+                      {...register("target_input9")}
+                      required
+                    />
+                  </label>
+                  {/* Number-10  */}
+
+                  <label className="label justify-start">
+                    <span className="label-text name-input">Input 10:</span>
+                    <input
+                      type="text"
+                      placeholder="Type here"
+                      className="ep-input p-1"
+                      {...register("target_input10")}
                       required
                     />
                   </label>
@@ -569,40 +521,16 @@ const Plus = () => {
                   {/* Number-11  */}
 
                   <label className="label justify-start">
-                    <span className="label-text name-input">Input 09:</span>
-                    <input
-                      type="text"
-                      placeholder="Type here"
-                      className="ep-input p-1"
-                      {...register("input9")}
-                      required
-                    />
-                  </label>
-                  {/* Number-12  */}
-
-                  <label className="label justify-start">
-                    <span className="label-text name-input">Input 10:</span>
-                    <input
-                      type="text"
-                      placeholder="Type here"
-                      className="ep-input p-1"
-                      {...register("input10")}
-                      required
-                    />
-                  </label>
-                  {/* Number-13  */}
-
-                  <label className="label justify-start">
                     <span className="label-text name-input">Input 11:</span>
                     <input
                       type="text"
                       placeholder="Type here"
                       className="ep-input p-1"
-                      {...register("input11")}
+                      {...register("target_input11")}
                       required
                     />
                   </label>
-                  {/* Number-14  */}
+                  {/* Number-12  */}
 
                   <label className="label justify-start">
                     <span className="label-text name-input">Input 12:</span>
@@ -610,11 +538,11 @@ const Plus = () => {
                       type="text"
                       placeholder="Type here"
                       className="ep-input p-1"
-                      {...register("input12")}
+                      {...register("target_input12")}
                       required
                     />
                   </label>
-                  {/* Number-15  */}
+                  {/* Number-13  */}
 
                   <label className="label justify-start">
                     <span className="label-text name-input">Input 13:</span>
@@ -622,18 +550,37 @@ const Plus = () => {
                       type="text"
                       placeholder="Type here"
                       className="ep-input p-1"
-                      {...register("input13")}
+                      {...register("target_input13")}
+                      required
+                    />
+                  </label>
+                  {/* Number-14  */}
+
+                  <label className="label justify-start">
+                    <span className="label-text name-input">Input 14:</span>
+                    <input
+                      type="text"
+                      placeholder="Type here"
+                      className="ep-input p-1"
+                      {...register("target_input14")}
+                      required
+                    />
+                  </label>
+                  {/* Number-15  */}
+
+                  <label className="label justify-start">
+                    <span className="label-text name-input">Input 15:</span>
+                    <input
+                      type="text"
+                      placeholder="Type here"
+                      className="ep-input p-1"
+                      {...register("target_input15")}
                       required
                     />
                   </label>
                 </div>
               )}
 
-              {/* <input
-                className="ebtn btn bg-blue-700 text-white mt-5"
-                type="submit"
-                value="Save"
-              /> */}
             </form>
           </div>
         </div>
