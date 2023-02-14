@@ -11,7 +11,6 @@ import Injection from "./Home/NavbarRoutes/Injection/Injection";
 import Reports from "./Home/NavbarRoutes/Reports/Reports";
 import Transformation from "./Home/NavbarRoutes/Transformation/Transformation";
 import DocumentInfo from "./Home/NavbarRoutes/Injection/DocumentInfo";
-import Eprofile from "./Home/NavbarRoutes/Extraction/Eprofile";
 import Informations from "./Home/NavbarRoutes/Extraction/Informations";
 import Plus from "./Home/Dashboard/Plus";
 import HomeNav from "./Home/Dashboard/HomeNav";

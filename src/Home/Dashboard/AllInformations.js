@@ -4,12 +4,13 @@ import { useState } from "react";
 import { Link, Outlet, useParams } from "react-router-dom";
 import useAllInformation from "../../hooks/useAllInformations";
 import Modal from "./Modal";
+import { SiAddthis } from "react-icons/si";
 
 const AllInformations = () => {
   const [allinformations, setAllInformations] = useAllInformation();
   // console.log(allinformations);
   const [informations, setInformations] = useState(null);
-  console.log(informations);
+  // console.log(informations);
 
   const handleDelete = informations => {
 
@@ -30,12 +31,12 @@ const AllInformations = () => {
   }
 
   return (
-    <div>
-      <Link className="btn btn-sm m-4 btn-primary" to="/home/plus">
-        Add
+    <div className="">
+      <Link className="btn btn-sm m-4 bg-blue-700 text-xl" to="/home/plus">
+        Add <p className="pl-2"><SiAddthis></SiAddthis></p>
       </Link>
       <div>
-        <div className="overflow-x-auto mt-12">
+        <div className="overflow-x-auto mt-12 ml-5">
           <table class="table w-full">
             <thead>
               <tr>
@@ -51,8 +52,8 @@ const AllInformations = () => {
                 <th>Input7</th>
                 <th>Input8</th>
                 <th>Input9</th>
-                <th>Update</th>
-                <th>Delete</th>
+                <th className="pl-8">Update</th>
+                <th className="pl-8">Delete</th>
               </tr>
             </thead>
             <tbody>
@@ -71,15 +72,18 @@ const AllInformations = () => {
                   <td>{info.input7}</td>
                   <td>{info.input8}</td>
                   <td>{info.input9}</td>
-                  <label for="update-modal"
-                    onClick={() => setInformations(info._id)}
-                    className="btn bg-blue-700 text-white mt-2">Update
-                  </label>
-                  <label
-                    onClick={() => handleDelete(info._id)}
-
-                    className="btn bg-red-700 text-white ml-10">Delete
-                  </label>
+                  <td>
+                    <label for="update-modal"
+                      onClick={() => setInformations(info._id)}
+                      className="btn bg-blue-700 text-white">Update
+                    </label>
+                  </td>
+                  <td>
+                    <label
+                      onClick={() => handleDelete(info._id)}
+                      className="btn bg-red-700 text-white">Delete
+                    </label>
+                  </td>
                 </tr>)
               }
 
