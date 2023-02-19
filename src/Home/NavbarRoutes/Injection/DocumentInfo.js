@@ -1,53 +1,27 @@
-import React, { useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
-import useInformation from '../../../hooks/useInformation';
+import React from 'react';
+import useTargetKey from '../../../hooks/useTargetKey';
 import '././Progress.css';
 import './DocumentInfo.css';
 
 const DocumentInfo = () => {
-    const [information] = useInformation();
-    const { register, handleSubmit, reset } = useForm();
-
-    const onSubmit = data => {
-        const url = `http://localhost:5000/injection`;
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-            .then(res => res.json())
-            .then(result => {
-                console.log(result);
-                reset();
-            })
-    };
+    const [targetKey] = useTargetKey();
+    console.log(targetKey)
 
     return (
-        <div>
-            <div className='ml-6'>
-                <div className='flex justify-between'>
-                    <div className='pt-16'>
-                        <form onSubmit={handleSubmit(onSubmit)}>
-                            <div className='pl-6'>
-                                <label className='text-md flex justify-start items-start pt-8 pb-2' htmlFor="doc">Search types of doc*</label>
-                                <div className='flex justify-start'>
-                                    <select {...register("doc")} className='w-[600px] flex justify-start text-md border border-slate-500 rounded-sm bg-white' name="doc" >
-                                        {
-                                            information.map(info => <option
-                                                key={info._id}
-                                                info={info}
-                                            >{info.name}</option>)
-                                        }
-                                    </select>
-                                    <input type="submit" value='Submit' className='text-[16px] bg-blue-700 sbtn text-black px-3 py-1 ml-2 border rounded-sm cursor-pointer' />
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+        <div class="overflow-x-auto">
+            <table class="table w-full">
+                <thead>
+                    <tr>
+                        <th className='pl-10'>Source Key</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <td className='pl-10'></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     );
 };
