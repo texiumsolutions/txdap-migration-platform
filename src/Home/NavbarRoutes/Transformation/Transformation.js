@@ -35,7 +35,7 @@ const Transformation = () => {
           <form onSubmit={handleSubmit(onSubmit)}>
             <select
               type="text"
-              className=" ep-inputI p-1"
+              className="transformation-info-input ep-inputI p-1"
               {...register("dropdown")}
             >
               <option disabled selected>
