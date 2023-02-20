@@ -40,27 +40,65 @@ const Plus = () => {
     navigate('/home/allinformation')
   };
 
-  const handleChange = (event) => {
-    let value = event.target.value;
 
-    if (value === "") {
+   const targetOptions = [
+    { valueT: "", text: "--Choose an option--" },
+    { valueT: "File System", text: "File System" },
+    { valueT: "Mongo DB", text: "Mongo DB" },
+    { valueT: "MySQL Server", text: "MySQL Server" },
+  ];
+  const handleChange = (event) => {
+    let valueT = event.target.value;
+
+    if (valueT === "") {
       setSelectedFirstFive(false);
       setSelectedSecondFive(false);
       setSelectedThirdFive(false);
-    } else if (value === "File System") {
+    } else if (valueT === "File System") {
       setSelectedFirstFive(true);
       setSelectedSecondFive(false);
       setSelectedThirdFive(false);
-    } else if (value === "Mongo DB") {
+    } else if (valueT === "Mongo DB") {
       setSelectedFirstFive(false);
       setSelectedSecondFive(true);
       setSelectedThirdFive(false);
-    } else if (value === "MySQL Server") {
+    } else if (valueT === "MySQL Server") {
       setSelectedFirstFive(false);
       setSelectedSecondFive(false);
       setSelectedThirdFive(true);
     }
-    setSelected(value);
+    setSelected(valueT);
+  };
+
+  // target 
+  const [selectedFirstFiveT, setSelectedFirstFiveT] = useState(true);
+  const [selectedSecondFiveT, setSelectedSecondFiveT] = useState(false);
+  const [selectedThirdFiveT, setSelectedThirdFiveT] = useState(false);
+
+  const [selectedT, setSelectedT] = useState(targetOptions[0].value);
+
+
+  const handleChangeT = (event) => {
+    let value = event.target.value;
+
+    if (value === "") {
+      setSelectedFirstFiveT(false);
+      setSelectedSecondFiveT(false);
+      setSelectedThirdFiveT(false);
+    } else if (value === "File System") {
+      setSelectedFirstFiveT(true);
+      setSelectedSecondFiveT(false);
+      setSelectedThirdFiveT(false);
+    } else if (value === "Mongo DB") {
+      setSelectedFirstFiveT(false);
+      setSelectedSecondFiveT(true);
+      setSelectedThirdFiveT(false);
+    } else if (value === "MySQL Server") {
+      setSelectedFirstFiveT(false);
+      setSelectedSecondFiveT(false);
+      setSelectedThirdFiveT(true);
+    }
+    setSelectedT(value);
   };
 
   return (
