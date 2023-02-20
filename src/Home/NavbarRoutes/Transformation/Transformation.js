@@ -56,9 +56,9 @@ const Transformation = () => {
               </select>
               <label
                 htmlFor="my-modal-3"
-                className="btn btn-src bg-blue-700 text-white"
+                className="btn p-5 bg-blue-700 text-white"
               >
-                Run
+                Load Attributes
               </label>
             </form>
         </div>
@@ -72,6 +72,7 @@ const Transformation = () => {
                 <th>Source Key</th>
                 <th>Target Key</th>
                 <th>Data Type</th>
+                <th>Drop</th>
               </tr>
             </thead>
             <tbody
@@ -108,6 +109,29 @@ const Transformation = () => {
                   </label>
                 ))}
               </td>
+              
+                
+              <td className="px-20">
+              <label className="label justify-start">
+              <span className="label-text name-input">Type:</span>
+              <select
+                type="text"
+                className=" ep-input p-1"
+                {...register("dropdown")}
+                required
+              >
+                <option  placeholder="Pick your favorite dropdown" disabled>
+                  Pick your favorite dropdown
+                </option>
+                <option value="hello1">Date</option>
+                <option value="hello2">String</option>
+                <option value="other">Int</option>
+              </select>
+            </label>
+              </td>
+             <td>
+              <button className="btn-primary">Delete</button>
+             </td>
             </tbody>
           </table>
           <input
