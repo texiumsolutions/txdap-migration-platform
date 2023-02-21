@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
-import "./Plus.css";
+import "../../Dashboard/Plus.css";
 
-const Plus = () => {
+const Add = () => {
   const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = (data) => {
@@ -27,7 +28,7 @@ const Plus = () => {
         }
       });
   };
-   const options = [
+  const options = [
     { value: "", text: "--Choose an option--" },
     { value: "File System", text: "File System" },
     { value: "Mongo DB", text: "Mongo DB" },
@@ -98,50 +99,47 @@ const Plus = () => {
     }
     setSelected(valueT);
   };
-
   return (
-    <div>
-      <div className="flex justify-between">
-      <div className="text-2xl mx-10">Source Type</div>
-      <div className="text-2xl mr-96">Target Type</div>
-      </div>
-      {/* Number-01  */}
+    <div className="w-full m-10">
+      <div className="form-control">
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <p className="text-2xl  justify-center mx-80 ">Type Your Name Here First</p>
+          {/* Name Input Here  */}
 
-      <label className="label justify-center mx-80">
-                    <span className="label-text name-input ">Name:</span>
-                    <input
-                      type="text"
-                      placeholder="Type here"
-                      className="ep-input p-1"
-                      {...register("name")}
+          <label className="label justify-center mx-80">
+            <span className="label-text name-input ">Name:</span>
+            <input
+              type="text"
+              placeholder="Type here"
+              className="ep-input p-1"
+              {...register("name")}
+              required
+            />
+          </label>
+          <div className="grid grid-cols-2 gap-2 p-3" >
+          {/* Left Source Type  */}
+          <div>
+            {/* Number-02  */}
+            <p className="text-2xl">Source Type</p>
+          {/* <label className="label justify-start">
+                    <span className="label-text name-input ">Type:</span>
+                    <select
+                      className=" ep-input p-1"
+                      {...register("target_type")}
                       required
-                    />
-                  </label>
-      <div className="grid grid-cols-2 gap-2 p-3" >
-        {/* Left Side  */}
-
-        {/* Profile  */}
-        <div className="m-2 ">
-          
-          <div className="grid grid-cols-2">
-            <div className=" bg-base-600 ep-form">
-              <div className="form-control extraction_profile">
-                <form onSubmit={handleSubmit(onSubmit)}>
-                  {/* Number-01  */}
-
-                  {/* <label className="label justify-start">
-                    <span className="label-text name-input ">Name:</span>
-                    <input
-                      type="text"
-                      placeholder="Type here"
-                      className="ep-input p-1"
-                      {...register("name")}
-                      required
-                    />
+                      value={selectedT}
+                      onChange={handleChangeT}
+                    >
+                      {targetOptions.map((targetOption) => (
+                        <option key={targetOption.valueT} value={targetOption.valueT}>
+                          {targetOption.text}
+                        </option>
+                      ))}
+                    </select>
                   </label> */}
                   {/* Number-02  */}
 
-                  <label className="label justify-start">
+             <label className="label justify-start">
                     <span className="label-text name-input ">Type:</span>
                    
                     <select
@@ -158,7 +156,7 @@ const Plus = () => {
                       ))}
                     </select>
                   </label>
-                  {/* Number-03 */}
+                  {/* Number-02 */}
 
                   <label className="label justify-start">
                     <span className="label-text name-input">Description:</span>
@@ -171,16 +169,10 @@ const Plus = () => {
                     />
                   </label>
 
-                </form>
-              </div>
-            </div>
-          </div>
-
-          {/* Parameters  */}
+                  {/* Parameters  */}
           <p className="text-2xl"> Parameters</p>
-          <div className="form-control ep">
-            <form onSubmit={handleSubmit(onSubmit)}>
-              {selectedFirstFive && (
+
+          {selectedFirstFive && (
                 <div>
                   {/* Number-01  */}
 
@@ -372,25 +364,16 @@ const Plus = () => {
                       required
                     />
                   </label>
-                </div>
+                  </div>
               )}
 
-             
-            </form>
+
           </div>
-        </div>
-
-        {/* Right Side  */}
-        <div className="m-2">
-          
-          <div className="grid grid-cols-2">
-            <div className=" bg-base-600 ep-form">
-              <div className="form-control extraction_profile">
-                <form onSubmit={handleSubmit(onSubmit)}>
-                 
-                  {/* Number-02  */}
-
-                  <label className="label justify-start">
+          {/* Right Target Type  */}
+          <div>
+          <p className="text-2xl">Target Type</p>
+             {/* Number-02  */}
+             <label className="label justify-start">
                     <span className="label-text name-input ">Type:</span>
                     <select
                       className=" ep-input p-1"
@@ -406,8 +389,24 @@ const Plus = () => {
                       ))}
                     </select>
                   </label>
-                  {/* Number-03 */}
 
+             {/* <label className="label justify-start">
+                    <span className="label-text name-input ">Type:</span>
+                   
+                    <select
+                      className=" ep-input p-1"
+                      {...register("type")}
+                      required
+                      value={selected}
+                      onChange={handleChange}
+                    >
+                      {options.map((option) => (
+                        <option key={option.value} value={option.value}>
+                          {option.text}
+                        </option>
+                      ))}
+                    </select>
+                  </label> */}
                   <label className="label justify-start">
                     <span className="label-text name-input">Description:</span>
                     <input
@@ -418,16 +417,9 @@ const Plus = () => {
                       required
                     />
                   </label>
-                </form>
-              </div>
-            </div>
-          </div>
-
-          {/* Parameters  */}
+                   {/* Parameters  */}
           <p className="text-2xl"> Parameters</p>
-          <div className="form-control ep">
-            <form onSubmit={handleSubmit(onSubmit)}>
-              {selectedFirstFiveT && (
+          {selectedFirstFiveT && (
                 <div>
                   {/* Number-01  */}
 
@@ -621,19 +613,18 @@ const Plus = () => {
                   </label>
                 </div>
               )}
-
-            </form>
           </div>
-        </div>
-        
-      </div>
-      <input
-                    className="ebtn  btn bg-blue-700 flex justify-center items-end text-white mt-5"
+          
+          </div>
+          <input
+                    className="ebtn  btn bg-blue-700 text-white mt-5 text-2xl  justify-center mx-80"
                     type="submit"
                     value="Save"
                   />
+        </form>
+      </div>
     </div>
   );
 };
 
-export default Plus;
+export default Add;

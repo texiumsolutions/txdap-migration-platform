@@ -31,7 +31,8 @@
 }
 .ebtn {
   display: flex;
-  margin: 10px auto;
+  justify-content: center;
+  align-items: center;
   border: none;
   border-radius: 3px;
   outline: none;

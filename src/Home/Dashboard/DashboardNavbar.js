@@ -34,7 +34,7 @@ const DashboardNavbar = () => {
 
                     <div exact activeClassName="active">
                         <NavLink to="/extraction" className="dash-nav text-white mx-4 text-1xl ml-6">
-                            Document
+                            Extractions
                         </NavLink>
                     </div>
                     <div exact activeClassName="active">
