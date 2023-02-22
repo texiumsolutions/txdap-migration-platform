@@ -87,7 +87,7 @@ const Modal = ({ id }) => {
                                 className="ep-input p-1"
                                 {...register("name")}
                                 defaultValue={information.name}
-                                disabled
+
                             />
                         </label>
 
