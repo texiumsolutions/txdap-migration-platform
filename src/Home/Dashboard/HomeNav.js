@@ -11,7 +11,7 @@ const HomeNav = () => {
       
       <div className="flex">
         <div
-          tabindex="0"
+          tabIndex="0"
           className=" bg-blue-800 h-screen p-2"
         >
           <NavLink to="/home/house" className=" text-white mx-2 pt-12 pb-4 text-2xl">

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 const useFile = () => {
     const [files, setFiles] = useState([]);
     useEffect(() => {
-        const url = 'http://localhost:5000/upload';
+        const url = 'https://txdap-migration-platform-server-production.up.railway.app/upload';
 
         fetch(url)
             .then(res => res.json())

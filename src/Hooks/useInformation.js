@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 const useInformation = () => {
     const [information, setInformation] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/run')
+        fetch('https://txdap-migration-platform-server-production.up.railway.app/run')
             .then(res => res.json())
             .then(data => setInformation(data))
     }, [information])

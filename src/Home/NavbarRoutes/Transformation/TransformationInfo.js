@@ -15,7 +15,7 @@ const TransformationInfo = ({ info }) => {
 
 
     const onSubmit = data => {
-        const url = `http://localhost:5000/target-key`;
+        const url = `https://txdap-migration-platform-server-production.up.railway.app/target-key`;
         fetch(url, {
             method: 'POST',
             headers: {
@@ -35,7 +35,7 @@ const TransformationInfo = ({ info }) => {
         const proceed = window.confirm('Are you sure delete this?');
 
         if (proceed) {
-            const url = `http://localhost:5000/target-key/${id}`;
+            const url = `https://txdap-migration-platform-server-production.up.railway.app/target-key/${id}`;
             console.log(url);
             fetch(url, {
                 method: 'DELETE'
@@ -52,8 +52,8 @@ const TransformationInfo = ({ info }) => {
     return (
         <div className='pt-10'>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <div class="overflow-x-auto">
-                    <table class="table w-full">
+                <div className="overflow-x-auto">
+                    <table className="table w-full">
                         <thead>
                             <tr>
                                 <th className='pl-10'>Source Key</th>

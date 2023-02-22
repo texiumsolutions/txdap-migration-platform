@@ -7,8 +7,8 @@ const DocumentInfo = () => {
     console.log(targetKey)
 
     return (
-        <div class="overflow-x-auto pl-10">
-            <table class="table w-full">
+        <div className="overflow-x-auto pl-10">
+            <table className="table w-full">
                 <thead>
                     <tr>
                         <th>Id</th>
@@ -21,6 +21,16 @@ const DocumentInfo = () => {
                         <td>{targetKey?.[0]?._id}</td>
                         <td>{targetKey?.[0]?.name}</td>
                         <td>{targetKey?.[0]?.dataTypeName}</td>
+                    </tr>
+                    <tr>
+                        <td>{targetKey?.[1]?._id}</td>
+                        <td>{targetKey?.[1]?.name}</td>
+                        <td>{targetKey?.[1]?.dataTypeName}</td>
+                    </tr>
+                    <tr>
+                        <td>{targetKey?.[2]?._id}</td>
+                        <td>{targetKey?.[2]?.name}</td>
+                        <td>{targetKey?.[2]?.dataTypeName}</td>
                     </tr>
                 </tbody>
             </table>

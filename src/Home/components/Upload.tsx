@@ -99,7 +99,7 @@ const Upload = () => {
     console.log(deta);
     const { handleSubmit, reset } = useForm();
     const onSubmit = () => {
-        const url = `http://localhost:5000/upload`;
+        const url = `https://txdap-migration-platform-server-production.up.railway.app/upload`;
         fetch(url, {
             method: 'POST',
             headers: {

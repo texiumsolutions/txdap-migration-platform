@@ -7,7 +7,7 @@ const UpdateModal = ({ id }) => {
     const [information, setInformation] = useState({});
 
     useEffect(() => {
-        const url = `http://localhost:5000/all_information/${id}`;
+        const url = `https://txdap-migration-platform-server-production.up.railway.app/all_information/${id}`;
 
         fetch(url)
             .then(res => res.json())
@@ -52,7 +52,7 @@ const UpdateModal = ({ id }) => {
     };
 
     const onSubmit = (data, id) => {
-        const url = `http://localhost:5000/all_information/${id}`;
+        const url = `https://txdap-migration-platform-server-production.up.railway.app/all_information/${id}`;
         fetch(url, {
             method: 'PUT',
             headers: {
@@ -68,11 +68,11 @@ const UpdateModal = ({ id }) => {
 
     return (
         <div>
-            <input type="checkbox" id="update-modal" class="modal-toggle" />
-            <div class="modal modal-bottom sm:modal-middle">
-                <div class="modal-box">
-                    <label for="update-modal" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                    <h3 class="font-bold text-3xl">Booking for: {information.name}</h3>
+            <input type="checkbox" id="update-modal" className="modal-toggle" />
+            <div className="modal modal-bottom sm:modal-middle">
+                <div className="modal-box">
+                    <label for="update-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                    <h3 className="font-bold text-3xl">Booking for: {information.name}</h3>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         {/* Number-01  */}
 

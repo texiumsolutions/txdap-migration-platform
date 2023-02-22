@@ -15,7 +15,7 @@ const Transformation = () => {
   const { register, handleSubmit, reset } = useForm();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/run-name/${transformation}`)
+    fetch(`https://txdap-migration-platform-server-production.up.railway.app/run-name/${transformation}`)
       .then(res => res.json())
       .then(data => setInfo(data))
   }, [transformation])

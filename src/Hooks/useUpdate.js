@@ -3,7 +3,7 @@ const useUpdate = infoId => {
     const [informations, setInformations] = useState({});
 
     useEffect(() => {
-        const url = `http://localhost:5000/all_information/${infoId}`;
+        const url = `https://txdap-migration-platform-server-production.up.railway.app/all_information/${infoId}`;
 
         fetch(url)
             .then(res => res.json())

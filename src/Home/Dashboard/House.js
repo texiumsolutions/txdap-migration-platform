@@ -1,60 +1,61 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React from "react";
+
 import { SiAddthis } from "react-icons/si";
 import { Link } from "react-router-dom";
 
 const House = () => {
-  const [userData, setUserData] = useState([]);
-  const [delMsg, setDelMsg] = useState('');
-  useEffect(() => {
-    const getData = async () => {
-      const reqData = await fetch("http://localhost:5000/run");
-      const resData = await reqData.json();
-      setUserData(resData);
-    };
-    getData();
-  }, []);
+  // const [userData, setUserData] = useState([]);
+  // const [delMsg, setDelMsg] = useState('');
+  // useEffect(() => {
+  //   const getData = async () => {
+  //     const reqData = await fetch("https://txdap-migration-platform-server-production.up.railway.app/run");
+  //     const resData = await reqData.json();
+  //     setUserData(resData);
+  //   };
+  //   getData();
+  // }, []);
 
-  const handleChange = (e) => {
-    const { name, checked } = e.target;
-    if (name === "allselect") {
-      const checkedvalue = userData.map((user) => {
-        return { ...user, isChecked: checked };
-      });
-      console.log(checkedvalue);
-      setUserData(checkedvalue);
-    } else {
-      const checkedvalue = userData.map((user) =>
-        user.name === name ? { ...user, isChecked: checked } : user
-      );
-      console.log(checkedvalue);
-      setUserData(checkedvalue);
-    }
-  };
+  // const handleChange = (e) => {
+  //   const { name, checked } = e.target;
+  //   if (name === "allselect") {
+  //     const checkedvalue = userData.map((user) => {
+  //       return { ...user, isChecked: checked };
+  //     });
+  //     console.log(checkedvalue);
+  //     setUserData(checkedvalue);
+  //   } else {
+  //     const checkedvalue = userData.map((user) =>
+  //       user.name === name ? { ...user, isChecked: checked } : user
+  //     );
+  //     console.log(checkedvalue);
+  //     setUserData(checkedvalue);
+  //   }
+  // };
 
-  const handlealldelete = async() =>{
-    const checkedInputValue = [];
-    for(let i=0; i<userData.length; i++)
-    {
-       if(userData[i].isChecked===true)
-       {
-        checkedInputValue.push(parseInt(userData[i]._id));
-       }
-    }
-    const url = `http://localhost:5000/updateRun`;
-    fetch(url, {
-      method: "POST",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-      });
+  // const handlealldelete = async() =>{
+  //   const checkedInputValue = [];
+  //   for(let i=0; i<userData.length; i++)
+  //   {
+  //      if(userData[i].isChecked===true)
+  //      {
+  //       checkedInputValue.push(parseInt(userData[i]._id));
+  //      }
+  //   }
+  //   const url = `https://txdap-migration-platform-server-production.up.railway.app/updateRun`;
+  //   fetch(url, {
+  //     method: "POST",
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //     });
     
-  };
+  // };
   
   return (
     <div>
-     <h5>{delMsg}</h5>
+      <h1>This is house page</h1>
+     {/* <h5>{delMsg}</h5>
      <Link className="btn btn-src bg-blue-700 text-white" to="/home/plus">
         Add{" "}
         <p className="pl-2">
@@ -63,15 +64,15 @@ const House = () => {
       </Link>
       <button className="btn btn-primary m-8"
       onClick={()=> {handlealldelete()}}>Run</button>
-      <div class="overflow-x-auto w-full">
-        <table class="table w-full">
+      <div className="overflow-x-auto w-full">
+        <table className="table w-full">
           <thead>
             <tr>
               <th>
                 <label>
                   <input
                     type="checkbox"
-                    class="checkbox"
+                    className="checkbox"
                     name="allselect"
                     checked={
                       !userData.some((user) => user?.isChecked === false)
@@ -102,7 +103,7 @@ const House = () => {
                   <label>
                     <input
                       type="checkbox"
-                      class="checkbox"
+                      className="checkbox"
                       name={getusers.name}
                       checked={getusers?.isChecked || false}
                       onChange={handleChange}
@@ -125,7 +126,7 @@ const House = () => {
             ))}
           </tbody>
         </table>
-      </div>
+      </div> */}
     </div>
   );
 };
