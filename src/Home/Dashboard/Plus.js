@@ -27,7 +27,7 @@ const Plus = () => {
         }
       });
   };
-   const options = [
+  const options = [
     { value: "", text: "--Choose an option--" },
     { value: "File System", text: "File System" },
     { value: "Mongo DB", text: "Mongo DB" },
@@ -102,27 +102,27 @@ const Plus = () => {
   return (
     <div>
       <div className="flex justify-between">
-      <div className="text-2xl mx-10">Source Type</div>
-      <div className="text-2xl mr-96">Target Type</div>
+        <div className="text-2xl mx-10">Source Type</div>
+        <div className="text-2xl mr-96">Target Type</div>
       </div>
       {/* Number-01  */}
 
       <label className="label justify-center mx-80">
-                    <span className="label-text name-input ">Name:</span>
-                    <input
-                      type="text"
-                      placeholder="Type here"
-                      className="ep-input p-1"
-                      {...register("name")}
-                      required
-                    />
-                  </label>
+        <span className="label-text name-input ">Name:</span>
+        <input
+          type="text"
+          placeholder="Type here"
+          className="ep-input p-1"
+          {...register("name")}
+          required
+        />
+      </label>
       <div className="grid grid-cols-2 gap-2 p-3" >
         {/* Left Side  */}
 
         {/* Profile  */}
         <div className="m-2 ">
-          
+
           <div className="grid grid-cols-2">
             <div className=" bg-base-600 ep-form">
               <div className="form-control extraction_profile">
@@ -143,7 +143,7 @@ const Plus = () => {
 
                   <label className="label justify-start">
                     <span className="label-text name-input ">Type:</span>
-                   
+
                     <select
                       className=" ep-input p-1"
                       {...register("type")}
@@ -375,19 +375,19 @@ const Plus = () => {
                 </div>
               )}
 
-             
+
             </form>
           </div>
         </div>
 
         {/* Right Side  */}
         <div className="m-2">
-          
+
           <div className="grid grid-cols-2">
             <div className=" bg-base-600 ep-form">
               <div className="form-control extraction_profile">
                 <form onSubmit={handleSubmit(onSubmit)}>
-                 
+
                   {/* Number-02  */}
 
                   <label className="label justify-start">
@@ -625,13 +625,13 @@ const Plus = () => {
             </form>
           </div>
         </div>
-        
+
       </div>
       <input
-                    className="ebtn  btn bg-blue-700 flex justify-center items-end text-white mt-5"
-                    type="submit"
-                    value="Save"
-                  />
+        className="ebtn  btn bg-blue-700 flex justify-center items-end text-white mt-5"
+        type="submit"
+        value="Save"
+      />
     </div>
   );
 };
