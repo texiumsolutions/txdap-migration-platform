@@ -24,7 +24,7 @@ const Files = ({ file }) => {
                 })
 
         }
-    }
+    };
 
     return (
         <div className='file'>
