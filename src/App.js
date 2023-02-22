@@ -19,6 +19,7 @@ import EUFile from "./Home/NavbarRoutes/Extraction/EUFile";
 import Document from "./Home/NavbarRoutes/Extraction/Document";
 import AllInformations from "./Home/Dashboard/AllInformations";
 import Add from "./Home/NavbarRoutes/Extraction/Add";
+import House from "./Home/Dashboard/House";
 
 function App() {
   return (
@@ -26,7 +27,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Login></Login>}></Route>
         <Route path="/home" element={<HomeNav></HomeNav>}>
-          <Route path="house" element={<Home></Home>}></Route>
+          <Route path="house" element={<House></House>}></Route>
           <Route path="allinformation" element={<AllInformations></AllInformations>}></Route>
           <Route path="plus" element={<Add></Add>}></Route>
           <Route path="settings" element={<Settings></Settings>}></Route>
