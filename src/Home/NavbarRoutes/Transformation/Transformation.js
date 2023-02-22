@@ -39,7 +39,7 @@ const Transformation = () => {
               {...register("dropdown")}
             >
               <option disabled selected>
-                Pick your favorite Simpson
+               Select One
               </option>
               {informations.map((information) => (
                 <option key={information._id} information={information}>
@@ -49,7 +49,7 @@ const Transformation = () => {
             </select>
             <input
               type='submit'
-              value='Run'
+              value='Load Attributes'
               className="bg-blue-700 ml-4 text-white px-6 py-2 border rounded cursor-pointer"
             >
             </input>
