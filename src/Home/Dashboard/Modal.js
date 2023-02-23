@@ -9,13 +9,13 @@ const Modal = ({ id }) => {
     const [information, setInformation] = useState({});
     // console.log(information)
 
-    useEffect(() => {
-        const url = `http://localhost:5000/all_information/${id}`;
+    // useEffect(() => {
+    //     const url = `http://localhost:5000/all_information/${id}`;
 
-        fetch(url)
-            .then(res => res.json())
-            .then(data => setInformation(data));
-    }, [id]);
+    //     fetch(url)
+    //         .then(res => res.json())
+    //         .then(data => setInformation(data));
+    // }, [id]);
 
     const { register, handleSubmit } = useForm();
 

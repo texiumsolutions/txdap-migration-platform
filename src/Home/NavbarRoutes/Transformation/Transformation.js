@@ -2,7 +2,6 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useQuery } from "react-query";
 import useInformation from "../../../hooks/useInformation";
 import Home from "../../Home";
 import "./Transformation.css";
@@ -15,7 +14,7 @@ const Transformation = () => {
   const { register, handleSubmit, reset } = useForm();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/run-name/${transformation}`)
+    fetch(`http://localhost:5000/source/${transformation}`)
       .then(res => res.json())
       .then(data => setInfo(data))
   }, [transformation])
@@ -39,17 +38,17 @@ const Transformation = () => {
               {...register("dropdown")}
             >
               <option disabled selected>
-                Pick your favorite Simpson
+                Select One
               </option>
               {informations.map((information) => (
                 <option key={information._id} information={information}>
-                  {information.name}
+                  {information.email}
                 </option>
               ))}
             </select>
             <input
               type='submit'
-              value='Run'
+              value='Load Attributes'
               className="bg-blue-700 ml-4 text-white px-6 py-2 border rounded cursor-pointer"
             >
             </input>

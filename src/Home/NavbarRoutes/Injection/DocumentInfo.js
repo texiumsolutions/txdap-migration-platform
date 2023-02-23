@@ -4,7 +4,13 @@ import '././Progress.css';
 import './DocumentInfo.css';
 const DocumentInfo = () => {
     const [targetKey] = useTargetKey();
-    console.log(targetKey)
+    console.log(targetKey);
+
+    // for (var i = 0; i <= targetKey.length; i++) {
+    //     var number = targetKey[i];
+    //     console.log(number);
+    // }
+
 
     return (
         <div class="overflow-x-auto pl-10">
@@ -18,9 +24,9 @@ const DocumentInfo = () => {
                 </thead>
                 <tbody>
                     <tr>
-                        <td>{targetKey?.[0]?._id}</td>
-                        <td>{targetKey?.[0]?.name}</td>
-                        <td>{targetKey?.[0]?.dataTypeName}</td>
+                        {/* <td>{targetKey?._id}</td>
+                        <td>{number?.name}</td>
+                        <td>{number?.dataTypeName}</td> */}
                     </tr>
                 </tbody>
             </table>
