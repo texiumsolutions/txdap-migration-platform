@@ -4,6 +4,7 @@ import './TransformationInfo.css';
 import toast, { Toaster } from 'react-hot-toast';
 import { AiFillDelete } from "react-icons/ai";
 import useTargetKey from '../../../hooks/useTargetKey';
+import { useState } from 'react';
 
 const TransformationInfo = ({ info }) => {
     const { _id, employee_id,
@@ -18,10 +19,6 @@ const TransformationInfo = ({ info }) => {
         manager_id,
         department_id } = info;
     const { register, handleSubmit, reset } = useForm();
-
-    const [information, setInformation] = useTargetKey();
-
-
 
 
     const onSubmit = data => {
@@ -40,25 +37,13 @@ const TransformationInfo = ({ info }) => {
                 toast('Successfully Store Data On Your Database');
             })
     };
-
-    const handleDelete = id => {
-        const proceed = window.confirm('Are you sure delete this?');
-
-        if (proceed) {
-            const url = `http://localhost:5000/target-key/${id}`;
-            console.log(url);
-            fetch(url, {
-                method: 'DELETE'
-            })
-                .then(res => res.json())
-                .then(data => {
-                    console.log(data);
-                    const remainingTargetKey = information.filter(info => info._id !== id);
-                    setInformation(remainingTargetKey);
-                })
-
-        }
+    const [showData, setShowData] = useState(true);
+    // const proceed = window.confirm('Are You Sure Delete this Data From UI?');
+    const handleDelete = () => {
+        setShowData(false);
     }
+
+
     return (
         <div className='pt-10'>
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -73,28 +58,30 @@ const TransformationInfo = ({ info }) => {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td className='pl-10'>{employee_id}</td>
-                                <td className='pl-64'><input
-                                    {...register("employee_id")}
-                                    defaultValue={employee_id}
-                                    className='transformation-info-input pl-4' type="text" /></td>
-                                <td className='w-[450px] pr-64'>
-                                    <label>
-                                        <select
-                                            className="ep-input p-1 transformation-info-input"
-                                            {...register("dataTypeName")}
+                            {
+                                showData && <tr>
+                                    <td className='pl-10'>{employee_id}</td>
+                                    <td className='pl-64'><input
+                                        {...register("employee_id")}
+                                        defaultValue={employee_id}
+                                        className='transformation-info-input pl-4' type="text" /></td>
+                                    <td className='w-[450px] pr-64'>
+                                        <label>
+                                            <select
+                                                className="ep-input p-1 transformation-info-input"
+                                                {...register("dataTypeName")}
 
-                                        >
-                                            <option selected="selected" value='date'>date</option>
-                                            <option value='int'>int</option>
-                                            <option value='string'>string</option>
+                                            >
+                                                <option selected="selected" value='date'>date</option>
+                                                <option value='int'>int</option>
+                                                <option value='string'>string</option>
 
-                                        </select>
-                                    </label>
-                                </td>
-                                <td onClick={() => handleDelete(_id)} className=' text-4xl text-red-700 cursor-pointer'><AiFillDelete></AiFillDelete></td>
-                            </tr>
+                                            </select>
+                                        </label>
+                                    </td>
+                                    <td onClick={handleDelete} className='text-4xl text-red-700 cursor-pointer'><AiFillDelete></AiFillDelete></td>
+                                </tr>
+                            }
                             <tr>
                                 <td className='pl-10'>{first_name}</td>
                                 <td className='pl-64'><input
@@ -115,7 +102,7 @@ const TransformationInfo = ({ info }) => {
                                         </select>
                                     </label>
                                 </td>
-                                <td onClick={() => handleDelete(_id)} className=' text-4xl text-red-700 cursor-pointer'><AiFillDelete></AiFillDelete></td>
+                                <td className=' text-4xl text-red-700 cursor-pointer'><AiFillDelete></AiFillDelete></td>
                             </tr>
                             <tr>
                                 <td className='pl-10'>{last_name}</td>
@@ -137,7 +124,7 @@ const TransformationInfo = ({ info }) => {
                                         </select>
                                     </label>
                                 </td>
-                                <td onClick={() => handleDelete(_id)} className=' text-4xl text-red-700 cursor-pointer'><AiFillDelete></AiFillDelete></td>
+                                <td className=' text-4xl text-red-700 cursor-pointer'><AiFillDelete></AiFillDelete></td>
                             </tr>
                             <tr>
                                 <td className='pl-10'>{email}</td>
@@ -156,7 +143,7 @@ const TransformationInfo = ({ info }) => {
                                         <option value='string'>string</option>
                                     </select>
                                 </td>
-                                <td onClick={() => handleDelete(_id)} className=' text-4xl text-red-700 cursor-pointer'><AiFillDelete></AiFillDelete></td>
+                                <td className=' text-4xl text-red-700 cursor-pointer'><AiFillDelete></AiFillDelete></td>
                             </tr>
                             <tr>
                                 <td className='pl-10'>{phone_number}</td>
@@ -175,7 +162,7 @@ const TransformationInfo = ({ info }) => {
                                         <option value='string'>string</option>
                                     </select>
                                 </td>
-                                <td onClick={() => handleDelete(_id)} className=' text-4xl text-red-700 cursor-pointer'><AiFillDelete></AiFillDelete></td>
+                                <td className=' text-4xl text-red-700 cursor-pointer'><AiFillDelete></AiFillDelete></td>
                             </tr>
                             <tr>
                                 <td className='pl-10'>{hire_date}</td>
@@ -194,7 +181,7 @@ const TransformationInfo = ({ info }) => {
                                         <option value='string'>string</option>
                                     </select>
                                 </td>
-                                <td onClick={() => handleDelete(_id)} className=' text-4xl text-red-700 cursor-pointer'><AiFillDelete></AiFillDelete></td>
+                                <td className=' text-4xl text-red-700 cursor-pointer'><AiFillDelete></AiFillDelete></td>
                             </tr>
                             <tr>
                                 <td className='pl-10'>{job_id}</td>
@@ -213,7 +200,7 @@ const TransformationInfo = ({ info }) => {
                                         <option value='string'>string</option>
                                     </select>
                                 </td>
-                                <td onClick={() => handleDelete(_id)} className=' text-4xl text-red-700 cursor-pointer'><AiFillDelete></AiFillDelete></td>
+                                <td className=' text-4xl text-red-700 cursor-pointer'><AiFillDelete></AiFillDelete></td>
                             </tr>
                             <tr>
                                 <td className='pl-10'>{salary}</td>
@@ -232,7 +219,7 @@ const TransformationInfo = ({ info }) => {
                                         <option value='string'>string</option>
                                     </select>
                                 </td>
-                                <td onClick={() => handleDelete(_id)} className=' text-4xl text-red-700 cursor-pointer'><AiFillDelete></AiFillDelete></td>
+                                <td className=' text-4xl text-red-700 cursor-pointer'><AiFillDelete></AiFillDelete></td>
                             </tr>
                             <tr>
                                 <td className='pl-10'>{commission_pct}</td>
@@ -251,7 +238,7 @@ const TransformationInfo = ({ info }) => {
                                         <option value='string'>string</option>
                                     </select>
                                 </td>
-                                <td onClick={() => handleDelete(_id)} className=' text-4xl text-red-700 cursor-pointer'><AiFillDelete></AiFillDelete></td>
+                                <td className=' text-4xl text-red-700 cursor-pointer'><AiFillDelete></AiFillDelete></td>
                             </tr>
                             <tr>
                                 <td className='pl-10'>{manager_id}</td>
@@ -270,7 +257,7 @@ const TransformationInfo = ({ info }) => {
                                         <option value='string'>string</option>
                                     </select>
                                 </td>
-                                <td onClick={() => handleDelete(_id)} className=' text-4xl text-red-700 cursor-pointer'><AiFillDelete></AiFillDelete></td>
+                                <td className=' text-4xl text-red-700 cursor-pointer'><AiFillDelete></AiFillDelete></td>
                             </tr>
                             <tr>
                                 <td className='pl-10'>{department_id}</td>
@@ -289,7 +276,7 @@ const TransformationInfo = ({ info }) => {
                                         <option value='string'>string</option>
                                     </select>
                                 </td>
-                                <td onClick={() => handleDelete(_id)} className=' text-4xl text-red-700 cursor-pointer'><AiFillDelete></AiFillDelete></td>
+                                <td className=' text-4xl text-red-700 cursor-pointer'><AiFillDelete></AiFillDelete></td>
                             </tr>
                         </tbody>
                     </table>
@@ -302,5 +289,4 @@ const TransformationInfo = ({ info }) => {
         </div>
     );
 };
-
 export default TransformationInfo;
