@@ -4,14 +4,21 @@ import './TransformationInfo.css';
 import toast, { Toaster } from 'react-hot-toast';
 import { AiFillDelete } from "react-icons/ai";
 import useTargetKey from '../../../hooks/useTargetKey';
+import { useState } from 'react';
 
 const TransformationInfo = ({ info }) => {
-    const { _id, name, input1, input2, input3, input4, input5, input6 } = info;
+    const { _id, employee_id,
+        first_name,
+        last_name,
+        email,
+        phone_number,
+        hire_date,
+        job_id,
+        salary,
+        commission_pct,
+        manager_id,
+        department_id } = info;
     const { register, handleSubmit, reset } = useForm();
-
-    const [information, setInformation] = useTargetKey();
-
-
 
 
     const onSubmit = data => {
@@ -30,25 +37,28 @@ const TransformationInfo = ({ info }) => {
                 toast('Successfully Store Data On Your Database');
             })
     };
-
-    const handleDelete = id => {
-        const proceed = window.confirm('Are you sure delete this?');
-
-        if (proceed) {
-            const url = `https://txdap-migration-platform-server-production.up.railway.app/target-key/${id}`;
-            console.log(url);
-            fetch(url, {
-                method: 'DELETE'
-            })
-                .then(res => res.json())
-                .then(data => {
-                    console.log(data);
-                    const remainingTargetKey = information.filter(info => info._id !== id);
-                    setInformation(remainingTargetKey);
-                })
-
-        }
+    const [showData, setShowData] = useState(true);
+    const handleDelete = () => {
+        setShowData(false);
     }
+    const [showData2, setShowData2] = useState(true);
+    const handleDelete2 = () => {
+        setShowData2(false);
+    }
+    const [showData3, setShowData3] = useState(true);
+    const handleDelete3 = () => {
+        setShowData3(false);
+    }
+    const [showData4, setShowData4] = useState(true);
+    const handleDelete4 = () => {
+        setShowData4(false);
+    }
+    const [showData5, setShowData5] = useState(true);
+    const handleDelete5 = () => {
+        setShowData5(false);
+    }
+
+
     return (
         <div className='pt-10'>
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -63,93 +73,125 @@ const TransformationInfo = ({ info }) => {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td className='pl-10'>{name}</td>
-                                <td className='pl-64'><input
-                                    {...register("name")}
-                                    defaultValue={name}
-                                    className='transformation-info-input pl-4' type="text" /></td>
-                                <td className='w-[450px] pr-64'>
-                                    <label>
+                            {
+                                showData && <tr>
+                                    <td className='pl-10'>{employee_id}</td>
+                                    <td className='pl-64'><input
+                                        {...register("employee_id")}
+                                        defaultValue={employee_id}
+                                        className='transformation-info-input pl-4' type="text" /></td>
+                                    <td className='w-[450px] pr-64'>
+                                        <label>
+                                            <select
+                                                className="ep-input p-1 transformation-info-input"
+                                                {...register("dataTypeName")}
+
+                                            >
+                                                <option selected="selected" value='date'>date</option>
+                                                <option value='int'>int</option>
+                                                <option value='string'>string</option>
+
+                                            </select>
+                                        </label>
+                                    </td>
+                                    <td onClick={handleDelete} className='text-4xl text-red-700 cursor-pointer'><AiFillDelete></AiFillDelete></td>
+                                </tr>
+                            }
+                            {
+                                showData2 && <tr>
+                                    <td className='pl-10'>{first_name}</td>
+                                    <td className='pl-64'><input
+                                        {...register("first_name")}
+                                        defaultValue={first_name}
+                                        className='transformation-info-input pl-4' type="text" /></td>
+                                    <td className='w-[450px] pr-64'>
+                                        <label>
+                                            <select
+                                                className="ep-input p-1 transformation-info-input"
+                                                {...register("dataTypeName")}
+
+                                            >
+                                                <option selected="selected" value='date'>date</option>
+                                                <option value='int'>int</option>
+                                                <option value='string'>string</option>
+
+                                            </select>
+                                        </label>
+                                    </td>
+                                    <td onClick={handleDelete2} className='text-4xl text-red-700 cursor-pointer'><AiFillDelete></AiFillDelete></td>
+                                </tr>
+                            }
+                            {
+                                showData3 && <tr>
+                                    <td className='pl-10'>{last_name}</td>
+                                    <td className='pl-64'><input
+                                        {...register("last_name")}
+                                        defaultValue={last_name}
+                                        className='transformation-info-input pl-4' type="text" /></td>
+                                    <td className='w-[450px] pr-64'>
+                                        <label>
+                                            <select
+                                                className="ep-input p-1 transformation-info-input"
+                                                {...register("dataType1")}
+
+                                            >
+                                                <option selected="selected" value='date'>date</option>
+                                                <option value='int'>int</option>
+                                                <option value='string'>string</option>
+
+                                            </select>
+                                        </label>
+                                    </td>
+                                    <td onClick={handleDelete3} className='text-4xl text-red-700 cursor-pointer'><AiFillDelete></AiFillDelete></td>
+                                </tr>
+                            }
+                            {
+                                showData4 && <tr>
+                                    <td className='pl-10'>{email}</td>
+                                    <td className='pl-64'><input
+                                        {...register("email")}
+                                        defaultValue={email}
+                                        className='transformation-info-input pl-4' type="text" /></td>
+                                    <td className='w-[450px] pr-64'>
                                         <select
-                                            className="ep-input p-1 transformation-info-input"
-                                            {...register("dataTypeName")}
+                                            {...register("dataType2")}
+                                            className=" ep-input p-1 transformation-info-input"
 
                                         >
-                                            <option selected="selected" value='date'>date</option>
+                                            <option value='date'>date</option>
                                             <option value='int'>int</option>
                                             <option value='string'>string</option>
-
                                         </select>
-                                    </label>
-                                </td>
-                                <td onClick={() => handleDelete(_id)} className=' text-4xl text-red-700 cursor-pointer'><AiFillDelete></AiFillDelete></td>
-                            </tr>
-                            <tr>
-                                <td className='pl-10'>{input1}</td>
-                                <td className='pl-64'><input
-                                    {...register("input1")}
-                                    defaultValue={input1}
-                                    className='transformation-info-input pl-4' type="text" /></td>
-                                <td className='w-[450px] pr-64'>
-                                    <label>
+                                    </td>
+                                    <td onClick={handleDelete4} className='text-4xl text-red-700 cursor-pointer'><AiFillDelete></AiFillDelete></td>
+                                </tr>
+                            }
+                            {
+                                showData5 && <tr>
+                                    <td className='pl-10'>{phone_number}</td>
+                                    <td className='pl-64'><input
+                                        {...register("phone_number")}
+                                        defaultValue={phone_number}
+                                        className='transformation-info-input pl-4' type="text" /></td>
+                                    <td className='w-[450px] pr-64'>
                                         <select
-                                            className="ep-input p-1 transformation-info-input"
-                                            {...register("dataType1")}
+                                            {...register("dataType3")}
+                                            className=" ep-input p-1 transformation-info-input"
 
                                         >
-                                            <option selected="selected" value='date'>date</option>
+                                            <option value='date'>date</option>
                                             <option value='int'>int</option>
                                             <option value='string'>string</option>
-
                                         </select>
-                                    </label>
-                                </td>
-                                <td onClick={() => handleDelete(_id)} className=' text-4xl text-red-700 cursor-pointer'><AiFillDelete></AiFillDelete></td>
-                            </tr>
+                                    </td>
+                                    <td onClick={handleDelete5} className='text-4xl text-red-700 cursor-pointer'><AiFillDelete></AiFillDelete></td>
+                                </tr>
+                            }
                             <tr>
-                                <td className='pl-10'>{input2}</td>
+                                <td className='pl-10'>{hire_date}</td>
                                 <td className='pl-64'><input
-                                    {...register("input2")}
-                                    defaultValue={input2}
-                                    className='transformation-info-input pl-4' type="text" /></td>
-                                <td className='w-[450px] pr-64'>
-                                    <select
-                                        {...register("dataType2")}
-                                        className=" ep-input p-1 transformation-info-input"
-
-                                    >
-                                        <option value='date'>date</option>
-                                        <option value='int'>int</option>
-                                        <option value='string'>string</option>
-                                    </select>
-                                </td>
-                                <td onClick={() => handleDelete(_id)} className=' text-4xl text-red-700 cursor-pointer'><AiFillDelete></AiFillDelete></td>
-                            </tr>
-                            <tr>
-                                <td className='pl-10'>{input3}</td>
-                                <td className='pl-64'><input
-                                    {...register("input3")}
-                                    defaultValue={input3}
-                                    className='transformation-info-input pl-4' type="text" /></td>
-                                <td className='w-[450px] pr-64'>
-                                    <select
-                                        {...register("dataType3")}
-                                        className=" ep-input p-1 transformation-info-input"
-
-                                    >
-                                        <option value='date'>date</option>
-                                        <option value='int'>int</option>
-                                        <option value='string'>string</option>
-                                    </select>
-                                </td>
-                                <td onClick={() => handleDelete(_id)} className=' text-4xl text-red-700 cursor-pointer'><AiFillDelete></AiFillDelete></td>
-                            </tr>
-                            <tr>
-                                <td className='pl-10'>{input4}</td>
-                                <td className='pl-64'><input
-                                    {...register("input4")}
-                                    defaultValue={input4}
+                                    {...register("hire_date")}
+                                    defaultValue={hire_date}
                                     className='transformation-info-input pl-4' type="text" /></td>
                                 <td className='w-[450px] pr-64'>
                                     <select
@@ -162,13 +204,13 @@ const TransformationInfo = ({ info }) => {
                                         <option value='string'>string</option>
                                     </select>
                                 </td>
-                                <td onClick={() => handleDelete(_id)} className=' text-4xl text-red-700 cursor-pointer'><AiFillDelete></AiFillDelete></td>
+                                <td className=' text-4xl text-red-700 cursor-pointer'><AiFillDelete></AiFillDelete></td>
                             </tr>
                             <tr>
-                                <td className='pl-10'>{input5}</td>
+                                <td className='pl-10'>{job_id}</td>
                                 <td className='pl-64'><input
-                                    {...register("input5")}
-                                    defaultValue={input5}
+                                    {...register("job_id")}
+                                    defaultValue={job_id}
                                     className='transformation-info-input pl-4' type="text" /></td>
                                 <td className='w-[450px] pr-64'>
                                     <select
@@ -181,13 +223,13 @@ const TransformationInfo = ({ info }) => {
                                         <option value='string'>string</option>
                                     </select>
                                 </td>
-                                <td onClick={() => handleDelete(_id)} className=' text-4xl text-red-700 cursor-pointer'><AiFillDelete></AiFillDelete></td>
+                                <td className=' text-4xl text-red-700 cursor-pointer'><AiFillDelete></AiFillDelete></td>
                             </tr>
                             <tr>
-                                <td className='pl-10'>{input6}</td>
+                                <td className='pl-10'>{salary}</td>
                                 <td className='pl-64'><input
-                                    {...register("input6")}
-                                    defaultValue={input6}
+                                    {...register("salary")}
+                                    defaultValue={salary}
                                     className='transformation-info-input pl-4' type="text" /></td>
                                 <td className='w-[450px] pr-64'>
                                     <select
@@ -200,7 +242,64 @@ const TransformationInfo = ({ info }) => {
                                         <option value='string'>string</option>
                                     </select>
                                 </td>
-                                <td onClick={() => handleDelete(_id)} className=' text-4xl text-red-700 cursor-pointer'><AiFillDelete></AiFillDelete></td>
+                                <td className=' text-4xl text-red-700 cursor-pointer'><AiFillDelete></AiFillDelete></td>
+                            </tr>
+                            <tr>
+                                <td className='pl-10'>{commission_pct}</td>
+                                <td className='pl-64'><input
+                                    {...register("commission_pct")}
+                                    defaultValue={commission_pct}
+                                    className='transformation-info-input pl-4' type="text" /></td>
+                                <td className='w-[450px] pr-64'>
+                                    <select
+                                        {...register("dataType7")}
+                                        className=" ep-input p-1 transformation-info-input"
+
+                                    >
+                                        <option value='date'>date</option>
+                                        <option value='int'>int</option>
+                                        <option value='string'>string</option>
+                                    </select>
+                                </td>
+                                <td className=' text-4xl text-red-700 cursor-pointer'><AiFillDelete></AiFillDelete></td>
+                            </tr>
+                            <tr>
+                                <td className='pl-10'>{manager_id}</td>
+                                <td className='pl-64'><input
+                                    {...register("manager_id")}
+                                    defaultValue={manager_id}
+                                    className='transformation-info-input pl-4' type="text" /></td>
+                                <td className='w-[450px] pr-64'>
+                                    <select
+                                        {...register("dataType8")}
+                                        className=" ep-input p-1 transformation-info-input"
+
+                                    >
+                                        <option value='date'>date</option>
+                                        <option value='int'>int</option>
+                                        <option value='string'>string</option>
+                                    </select>
+                                </td>
+                                <td className=' text-4xl text-red-700 cursor-pointer'><AiFillDelete></AiFillDelete></td>
+                            </tr>
+                            <tr>
+                                <td className='pl-10'>{department_id}</td>
+                                <td className='pl-64'><input
+                                    {...register("department_id")}
+                                    defaultValue={department_id}
+                                    className='transformation-info-input pl-4' type="text" /></td>
+                                <td className='w-[450px] pr-64'>
+                                    <select
+                                        {...register("dataType9")}
+                                        className=" ep-input p-1 transformation-info-input"
+
+                                    >
+                                        <option value='date'>date</option>
+                                        <option value='int'>int</option>
+                                        <option value='string'>string</option>
+                                    </select>
+                                </td>
+                                <td className=' text-4xl text-red-700 cursor-pointer'><AiFillDelete></AiFillDelete></td>
                             </tr>
                         </tbody>
                     </table>
@@ -213,5 +312,4 @@ const TransformationInfo = ({ info }) => {
         </div>
     );
 };
-
 export default TransformationInfo;

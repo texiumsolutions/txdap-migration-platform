@@ -2,7 +2,6 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useQuery } from "react-query";
 import useInformation from "../../../hooks/useInformation";
 import Home from "../../Home";
 import "./Transformation.css";
@@ -15,7 +14,7 @@ const Transformation = () => {
   const { register, handleSubmit, reset } = useForm();
 
   useEffect(() => {
-    fetch(`https://txdap-migration-platform-server-production.up.railway.app/run-name/${transformation}`)
+    fetch(`http://localhost:5000/source/${transformation}`)
       .then(res => res.json())
       .then(data => setInfo(data))
   }, [transformation])
@@ -39,11 +38,11 @@ const Transformation = () => {
               {...register("dropdown")}
             >
               <option disabled selected>
-               Select One
+                Select One
               </option>
               {informations.map((information) => (
                 <option key={information._id} information={information}>
-                  {information.name}
+                  {information.email}
                 </option>
               ))}
             </select>

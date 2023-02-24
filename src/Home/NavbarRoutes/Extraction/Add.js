@@ -118,11 +118,11 @@ const Add = () => {
             />
           </label>
           <div className="grid grid-cols-2 gap-2 p-3" >
-          {/* Left Source Type  */}
-          <div>
-            {/* Number-02  */}
-            <p className="text-2xl">Source Type</p>
-          {/* <label className="label justify-start">
+            {/* Left Source Type  */}
+            <div>
+              {/* Number-02  */}
+              <p className="text-2xl">Source Type</p>
+              {/* <label className="label justify-start">
                     <span className="label-text name-input ">Type:</span>
                     <select
                       className=" ep-input p-1"
@@ -138,42 +138,42 @@ const Add = () => {
                       ))}
                     </select>
                   </label> */}
-                  {/* Number-02  */}
+              {/* Number-02  */}
 
-             <label className="label justify-start">
-                    <span className="label-text name-input ">Type:</span>
-                   
-                    <select
-                      className=" ep-input p-1"
-                      {...register("type")}
-                      required
-                      value={selected}
-                      onChange={handleChange}
-                    >
-                      {options.map((option) => (
-                        <option key={option.value} value={option.value}>
-                          {option.text}
-                        </option>
-                      ))}
-                    </select>
-                  </label>
-                  {/* Number-02 */}
+              <label className="label justify-start">
+                <span className="label-text name-input ">Type:</span>
 
-                  <label className="label justify-start">
-                    <span className="label-text name-input">Description:</span>
-                    <input
-                      type="text"
-                      placeholder="Type here"
-                      className=" ep-input p-1"
-                      {...register("description")}
-                      required
-                    />
-                  </label>
+                <select
+                  className=" ep-input p-1"
+                  {...register("type")}
+                  required
+                  value={selected}
+                  onChange={handleChange}
+                >
+                  {options.map((option) => (
+                    <option key={option.value} value={option.value}>
+                      {option.text}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              {/* Number-02 */}
 
-                  {/* Parameters  */}
-          <p className="text-2xl"> Parameters</p>
+              <label className="label justify-start">
+                <span className="label-text name-input">Description:</span>
+                <input
+                  type="text"
+                  placeholder="Type here"
+                  className=" ep-input p-1"
+                  {...register("description")}
+                  required
+                />
+              </label>
 
-          {selectedFirstFive && (
+              {/* Parameters  */}
+              <p className="text-2xl"> Parameters</p>
+
+              {selectedFirstFive && (
                 <div>
                   {/* Number-01  */}
 
@@ -365,33 +365,33 @@ const Add = () => {
                       required
                     />
                   </label>
-                  </div>
+                </div>
               )}
 
 
-          </div>
-          {/* Right Target Type  */}
-          <div>
-          <p className="text-2xl">Target Type</p>
-             {/* Number-02  */}
-             <label className="label justify-start">
-                    <span className="label-text name-input ">Type:</span>
-                    <select
-                      className=" ep-input p-1"
-                      {...register("target_type")}
-                      required
-                      value={selectedT}
-                      onChange={handleChangeT}
-                    >
-                      {targetOptions.map((targetOption) => (
-                        <option key={targetOption.valueT} value={targetOption.valueT}>
-                          {targetOption.text}
-                        </option>
-                      ))}
-                    </select>
-                  </label>
+            </div>
+            {/* Right Target Type  */}
+            <div>
+              <p className="text-2xl">Target Type</p>
+              {/* Number-02  */}
+              <label className="label justify-start">
+                <span className="label-text name-input ">Type:</span>
+                <select
+                  className=" ep-input p-1"
+                  {...register("target_type")}
+                  required
+                  value={selectedT}
+                  onChange={handleChangeT}
+                >
+                  {targetOptions.map((targetOption) => (
+                    <option key={targetOption.valueT} value={targetOption.valueT}>
+                      {targetOption.text}
+                    </option>
+                  ))}
+                </select>
+              </label>
 
-             {/* <label className="label justify-start">
+              {/* <label className="label justify-start">
                     <span className="label-text name-input ">Type:</span>
                    
                     <select
@@ -408,19 +408,19 @@ const Add = () => {
                       ))}
                     </select>
                   </label> */}
-                  <label className="label justify-start">
-                    <span className="label-text name-input">Description:</span>
-                    <input
-                      type="text"
-                      placeholder="Type here"
-                      className=" ep-input p-1"
-                      {...register("target_description")}
-                      required
-                    />
-                  </label>
-                   {/* Parameters  */}
-          <p className="text-2xl"> Parameters</p>
-          {selectedFirstFiveT && (
+              <label className="label justify-start">
+                <span className="label-text name-input">Description:</span>
+                <input
+                  type="text"
+                  placeholder="Type here"
+                  className=" ep-input p-1"
+                  {...register("target_description")}
+                  required
+                />
+              </label>
+              {/* Parameters  */}
+              <p className="text-2xl"> Parameters</p>
+              {selectedFirstFiveT && (
                 <div>
                   {/* Number-01  */}
 
@@ -614,14 +614,14 @@ const Add = () => {
                   </label>
                 </div>
               )}
-          </div>
-          
+            </div>
+
           </div>
           <input
-                    className="ebtn  btn bg-blue-700 text-white mt-5 text-2xl  justify-center mx-80"
-                    type="submit"
-                    value="Save"
-                  />
+            className="ebtn  btn bg-blue-700 text-white mt-5 text-2xl  justify-center mx-80"
+            type="submit"
+            value="Save"
+          />
         </form>
       </div>
     </div>

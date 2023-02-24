@@ -17,9 +17,9 @@ import Object from "./Home/NavbarRoutes/Extraction/Object";
 import EUFile from "./Home/NavbarRoutes/Extraction/EUFile";
 import Document from "./Home/NavbarRoutes/Extraction/Document";
 import AllInformations from "./Home/Dashboard/AllInformations";
-import Add from "./Home/NavbarRoutes/Extraction/Add";
 import House from "./Home/Dashboard/House";
 import Dashbroad from "./Home/Dashboard/Dashbroad";
+import Add from "./Home/NavbarRoutes/Extraction/Add";
 
 function App() {
   return (

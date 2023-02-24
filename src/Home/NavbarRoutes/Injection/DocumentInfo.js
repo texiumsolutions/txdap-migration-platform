@@ -4,7 +4,13 @@ import '././Progress.css';
 import './DocumentInfo.css';
 const DocumentInfo = () => {
     const [targetKey] = useTargetKey();
-    console.log(targetKey)
+    console.log(targetKey);
+
+    // for (var i = 0; i <= targetKey.length; i++) {
+    //     var number = targetKey[i];
+    //     console.log(number);
+    // }
+
 
     return (
         <div className="overflow-x-auto pl-10">
@@ -12,26 +18,34 @@ const DocumentInfo = () => {
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Name</th>
-                        <th>Type</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
+                        <th>Hire Date</th>
+                        <th>Job ID</th>
+                        <th>Salary</th>
+                        <th>Commission PCT</th>
+                        <th>Manager ID</th>
+                        <th>Department ID</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>{targetKey?.[0]?._id}</td>
-                        <td>{targetKey?.[0]?.name}</td>
-                        <td>{targetKey?.[0]?.dataTypeName}</td>
-                    </tr>
-                    <tr>
-                        <td>{targetKey?.[1]?._id}</td>
-                        <td>{targetKey?.[1]?.name}</td>
-                        <td>{targetKey?.[1]?.dataTypeName}</td>
-                    </tr>
-                    <tr>
-                        <td>{targetKey?.[2]?._id}</td>
-                        <td>{targetKey?.[2]?.name}</td>
-                        <td>{targetKey?.[2]?.dataTypeName}</td>
-                    </tr>
+                    {targetKey.map(tkey => (
+                        <tr>
+                            <td>{tkey.employee_id}</td>
+                            <td>{tkey.first_name}</td>
+                            <td>{tkey.last_name}</td>
+                            <td>{tkey.email}</td>
+                            <td>{tkey.phone_number}</td>
+                            <td>{tkey.hire_date}</td>
+                            <td>{tkey.job_id}</td>
+                            <td>{tkey.salary}</td>
+                            <td>{tkey.commission_pct}</td>
+                            <td>{tkey.manager_id}</td>
+                            <td>{tkey.department_id}</td>
+                        </tr>
+                    ))}
                 </tbody>
             </table>
         </div>
