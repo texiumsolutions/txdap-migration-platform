@@ -22,7 +22,7 @@ const DashboardNavbar = () => {
     return (
         <div className="flex bg-blue-800 justify-between h-[50px]">
             <div className="flex">
-                <div class="dropdown">
+                <div className="dropdown">
                     <div className="pt-4 pl-2">
                         <NavLink to="/home" className=" text-white text-2xl ">
                             <AiOutlineMenu></AiOutlineMenu>
@@ -32,27 +32,27 @@ const DashboardNavbar = () => {
                 </div>
                 <div className="flex justify-center items-center">
 
-                    <div exact activeClassName="active">
+                    <div exact="true" activeclassname="active">
                         <NavLink to="/extraction" className="dash-nav text-white mx-4 text-1xl ml-6">
                             Extractions
                         </NavLink>
                     </div>
-                    <div exact activeClassName="active">
+                    <div exact="true" activeclassname="active">
                         <NavLink to="/transformation" className="dash-nav text-white mx-4 text-1xl">
                             Transformation
                         </NavLink>
                     </div>
-                    <div exact activeClassName="active">
+                    <div exact="true" activeclassname="active">
                         <NavLink to="/injection" className="dash-nav text-white mx-4 text-1xl">
                             Injection
                         </NavLink>
                     </div>
-                    <div exact activeClassName="active">
+                    <div exact="true" activeclassname="active">
                         <NavLink to="/reports" className="dash-nav text-white mx-4 text-1xl">
                             Reports
                         </NavLink>
                     </div>
-                    <div exact activeClassName="active">
+                    <div exact="true" activeclassname="active">
                         <NavLink to="/dashboard" className="dash-nav text-white mx-4 text-1xl">
                             Dashboard
                         </NavLink>
@@ -61,8 +61,8 @@ const DashboardNavbar = () => {
             </div>
             {signInErrorMessage}
             <div className="flex justify-center items-center ">
-                <div class="avatar mx-4">
-                    <div class="w-6 h-6  rounded-full ">
+                <div className="avatar mx-4">
+                    <div className="w-6 h-6  rounded-full ">
                         <img alt=" " src="https://placeimg.com/192/192/people" />
                     </div>
                 </div>

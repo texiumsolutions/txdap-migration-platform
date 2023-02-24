@@ -171,7 +171,7 @@ const Running = () => {
           <button
             onClick={handleClose}
             for="my-modal-3"
-            class="btn btn-sm btn-circle relative bg-blue-800 right-2 top-0"
+            className="btn btn-sm btn-circle relative bg-blue-800 right-2 top-0"
           >
             ✕
           </button>

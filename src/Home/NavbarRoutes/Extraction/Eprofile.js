@@ -9,7 +9,7 @@ const Eprofile = () => {
   const onSubmit = (data) => {
     console.log(data);
 
-    fetch("http://localhost:5000/run", {
+    fetch("https://txdap-migration-platform-server-production.up.railway.app/run", {
       method: "POST",
       headers: {
         "content-type": "application/json",

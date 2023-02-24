@@ -2,7 +2,6 @@ import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "./App.css";
 import Upload from "./Home/components/Upload.tsx";
-import Home from "./Home/Home";
 import Login from "./Home/Login/Login";
 import SignUp from "./Home/Login/SignUp";
 import Extraction from "./Home/NavbarRoutes/Extraction/Extraction";
@@ -18,8 +17,9 @@ import Object from "./Home/NavbarRoutes/Extraction/Object";
 import EUFile from "./Home/NavbarRoutes/Extraction/EUFile";
 import Document from "./Home/NavbarRoutes/Extraction/Document";
 import AllInformations from "./Home/Dashboard/AllInformations";
-import Add from "./Home/NavbarRoutes/Extraction/Add";
 import House from "./Home/Dashboard/House";
+import Dashbroad from "./Home/Dashboard/Dashbroad";
+import Add from "./Home/NavbarRoutes/Extraction/Add";
 
 function App() {
   return (
@@ -46,6 +46,7 @@ function App() {
         </Route>
 
         <Route path="/reports" element={<Reports></Reports>}></Route>
+        <Route path="/dashboard" element={<Dashbroad></Dashbroad>}></Route>
 
         <Route path="/extraction" element={<Extraction></Extraction>}>
           <Route path="runs" element={<Informations></Informations>} />

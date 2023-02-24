@@ -8,7 +8,7 @@ const Plus = () => {
   const onSubmit = (data) => {
     console.log(data);
 
-    fetch("http://localhost:5000/all_information", {
+    fetch("https://txdap-migration-platform-server-production.up.railway.app/all_information", {
       method: "POST",
       headers: {
         "content-type": "application/json",

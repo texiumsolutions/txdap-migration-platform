@@ -12,7 +12,7 @@ const Files = ({ file }) => {
 
         const proceed = window.confirm('Are you sure delete this?');
         if (proceed) {
-            const url = `http://localhost:5000/upload/${id}`;
+            const url = `https://txdap-migration-platform-server-production.up.railway.app/upload/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })

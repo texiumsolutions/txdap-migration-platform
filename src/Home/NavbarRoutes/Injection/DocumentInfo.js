@@ -13,8 +13,8 @@ const DocumentInfo = () => {
 
 
     return (
-        <div class="overflow-x-auto pl-10">
-            <table class="table w-full">
+        <div className="overflow-x-auto pl-10">
+            <table className="table w-full">
                 <thead>
                     <tr>
                         <th>Id</th>

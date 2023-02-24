@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 const useTargetKey = () => {
     const [targetKey, setTargetKey] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/target-key')
+        fetch('https://txdap-migration-platform-server-production.up.railway.app/target-key')
             .then(res => res.json())
             .then(data => setTargetKey(data))
     }, [targetKey])

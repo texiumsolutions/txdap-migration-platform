@@ -36,7 +36,7 @@ const Informations = () => {
   // const handleDelete = (informations) => {
   //   const proceed = window.confirm("Are you sure delete this?");
   //   if (proceed) {
-  //     const url = `http://localhost:5000/all_information/${informations}`;
+  //     const url = `https://txdap-migration-platform-server-production.up.railway.app/all_information/${informations}`;
   //     fetch(url, {
   //       method: "DELETE",
   //     })
@@ -53,10 +53,10 @@ const Informations = () => {
 
 
   const [userData, setUserData] = useState([]);
-  const [delMsg, setDelMsg] = useState('');
+
   useEffect(() => {
     const getData = async () => {
-      const reqData = await fetch("http://localhost:5000/run");
+      const reqData = await fetch("https://txdap-migration-platform-server-production.up.railway.app/all_information");
       const resData = await reqData.json();
       setUserData(resData);
     };
@@ -80,25 +80,27 @@ const Informations = () => {
     }
   };
 
-  const handlealldelete = async() =>{
+  const handlealladd = async() =>{
     const checkedInputValue = [];
     for(let i=0; i<userData.length; i++)
     {
        if(userData[i].isChecked===true)
        {
-        checkedInputValue.push(parseInt(userData[i]._id));
+        checkedInputValue.push(userData[i]);
+        const url = `https://txdap-migration-platform-server-production.up.railway.app/updateRun`;
+        fetch(url, {
+          method: "POST",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+          });
        }
     }
-    const url = `http://localhost:5000/updateRun`;
-    fetch(url, {
-      method: "POST",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-      });
+   
     
   };
+  
 
   return (
     <div className="">
@@ -117,7 +119,7 @@ const Informations = () => {
                     </label> */}
       {/* <div>
         <div className="overflow-x-auto mt-12 ml-5">
-          <table class="table w-full">
+          <table className="table w-full">
             <thead>
               <tr>
                 <th>
@@ -144,7 +146,7 @@ const Informations = () => {
                 <tr>
                   <td>
                     <label>
-                      <input type="checkbox" class="checkbox" />
+                      <input type="checkbox" className="checkbox" />
                     </label>
                   </td>
                   <td>{info.name}</td>
@@ -167,7 +169,6 @@ const Informations = () => {
       </div> */}
 
 <div>
-     <h5>{delMsg}</h5>
      <Link className="btn btn-src bg-blue-700 text-white" to="/home/plus">
         Add{" "}
         <p className="pl-2">
@@ -175,16 +176,16 @@ const Informations = () => {
         </p>
       </Link>
       <button className="btn btn-primary m-8"
-      onClick={()=> {handlealldelete()}} >Run</button>
-      <div class="overflow-x-auto w-full">
-        <table class="table w-full">
+      onClick={()=> {handlealladd()}} >Run</button>
+      <div className="overflow-x-auto w-full">
+        <table className="table w-full">
           <thead>
             <tr>
               <th>
                 <label>
                   <input
                     type="checkbox"
-                    class="checkbox"
+                    className="checkbox"
                     name="allselect"
                     checked={
                       !userData.some((user) => user?.isChecked === false)
@@ -215,7 +216,7 @@ const Informations = () => {
                   <label>
                     <input
                       type="checkbox"
-                      class="checkbox"
+                      className="checkbox"
                       name={getusers.name}
                       checked={getusers?.isChecked || false}
                       onChange={handleChange}
@@ -351,7 +352,7 @@ const Informations = () => {
           <button
             onClick={handleClose}
             for="my-modal-3"
-            class="btn btn-sm btn-circle relative bg-blue-800 right-2 top-0"
+            className="btn btn-sm btn-circle relative bg-blue-800 right-2 top-0"
           >
             ✕
           </button>

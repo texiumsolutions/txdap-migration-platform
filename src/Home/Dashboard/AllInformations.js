@@ -16,7 +16,7 @@ const AllInformations = () => {
 
     const proceed = window.confirm('Are you sure delete this?');
     if (proceed) {
-      const url = `http://localhost:5000/all_information/${informations}`;
+      const url = `https://txdap-migration-platform-server-production.up.railway.app/all_information/${informations}`;
       fetch(url, {
         method: 'DELETE'
       })
@@ -37,7 +37,7 @@ const AllInformations = () => {
       </Link>
       <div>
         <div className="overflow-x-auto mt-12 ml-5">
-          <table class="table w-full">
+          <table className="table w-full">
             <thead>
               <tr>
                 <th>Name</th>
