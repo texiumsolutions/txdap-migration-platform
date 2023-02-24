@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import "../../Dashboard/Plus.css";
+import Loading02 from "../../Loading/Loading02";
 
 const Add = () => {
   const { register, handleSubmit, reset } = useForm();
@@ -242,7 +243,7 @@ const Add = () => {
                   {/* Number-06  */}
 
                   <label className="label justify-start">
-                    <span className="label-text name-input">Input 06:</span>
+                    <span className="label-text name-input">Source</span>
                     <input
                       type="text"
                       placeholder="Type here"
@@ -265,7 +266,7 @@ const Add = () => {
                   </label>
                   {/* Number-08  */}
 
-                  <label className="label justify-start">
+                  {/* <label className="label justify-start">
                     <span className="label-text name-input">Input 08:</span>
                     <input
                       type="text"
@@ -274,9 +275,9 @@ const Add = () => {
                       {...register("input8")}
                       required
                     />
-                  </label>
+                  </label> */}
                   {/* Number-09  */}
-
+{/* 
                   <label className="label justify-start">
                     <span className="label-text name-input">Input 09:</span>
                     <input
@@ -286,10 +287,10 @@ const Add = () => {
                       {...register("input9")}
                       required
                     />
-                  </label>
+                  </label> */}
                   {/* Number-10  */}
 
-                  <label className="label justify-start">
+                  {/* <label className="label justify-start">
                     <span className="label-text name-input">Input 10:</span>
                     <input
                       type="text"
@@ -298,7 +299,7 @@ const Add = () => {
                       {...register("input10")}
                       required
                     />
-                  </label>
+                  </label> */}
                 </div>
               )}
 
@@ -489,7 +490,7 @@ const Add = () => {
                   {/* Number-06  */}
 
                   <label className="label justify-start">
-                    <span className="label-text name-input">Input 06:</span>
+                    <span className="label-text name-input">Target</span>
                     <input
                       type="text"
                       placeholder="Type here"
@@ -512,7 +513,7 @@ const Add = () => {
                   </label>
                   {/* Number-08  */}
 
-                  <label className="label justify-start">
+                  {/* <label className="label justify-start">
                     <span className="label-text name-input">Input 08:</span>
                     <input
                       type="text"
@@ -521,10 +522,10 @@ const Add = () => {
                       {...register("target_input8")}
                       required
                     />
-                  </label>
+                  </label> */}
                   {/* Number-09  */}
 
-                  <label className="label justify-start">
+                  {/* <label className="label justify-start">
                     <span className="label-text name-input">Input 09:</span>
                     <input
                       type="text"
@@ -533,10 +534,10 @@ const Add = () => {
                       {...register("target_input9")}
                       required
                     />
-                  </label>
+                  </label> */}
                   {/* Number-10  */}
 
-                  <label className="label justify-start">
+                  {/* <label className="label justify-start">
                     <span className="label-text name-input">Input 10:</span>
                     <input
                       type="text"
@@ -545,7 +546,7 @@ const Add = () => {
                       {...register("target_input10")}
                       required
                     />
-                  </label>
+                  </label> */}
                 </div>
               )}
 

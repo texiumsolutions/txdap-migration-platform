@@ -73,7 +73,7 @@ const AllInformations = () => {
                   <td>{info.input8}</td>
                   <td>{info.input9}</td>
                   <td>
-                    <label for="update-modal"
+                    <label htmlFor="update-modal"
                       onClick={() => setInformations(info._id)}
                       className="btn bg-blue-700 text-white">Update
                     </label>
