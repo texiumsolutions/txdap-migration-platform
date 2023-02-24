@@ -10,7 +10,7 @@ const Add = () => {
   const onSubmit = (data) => {
     console.log(data);
 
-    fetch("https://txdap-migration-platform-server-production.up.railway.app/all_information", {
+    fetch("http://localhost:5000/profile", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -277,7 +277,7 @@ const Add = () => {
                     />
                   </label> */}
                   {/* Number-09  */}
-{/* 
+                  {/* 
                   <label className="label justify-start">
                     <span className="label-text name-input">Input 09:</span>
                     <input
