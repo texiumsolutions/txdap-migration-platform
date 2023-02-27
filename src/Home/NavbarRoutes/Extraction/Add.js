@@ -2,7 +2,8 @@ import React from "react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import "../../Dashboard/Plus.css";
-import Loading02 from "../../Loading/Loading02";
+import * as XLSX from "xlsx";
+import { Table } from "antd";
 
 const Add = () => {
   const { register, handleSubmit, reset } = useForm();
@@ -10,14 +11,17 @@ const Add = () => {
   const onSubmit = (data) => {
     console.log(data);
 
-    fetch("https://txdap-migration-platform-server-production.up.railway.app/all_information", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
+    fetch(
+      "https://txdap-migration-platform-server-production.up.railway.app/all_information",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
 
-      body: JSON.stringify(data),
-    })
+        body: JSON.stringify(data),
+      }
+    )
       .then((res) => res.json())
       .then((inserted) => {
         if (inserted.insertedId) {
@@ -71,8 +75,7 @@ const Add = () => {
     setSelectedT(value);
   };
 
-
-  // target 
+  // target
   const [selectedFirstFiveT, setSelectedFirstFiveT] = useState(true);
   const [selectedSecondFiveT, setSelectedSecondFiveT] = useState(false);
   const [selectedThirdFiveT, setSelectedThirdFiveT] = useState(false);
@@ -100,11 +103,51 @@ const Add = () => {
     }
     setSelected(valueT);
   };
+
+  const [colDefs, setColDefs] = useState();
+  const [data, setData] = useState();
+  const convertToJson = (headers, data) => {
+    const rows = [];
+    data.forEach(row => {
+      let rowData = {}
+      row.forEach((element, index) => {
+        rowData[headers[index]] = element;
+      })
+      rows.push(rowData);
+    });
+    return rows;
+  };
+
+
+  const importExcel = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      // parse data
+      const bstr = event.target.result;
+      const workBook = XLSX.read(bstr, { type: "binary" });
+      //  get first Sheet
+      const workSheetName = workBook.SheetNames[0];
+      const workSheet = workBook.Sheets[workSheetName];
+      // convert to array
+      const fileData = XLSX.utils.sheet_to_json(workSheet, { header: 1 });
+      // console.log(fileData)
+      const headers = fileData[0];
+      const heads = headers.map((head) => ({ title: head, field: head }));
+      setColDefs(heads);
+
+      fileData.splice(0, 1);
+      setData(convertToJson(headers, fileData));
+    };
+    reader.readAsBinaryString(file);
+  };
   return (
     <div className="w-full m-10">
       <div className="form-control">
         <form onSubmit={handleSubmit(onSubmit)}>
-          <p className="text-2xl  justify-center mx-80 ">Type Your Name Here First</p>
+          <p className="text-2xl  justify-center mx-80 ">
+            Type Your Name Here First
+          </p>
           {/* Name Input Here  */}
 
           <label className="label justify-center mx-80">
@@ -117,27 +160,12 @@ const Add = () => {
               required
             />
           </label>
-          <div className="grid grid-cols-2 gap-2 p-3" >
+          <div className="grid grid-cols-2 gap-2 p-3">
             {/* Left Source Type  */}
             <div>
               {/* Number-02  */}
               <p className="text-2xl">Source Type</p>
-              {/* <label className="label justify-start">
-                    <span className="label-text name-input ">Type:</span>
-                    <select
-                      className=" ep-input p-1"
-                      {...register("target_type")}
-                      required
-                      value={selectedT}
-                      onChange={handleChangeT}
-                    >
-                      {targetOptions.map((targetOption) => (
-                        <option key={targetOption.valueT} value={targetOption.valueT}>
-                          {targetOption.text}
-                        </option>
-                      ))}
-                    </select>
-                  </label> */}
+
               {/* Number-02  */}
 
               <label className="label justify-start">
@@ -175,8 +203,16 @@ const Add = () => {
 
               {selectedFirstFive && (
                 <div>
-                  {/* Number-01  */}
-
+        
+                  <label className="label justify-start">
+                    <span className="label-text name-input">Select File</span>
+                    <input
+                      type="file"
+                      accept=".csv"
+                      onChange={importExcel}
+                    />
+                  </label>
+                  {/* Number-02  */}
                   <label className="label justify-start">
                     <span className="label-text name-input">Input:01</span>
                     <input
@@ -184,54 +220,6 @@ const Add = () => {
                       placeholder="Type here"
                       className="ep-input p-1"
                       {...register("input1")}
-                      required
-                    />
-                  </label>
-                  {/* Number-02  */}
-
-                  <label className="label justify-start">
-                    <span className="label-text name-input">Input02:</span>
-                    <input
-                      type="text"
-                      placeholder="Type here"
-                      className="ep-input p-1"
-                      {...register("input2")}
-                      required
-                    />
-                  </label>
-                  {/* Number-03 */}
-
-                  <label className="label justify-start">
-                    <span className="label-text name-input">Input 03:</span>
-                    <input
-                      type="text"
-                      placeholder="Type here"
-                      className="ep-input p-1"
-                      {...register("input3")}
-                      required
-                    />
-                  </label>
-                  {/* Number-04  */}
-
-                  <label className="label justify-start">
-                    <span className="label-text name-input">Input 04:</span>
-                    <input
-                      type="text"
-                      placeholder="Type here"
-                      className="ep-input p-1"
-                      {...register("input4")}
-                      required
-                    />
-                  </label>
-                  {/* Number-05  */}
-
-                  <label className="label justify-start">
-                    <span className="label-text name-input">Input 05:</span>
-                    <input
-                      type="text"
-                      placeholder="Type here"
-                      className="ep-input p-1"
-                      {...register("input5")}
                       required
                     />
                   </label>
@@ -264,42 +252,6 @@ const Add = () => {
                       required
                     />
                   </label>
-                  {/* Number-08  */}
-
-                  {/* <label className="label justify-start">
-                    <span className="label-text name-input">Input 08:</span>
-                    <input
-                      type="text"
-                      placeholder="Type here"
-                      className="ep-input p-1"
-                      {...register("input8")}
-                      required
-                    />
-                  </label> */}
-                  {/* Number-09  */}
-{/* 
-                  <label className="label justify-start">
-                    <span className="label-text name-input">Input 09:</span>
-                    <input
-                      type="text"
-                      placeholder="Type here"
-                      className="ep-input p-1"
-                      {...register("input9")}
-                      required
-                    />
-                  </label> */}
-                  {/* Number-10  */}
-
-                  {/* <label className="label justify-start">
-                    <span className="label-text name-input">Input 10:</span>
-                    <input
-                      type="text"
-                      placeholder="Type here"
-                      className="ep-input p-1"
-                      {...register("input10")}
-                      required
-                    />
-                  </label> */}
                 </div>
               )}
 
@@ -329,46 +281,8 @@ const Add = () => {
                       required
                     />
                   </label>
-                  {/* Number-13  */}
-
-                  <label className="label justify-start">
-                    <span className="label-text name-input">Input 13:</span>
-                    <input
-                      type="text"
-                      placeholder="Type here"
-                      className="ep-input p-1"
-                      {...register("input13")}
-                      required
-                    />
-                  </label>
-                  {/* Number-14  */}
-
-                  <label className="label justify-start">
-                    <span className="label-text name-input">Input 14:</span>
-                    <input
-                      type="text"
-                      placeholder="Type here"
-                      className="ep-input p-1"
-                      {...register("input14")}
-                      required
-                    />
-                  </label>
-                  {/* Number-15  */}
-
-                  <label className="label justify-start">
-                    <span className="label-text name-input">Input 15:</span>
-                    <input
-                      type="text"
-                      placeholder="Type here"
-                      className="ep-input p-1"
-                      {...register("input15")}
-                      required
-                    />
-                  </label>
                 </div>
               )}
-
-
             </div>
             {/* Right Target Type  */}
             <div>
@@ -384,30 +298,16 @@ const Add = () => {
                   onChange={handleChangeT}
                 >
                   {targetOptions.map((targetOption) => (
-                    <option key={targetOption.valueT} value={targetOption.valueT}>
+                    <option
+                      key={targetOption.valueT}
+                      value={targetOption.valueT}
+                    >
                       {targetOption.text}
                     </option>
                   ))}
                 </select>
               </label>
 
-              {/* <label className="label justify-start">
-                    <span className="label-text name-input ">Type:</span>
-                   
-                    <select
-                      className=" ep-input p-1"
-                      {...register("type")}
-                      required
-                      value={selected}
-                      onChange={handleChange}
-                    >
-                      {options.map((option) => (
-                        <option key={option.value} value={option.value}>
-                          {option.text}
-                        </option>
-                      ))}
-                    </select>
-                  </label> */}
               <label className="label justify-start">
                 <span className="label-text name-input">Description:</span>
                 <input
@@ -446,42 +346,6 @@ const Add = () => {
                       required
                     />
                   </label>
-                  {/* Number-03 */}
-
-                  <label className="label justify-start">
-                    <span className="label-text name-input">Input 03:</span>
-                    <input
-                      type="text"
-                      placeholder="Type here"
-                      className="ep-input p-1"
-                      {...register("target_input3")}
-                      required
-                    />
-                  </label>
-                  {/* Number-04  */}
-
-                  <label className="label justify-start">
-                    <span className="label-text name-input">Input 04:</span>
-                    <input
-                      type="text"
-                      placeholder="Type here"
-                      className="ep-input p-1"
-                      {...register("target_input4")}
-                      required
-                    />
-                  </label>
-                  {/* Number-05  */}
-
-                  <label className="label justify-start">
-                    <span className="label-text name-input">Input 05:</span>
-                    <input
-                      type="text"
-                      placeholder="Type here"
-                      className="ep-input p-1"
-                      {...register("target_input5")}
-                      required
-                    />
-                  </label>
                 </div>
               )}
 
@@ -511,42 +375,6 @@ const Add = () => {
                       required
                     />
                   </label>
-                  {/* Number-08  */}
-
-                  {/* <label className="label justify-start">
-                    <span className="label-text name-input">Input 08:</span>
-                    <input
-                      type="text"
-                      placeholder="Type here"
-                      className="ep-input p-1"
-                      {...register("target_input8")}
-                      required
-                    />
-                  </label> */}
-                  {/* Number-09  */}
-
-                  {/* <label className="label justify-start">
-                    <span className="label-text name-input">Input 09:</span>
-                    <input
-                      type="text"
-                      placeholder="Type here"
-                      className="ep-input p-1"
-                      {...register("target_input9")}
-                      required
-                    />
-                  </label> */}
-                  {/* Number-10  */}
-
-                  {/* <label className="label justify-start">
-                    <span className="label-text name-input">Input 10:</span>
-                    <input
-                      type="text"
-                      placeholder="Type here"
-                      className="ep-input p-1"
-                      {...register("target_input10")}
-                      required
-                    />
-                  </label> */}
                 </div>
               )}
 
@@ -576,51 +404,17 @@ const Add = () => {
                       required
                     />
                   </label>
-                  {/* Number-13  */}
-
-                  <label className="label justify-start">
-                    <span className="label-text name-input">Input 13:</span>
-                    <input
-                      type="text"
-                      placeholder="Type here"
-                      className="ep-input p-1"
-                      {...register("target_input13")}
-                      required
-                    />
-                  </label>
-                  {/* Number-14  */}
-
-                  <label className="label justify-start">
-                    <span className="label-text name-input">Input 14:</span>
-                    <input
-                      type="text"
-                      placeholder="Type here"
-                      className="ep-input p-1"
-                      {...register("target_input14")}
-                      required
-                    />
-                  </label>
-                  {/* Number-15  */}
-
-                  <label className="label justify-start">
-                    <span className="label-text name-input">Input 15:</span>
-                    <input
-                      type="text"
-                      placeholder="Type here"
-                      className="ep-input p-1"
-                      {...register("target_input15")}
-                      required
-                    />
-                  </label>
                 </div>
               )}
             </div>
-
           </div>
+          {selectedFirstFive && (
+            <Table columns={colDefs} dataSource={data}></Table>
+          )}
           <input
             className="ebtn  btn bg-blue-700 text-white mt-5 text-2xl  justify-center mx-80"
             type="submit"
-            value="Save"
+            value="Create Profile"
           />
         </form>
       </div>

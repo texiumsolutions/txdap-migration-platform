@@ -24,13 +24,13 @@ const Informations = () => {
     const { name, checked } = e.target;
     if (name === "allselect") {
       const checkedvalue = userData.map((user) => {
-        return { ...user, isChecked: checked };
+        return { ...user, isChecked:checked };
       });
       console.log(checkedvalue);
       setUserData(checkedvalue);
     } else {
       const checkedvalue = userData.map((user) =>
-        user.name === name ? { ...user, isChecked: checked } : user
+        user.name ===name? { ...user, isChecked: checked } : user
       );
       console.log(checkedvalue);
       setUserData(checkedvalue);
@@ -41,15 +41,17 @@ const Informations = () => {
     const checkedInputValue = [];
     for (let i = 0; i < userData.length; i++) {
       if (userData[i].isChecked === true) {
-        checkedInputValue.push(parseInt(userData[i]._id));
+        checkedInputValue.push(parseInt(userData[i].userId));
       }
     }
-    const responce = await axios.post(`http://localhost:5000/updateRun`, JSON.stringify(checkedInputValue));
+    const responce = await axios.post(`https://txdap-migration-platform-server-production.up.railway.app/updateRun`, JSON.stringify(checkedInputValue));
     setDelmessage(responce.data.msg);
+    console.log(JSON.stringify(checkedInputValue));
   };
 
+ 
   return (
-    <div className="">
+    <div >
       <div>
         <Link className="btn btn-src bg-blue-700 text-white" to="/home/plus">
           Add{" "}
@@ -60,8 +62,9 @@ const Informations = () => {
         <button
           className="btn btn-primary m-8"
           onClick={() => {
-            handlealldelete();
+            handlealldelete()
           }}
+         
         >
           Run
         </button>
@@ -77,14 +80,14 @@ const Informations = () => {
                       className="checkbox text-xl"
                       name="allselect"
                       checked={
-                        !userData.some((user) => user?.isChecked === false)
+                        !userData.some((user) => user?.isChecked!== true)
                       }
                       onChange={handleChange}
                     />{" "}
                   </label>
                 </th>
                 <th>Index</th>
-                <th>Name</th>
+                <th >Name</th>
                 <th>File Type</th>
                 <th>Description</th>
                 <th>Input1</th>
@@ -118,7 +121,7 @@ const Informations = () => {
                       />
                     </label>
                   </th>
-                  <td>{index + 1}</td>
+                  <td >{index + 1}</td>
                   <td>{getusers.name}</td>
                   <td>{getusers.type}</td>
                   <td>{getusers.description}</td>
