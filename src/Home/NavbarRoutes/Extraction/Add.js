@@ -2,8 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import "../../Dashboard/Plus.css";
-import * as XLSX from "xlsx";
-import { Table } from "antd";
+import Papa from "papaparse";
 
 const Add = () => {
   const { register, handleSubmit, reset } = useForm();
@@ -104,42 +103,40 @@ const Add = () => {
     setSelected(valueT);
   };
 
-  const [colDefs, setColDefs] = useState();
-  const [data, setData] = useState();
-  const convertToJson = (headers, data) => {
-    const rows = [];
-    data.forEach(row => {
-      let rowData = {}
-      row.forEach((element, index) => {
-        rowData[headers[index]] = element;
-      })
-      rows.push(rowData);
+  // State to store parsed data
+  const [parsedData, setParsedData] = useState([]);
+
+  //State to store table Column name
+  const [tableRows, setTableRows] = useState([]);
+
+  //State to store the values
+  const [values, setValues] = useState([]);
+
+  const changeHandler = (event) => {
+    // Passing file data (event.target.files[0]) to parse using Papa.parse
+    Papa.parse(event.target.files[0], {
+      header: true,
+      skipEmptyLines: true,
+      complete: function (results) {
+        const rowsArray = [];
+        const valuesArray = [];
+
+        // Iterating data to get column name and their values
+        results.data.map((d) => {
+          rowsArray.push(Object.keys(d));
+          valuesArray.push(Object.values(d));
+        });
+
+        // Parsed Data Response in array format
+        setParsedData(results.data);
+
+        // Filtered Column Names
+        setTableRows(rowsArray[0]);
+
+        // Filtered Values
+        setValues(valuesArray);
+      },
     });
-    return rows;
-  };
-
-
-  const importExcel = (e) => {
-    const file = e.target.files[0];
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      // parse data
-      const bstr = event.target.result;
-      const workBook = XLSX.read(bstr, { type: "binary" });
-      //  get first Sheet
-      const workSheetName = workBook.SheetNames[0];
-      const workSheet = workBook.Sheets[workSheetName];
-      // convert to array
-      const fileData = XLSX.utils.sheet_to_json(workSheet, { header: 1 });
-      // console.log(fileData)
-      const headers = fileData[0];
-      const heads = headers.map((head) => ({ title: head, field: head }));
-      setColDefs(heads);
-
-      fileData.splice(0, 1);
-      setData(convertToJson(headers, fileData));
-    };
-    reader.readAsBinaryString(file);
   };
   return (
     <div className="w-full m-10">
@@ -203,13 +200,18 @@ const Add = () => {
 
               {selectedFirstFive && (
                 <div>
-        
+                  {" "}
                   <label className="label justify-start">
                     <span className="label-text name-input">Select File</span>
+
+                    {/* File Uploader */}
                     <input
                       type="file"
+                      name="file"
+                      onChange={changeHandler}
                       accept=".csv"
-                      onChange={importExcel}
+                      // {...register("csv")}
+                      
                     />
                   </label>
                   {/* Number-02  */}
@@ -408,14 +410,42 @@ const Add = () => {
               )}
             </div>
           </div>
-          {selectedFirstFive && (
-            <Table columns={colDefs} dataSource={data}></Table>
-          )}
           <input
             className="ebtn  btn bg-blue-700 text-white mt-5 text-2xl  justify-center mx-80"
             type="submit"
             value="Create Profile"
           />
+         
+          {selectedFirstFive && (
+            <div>
+            <div>
+              <h1 className="text-xl mt-10 m-auto flex justify-center items-center">Source CSV Data</h1>
+              {/* Table */}
+              <table>
+                <thead>
+                  <tr>
+                    {tableRows.map((rows, index) => {
+                      return <th key={index}>{rows}</th>;
+                    })}
+                  </tr>
+                </thead>
+                <tbody>
+                  {values.map((value, index) => {
+                    return (
+                      <tr key={index}>
+                        {value.map((val, i) => {
+                          return <td key={i}>{val}</td>;
+                        })}
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+           
+            </div>
+          )}
+          
         </form>
       </div>
     </div>
